@@ -1,0 +1,43 @@
+mi-proyecto/
+├── public/
+│   ├── assets/
+│   │   ├── images/             	# Imágenes generales de la web
+│   │   ├── videos/             	# Videos para secciones como “Misión y Visión”
+│   │   └── icons/              	# Íconos para accesos rápidos, redes sociales, etc.
+│   └── index.html              # Archivo HTML principal, punto de entrada
+├── src/
+│   ├── components/             	# Componentes reutilizables en HTML y JavaScript
+│   │   ├── Banner.html         		# Componente HTML de banner
+│   │   ├── Navbar.html         		# Componente HTML de navbar
+│   │   ├── Footer.html         		# Componente HTML del pie de página
+│   │   └── Testimonial.html    		# Componente HTML para testimonios
+│   ├── js/                     	# Archivos JavaScript
+│   │   ├── main.js             		# JavaScript principal
+│   │   └── utils.js            		# Funciones de utilidad y helpers
+│   ├── pages/                  	# Páginas principales del proyecto en HTML
+│   │   ├── home.html           		# Página de inicio
+│   │   ├── mision-vision.html  		# Página de misión y visión
+│   │   ├── valores.html        		# Página de valores
+│   │   ├── equipo.html         		# Página del equipo
+│   │   ├── noticias.html       		# Página de noticias
+│   │   ├── acreditaciones.html 		# Página de acreditaciones
+│   │   ├── recomendaciones.html		# Página de recomendaciones
+│   │   ├── pide.html           		# Página de PIDE
+│   │   ├── planes-trabajo.html 		# Página de planes de trabajo
+│   │   └── planea.html         		# Página de la aplicación PLANEA
+│   ├── scss/                   	# Archivos Sass
+│   │   ├── main.scss           		# Estilos principales, donde importarás otros archivos
+│   │   ├── components/         		# Estilos específicos para componentes
+│   │   │   ├── banner.scss     			# Estilos para el banner
+│   │   │   ├── navbar.scss     			# Estilos para el navbar
+│   │   │   └── footer.scss     			# Estilos para el pie de página
+│   │   └── pages/              	# Estilos específicos para cada página
+│   │       ├── home.scss       		# Estilos de la página de inicio
+│   │       ├── mision-vision.scss 	# Estilos para misión y visión
+│   │       └── ...             		# Archivos SCSS para cada página
+├── dist/                       	# Archivos de salida CSS generados por Sass
+│   └── styles.css              		# Archivo CSS compilado de los archivos SCSS
+├── .env                        	# Variables de entorno (si es necesario para desarrollo)
+├── .gitignore                  	# Archivos y carpetas ignorados por Git
+├── package.json                	# Dependencias y scripts npm
+└── README.md                   	# Documentación del proyecto

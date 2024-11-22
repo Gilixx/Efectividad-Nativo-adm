@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamento Universitario</title>
+    <link rel="stylesheet" href="/Proyecto/public/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Logo and Nav -->
+    <header>
+        <div class="logo-container">
+            <img src="/Proyecto/public/assets/images/Logo escudo UM (1).png" alt="Logo Universidad" class="logo-placeholder">
+        </div>
+        
+        <!-- Sidebar/Nav -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#"><i class="fas fa-graduation-cap"></i> Programas</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Profesores</a></li>
+                    <li><a href="#"><i class="fas fa-calendar"></i> Eventos</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Department Image and Title Section -->
+        <section class="department-header">
+            <div class="department-image">
+                <div class="image-placeholder"></div>
+            </div>
+            <h1>Departamento de Efecrividad</h1>
+        </section>
+
+        <!-- Department Description Section -->
+        <section class="department-info">
+            <div class="info-container">
+                <h2>Acerca del Departamento</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let lastScrollPosition = 0;
+        const header = document.querySelector('header');
+        const mainContent = document.querySelector('.main-content');
+        const scrollThreshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > lastScrollPosition && currentScroll > scrollThreshold) {
+                header.classList.add('hidden');
+                mainContent.classList.add('header-hidden');
+            } else if (currentScroll < lastScrollPosition) {
+                header.classList.remove('hidden');
+                mainContent.classList.remove('header-hidden');
+            }
+            
+            lastScrollPosition = currentScroll;
+        });
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
