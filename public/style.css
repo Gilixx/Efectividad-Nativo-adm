@@ -50,7 +50,7 @@ header {
 
 
 header.hidden {
-    transform: translateY(-50%);
+    transform: translateY(-100%);
 }
 .department-header {
     position: relative;
@@ -228,14 +228,14 @@ header.hidden {
 
 /* Image Placeholder Styles */
 .image-placeholder {
-    width: 800px;
+    width: 700px;
     height: 400px;
     background-image: url('/public/assets/images/54110268084_9281d07028_o.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin-bottom: 20px;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-left: 450px; /* Mantenemos esto para la posición deseada */
 }
 
