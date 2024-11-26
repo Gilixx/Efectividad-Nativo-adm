@@ -38,7 +38,6 @@ header {
     align-items: center;
     padding: 10px 20px;
     background-color: white;
-    box-shadow: 0 2px 10px var(--light-accent);
     position: fixed;
     width: 100%;
     top: 0;
@@ -48,10 +47,67 @@ header {
     transition: transform 0.2s ease;
 }
 
+
+
 header.hidden {
-    transform: translateY(-100%);
+    transform: translateY(-50%);
+}
+.department-header {
+    position: relative;
+    margin-bottom: 60px;
 }
 
+.image-placeholder {
+    width: 100%;
+    height: clamp(300px, 60vh, 600px);
+    overflow: hidden;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.title-box {
+    position: absolute;
+    bottom: 70px;
+    right: auto; 
+    left: -50px; 
+    transform: translateX(0); 
+    background: rgba(255, 255, 255, 0.749);
+    backdrop-filter: blur(10px);
+    padding: 20px 90px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    border: 1px solid rgba(var(--primary-color), 0.1);
+}
+
+.title-box h1 {
+    color: var(--dark-accent);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 600;
+    text-align: left;
+
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .title-box {
+        bottom: -20px;
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-box {
+        width: 95%;
+        padding: 12px 20px;
+    }
+}
 /* Logo Styles */
 .logo-container {
     padding: 5px;
@@ -61,7 +117,7 @@ header.hidden {
 }
 
 .logo-container img {
-    max-height: 75px;
+    max-height: 50px;
     width: auto;
     object-fit: contain;
     transition: max-height 0.3s ease;
@@ -163,19 +219,23 @@ header.hidden {
 
 /* Department Header Styles */
 .department-header h1 {
-    padding: 30px;
-    color: var(--dark-accent);
+    padding: 20px;
+    color: var(--primary-color);
     font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* Image Placeholder Styles */
 .image-placeholder {
-    width: 100%;
-    height: clamp(250px, 40vw, 400px);
-    background-color: var(--light-accent);
+    width: 800px;
+    height: 400px; 
+    background-image: url('/public/assets/images/54110268084_9281d07028_o.jpg');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
     margin-bottom: 20px;
     border-radius: 10px;
+    margin-left:450px;
 }
 
 /* Department Info Section Styles */
@@ -247,7 +307,7 @@ header.hidden {
     width: 70px;
     height: 70px;
     margin: 0 auto 20px;
-    background: var(--primary-color);
+    background: var(--dark-accent);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -273,7 +333,7 @@ header.hidden {
 
 /* Stats Section */
 .stats-section {
-    background-color: white;
+    background-color: var(--background-color);
     padding: 80px 0;
     margin: 40px 0;
 }
@@ -300,7 +360,7 @@ header.hidden {
 
 .stat-card i {
     font-size: 40px;
-    color: var(--primary-color);
+    color: var(--dark-accent);
     margin-bottom: 20px;
 }
 
@@ -427,12 +487,14 @@ header.hidden {
 
 /* Footer Styles */
 .footer {
-    background-color: white;
+    position: relative;
+    background: linear-gradient(135deg, var(--dark-accent), var(--primary-color));
     padding: 60px 0 0;
-    box-shadow: 0 -2px 10px var(--light-accent);
+    color: white;
 }
 
 .footer-content {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -442,15 +504,14 @@ header.hidden {
 }
 
 .footer-section h4 {
-    color: var(--dark-accent);
+    color: white;
     font-size: clamp(1.1rem, 2vw, 1.2rem);
     margin-bottom: 20px;
 }
 
 .footer-section p {
-    color: var(--text-color);
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
-    font-size: clamp(14px, 2vw, 16px);
 }
 
 .footer-section ul {
@@ -462,38 +523,48 @@ header.hidden {
 }
 
 .footer-section ul li a {
-    color: var(--text-color);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 .contact-info li {
     display: flex;
     align-items: center;
-    color: var(--text-color);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
 }
 
 .contact-info li i {
     margin-right: 10px;
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 .footer-bottom {
     margin-top: 40px;
     padding: 20px;
     text-align: center;
-    border-top: 1px solid var(--light-accent);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom p {
-    color: var(--text-color);
-    font-size: clamp(12px, 1.5vw, 0.9rem);
+    color: rgba(255, 255, 255, 0.9);
 }
 
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
+    .footer-section {
+        text-align: center;
+    }
+    
+    .contact-info li {
+        justify-content: center;
+    }
+}
 /* Media Queries */
 @media (max-width: 480px) {
     :root {
