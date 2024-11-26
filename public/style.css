@@ -118,7 +118,7 @@ header.hidden {
 }
 
 .logo-container img {
-    max-height: 50px;
+    max-height: 60px;
     width: auto;
     object-fit: contain;
     transition: max-height 0.3s ease;
@@ -236,7 +236,8 @@ header.hidden {
     background-repeat: no-repeat;
     margin-bottom: 20px;
     border-radius: 20px;
-    margin-left: 450px; /* Mantenemos esto para la posición deseada */
+    margin-left: 450px; 
+    margin-top: 30px;
 }
 
 /* Department Info Section Styles */
