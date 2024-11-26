@@ -55,7 +55,10 @@ header.hidden {
 .department-header {
     position: relative;
     margin-bottom: 60px;
+    width: 100%;
+    overflow: hidden;
 }
+
 
 .image-placeholder {
     width: 100%;
@@ -72,26 +75,24 @@ header.hidden {
 
 .title-box {
     position: absolute;
-    bottom: 70px;
-    right: auto; 
-    left: -50px; 
-    transform: translateX(0); 
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.749);
     backdrop-filter: blur(10px);
-    padding: 20px 90px;
+    padding: 20px 40px;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    border: 1px solid rgba(var(--primary-color), 0.1);
+    width: auto;
+    max-width: 500px;
+    border: 1px solid rgba(84, 68, 239, 0.1);
 }
 
 .title-box h1 {
-    color: var(--dark-accent);
+    color: var(--primary-color);
     font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 600;
+    font-weight: 700;
     text-align: left;
-
 }
 
 /* Estilos responsivos */
@@ -228,14 +229,14 @@ header.hidden {
 /* Image Placeholder Styles */
 .image-placeholder {
     width: 800px;
-    height: 400px; 
+    height: 400px;
     background-image: url('/public/assets/images/54110268084_9281d07028_o.jpg');
     background-size: cover;
-    background-position: center; 
+    background-position: center;
     background-repeat: no-repeat;
     margin-bottom: 20px;
     border-radius: 10px;
-    margin-left:450px;
+    margin-left: 450px; /* Mantenemos esto para la posición deseada */
 }
 
 /* Department Info Section Styles */
@@ -761,5 +762,57 @@ header.hidden {
 
     .card, .stat-card, .testimonial-card {
         break-inside: avoid;
+    }
+}
+
+@media (max-width: 1400px) {
+    .image-placeholder {
+        width: 600px;
+        margin-left: 350px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .image-placeholder {
+        width: 500px;
+        margin-left: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    .image-placeholder {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .title-box {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: -50px auto 0;
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-placeholder {
+        height: 300px;
+    }
+
+    .title-box {
+        margin-top: -30px;
+        padding: 15px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-placeholder {
+        height: 250px;
+    }
+
+    .title-box {
+        width: 95%;
+        padding: 12px 20px;
     }
 }
