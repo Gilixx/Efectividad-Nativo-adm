@@ -51,7 +51,7 @@ header {
 }
 
 .main-content {
-    padding-top: var(--header-height);
+    padding-top: 100px;
     padding-left: var(--content-padding);
     padding-right: var(--content-padding);
     max-width: 1200px;
