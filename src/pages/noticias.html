@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - Departamento de Efectividad</title>
+    <link rel="stylesheet" href="/public/styles/noticias.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Logo and Nav -->
+    <header>
+        <a href="https://www.um.edu.mx/"><div class="logo-container">
+                <img src="https://cdn.um.click/logos-um/logo/" alt="Logo Universidad">
+            </div> 
+        </a>
+        
+        <!-- Sidebar/Nav -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/src/pages/home.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="/noticias" class="active"><i class="fas fa-newspaper"></i> Noticias</a></li>
+                    <li><a href="#"><i class="fas fa-graduation-cap"></i> Programas</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Profesores</a></li>
+                    <li><a href="#"><i class="fas fa-calendar"></i> Eventos</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- News Header Section -->
+        <section class="news-header">
+            <div class="title-container">
+                <h1>Noticias y Acontecimientos</h1>
+                <p>Mantente informado sobre las últimas actualizaciones y eventos del departamento</p>
+            </div>
+        </section>
+
+        <!-- Featured News Section -->
+        <section class="featured-news">
+            <div class="featured-news-card">
+                <div class="featured-image">
+                    <img src="/path/to/featured-image.jpg" alt="Noticia destacada">
+                </div>
+                <div class="featured-content">
+                    <span class="news-category">Destacado</span>
+                    <h2>Título de la Noticia Principal</h2>
+                    <p>Descripción breve de la noticia destacada que capture la atención del lector y proporcione información relevante sobre el contenido...</p>
+                    <div class="news-meta">
+                        <span><i class="fas fa-calendar"></i> 8 Diciembre, 2024</span>
+                        <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Grid Section -->
+        <section class="news-grid">
+            <div class="news-card">
+                <div class="news-image">
+                    <img src="/path/to/news-1.jpg" alt="Noticia 1">
+                </div>
+                <div class="news-content">
+                    <span class="news-category">Académico</span>
+                    <h3>Título de la Noticia</h3>
+                    <p>Breve descripción de la noticia que proporcione contexto al lector...</p>
+                    <div class="news-meta">
+                        <span><i class="fas fa-calendar"></i> 7 Diciembre, 2024</span>
+                        <a href="#" class="read-more">Leer más</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Repite este bloque para más noticias -->
+        </section>
+
+        <!-- News Categories -->
+        <section class="news-categories">
+            <h2>Categorías</h2>
+            <div class="category-grid">
+                <a href="#" class="category-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Académico</h3>
+                    <span>12 artículos</span>
+                </a>
+                <a href="#" class="category-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Logros</h3>
+                    <span>8 artículos</span>
+                </a>
+                <a href="#" class="category-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Eventos</h3>
+                    <span>15 artículos</span>
+                </a>
+                <a href="#" class="category-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Anuncios</h3>
+                    <span>10 artículos</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="newsletter-content">
+                <h2>Mantente Informado</h2>
+                <p>Suscríbete a nuestro boletín para recibir las últimas noticias y actualizaciones</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico">
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Departamento de Efectividad</h4>
+                <p>Comprometidos con la excelencia y mejora continua de nuestra institución.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Documentos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> efectividad@universidad.edu</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Campus Universitario</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Departamento de Efectividad. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let lastScrollPosition = 0;
+        const header = document.querySelector('header');
+        const mainContent = document.querySelector('.main-content');
+        const scrollThreshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > lastScrollPosition && currentScroll > scrollThreshold) {
+                header.classList.add('hidden');
+                mainContent.classList.add('header-hidden');
+            } else if (currentScroll < lastScrollPosition) {
+                header.classList.remove('hidden');
+                mainContent.classList.remove('header-hidden');
+            }
+            
+            lastScrollPosition = currentScroll;
+        });
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
