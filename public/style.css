@@ -396,7 +396,7 @@ header.hidden {
 
 .feature-content h2 {
     font-size: clamp(1.5rem, 3vw, 2.2rem);
-    color: var(--dark-accent);
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
