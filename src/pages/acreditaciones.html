@@ -1,141 +1,170 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acreditaciones</title>
+    <meta name="description" content="Acreditaciones institucionales y programáticas de la Universidad.">
+    <meta name="keywords" content="acreditaciones, universidad, educación, calidad">
+    <title>Acreditaciones en la UM</title>
     <link rel="stylesheet" href="/public/styles/acreditaciones.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Header with Logo and Nav -->
-    <header>
-        <a href="https://www.um.edu.mx/">
-            <div class="logo-container">
+     <header>
+        <a href="https://www.um.edu.mx/"><div class="logo-container">
                 <img src="https://cdn.um.click/logos-um/logo/" alt="Logo Universidad">
             </div> 
         </a>
-        
-        <!-- Sidebar/Nav -->
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-toggle" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav class="nav-menu">
-                <ul>
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav class="nav-menu">
                     <ul>
                         <li><a href="#" class="active"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
                         <li><a href="/src/pages/noticias.html" class="active"><i class="fas fa-newspaper"></i> Noticias</a></li>
-                        <li><a href="/src/pages/acreditaciones.html"><i class="fas fa-graduation-cap"></i> <span>Acreditaciones</span></a></li>
-                        <li><a href="/src/pages/mision-vision.html"><i class="fas fa-users"></i> <span>Mision-Vision</span></a></li>
+                        <li><a href="#"><i class="fas fa-graduation-cap"></i> <span>Programas</span></a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> <span>Profesores</span></a></li>
+                        <li><a href="#"><i class="fas fa-calendar"></i> <span>Eventos</span></a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> <span>Contacto</span></a></li>
                     </ul>
-                </ul>
-            </nav>
-        </div>
+                </nav>
+            </div>
     </header>
-
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Page Header Section -->
-        <section class="page-header">
-            <div class="title-container">
-                <h1>Acreditaciones</h1>
-                <p>Acreditaciones institucionales y programáticas, tanto a nivel nacional como internacional, en su campus.</p>
+        <!-- Datos Generales -->
+        <section id="datos-generales" class="section">
+            <h2>Datos Generales</h2>
+            <div class="content-with-image">
+                <img src="/public/assets/demos/black_image.jpg" alt="Datos Generales de la Universidad">
+                <p>Información general sobre la universidad y su compromiso con la calidad educativa.</p>
+            </div>
+        </section>
+
+        <!-- Estadísticas -->
+        <section id="estadisticas" class="section">
+            <h2>Estadísticas</h2>
+            <div class="content-with-image">
+                <img src="/public/assets/demos/black_image.jpg" alt="Estadísticas de la Universidad">
+                <p>Datos estadísticos sobre las acreditaciones y logros de la universidad.</p>
+            </div>
+        </section>
+
+        <!-- Acreditaciones en la UM -->
+        <section id="acreditaciones-um" class="section">
+            <h2>Acreditaciones en la UM</h2>
+            <p>Información detallada sobre las acreditaciones institucionales y programáticas.</p>
+
+            <!-- AAA -->
+            <div class="acreditacion-accordion">
+                <button class="accordion-toggle">
+                    <h3>AAA</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="acreditacion-section">
+                        <h4>¿Qué es la AAA</h4>
+                        <div class="subseccion">
+                            <p>Descipción de AAA y su importancia.</p>
+                        </div>
+                    </div>
+                    <div class="acreditacion-section">
+                        <h4>Proceso de Acreditación</h4>
+                        <div class="subseccion">
+                            <h5>¿Cómo acredita?</h5>
+                            <p>Proceso de acreditación de la AAA.</p>
+                        </div>
+                        <div class="subseccion">
+                            <h5>Metodología</h5>
+                            <p>Metodología utilizada por la AAA para la acreditación.</p>
+                        </div>
+                    </div>
+                    <div class="acreditacion-section">
+                        <h4>Instituciones y Áreas</h4>
+                        <div class="subseccion">
+                            <h5>Instituciones acreditadas</h5>
+                            <p>Lista de instituciones acreditadas por la AAA.</p>
+                        </div>
+                        <div class="subseccion">
+                            <h5>Áreas evaluadas</h5>
+                            <p>Áreas evaluadas por la AAA.</p>
+                        </div>
+                    </div>
+                    <a href="https://www.adventistaccreditingassociation.org/" class="btn-acreditacion" target="_blank">Visita el sitio de la AAA</a>
+                </div>
+            </div>
+
+            <!-- FIMPES -->
+            <div class="acreditacion-accordion">
+                <button class="accordion-toggle">
+                    <h3>FIMPES</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="acreditacion-section">
+                        <h4>¿Qué es el FIMPES</h4>
+                        <div class="subseccion">
+                            <p>Descipción de FIMPES y su importancia.</p>
+                        </div>
+                    </div>
+                    <div class="acreditacion-section">
+                        <h4>Proceso de Acreditación</h4>
+                        <div class="subseccion">
+                            <h5>¿Cómo acredita?</h5>
+                            <p>Proceso de acreditación de la FIMPES.</p>
+                        </div>
+                        <div class="subseccion">
+                            <h5>Metodología</h5>
+                            <p>Metodología utilizada por la FIMPES para la acreditación.</p>
+                        </div>
+                    </div>
+                    <div class="acreditacion-section">
+                        <h4>Instituciones y Áreas</h4>
+                        <div class="subseccion">
+                            <h5>Instituciones acreditadas</h5>
+                            <p>Lista de instituciones acreditadas por la FIMPES.</p>
+                        </div>
+                        <div class="subseccion">
+                            <h5>Áreas evaluadas</h5>
+                            <p>Áreas evaluadas por la FIMPES.</p>
+                        </div>
+                    </div>
+                    <a href="https://portal.fimpes.org.mx/" class="btn-acreditacion" target="_blank">Visita el sitio de la FIMPES</a>
+                </div>
+            </div>
+
+            <!-- Programas Académicos -->
+            <div class="acreditacion-accordion">
+                <button class="accordion-toggle">
+                    <h3>Programas Académicos</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="acreditacion-section">
+                        <h4>¿Qué es Programas Académicos están acreditados?</h4>
+                        <div class="subseccion">
+                            <p>Descipción de Programas Académicos.</p>
+                        </div>
+                    </div>
+                    <div class="acreditacion-section">
+                        <h4>Organismos y Metodología</h4>
+                        <div class="subseccion">
+                            <h5>Organismos acreditadores</h5>
+                            <p>Organismos responsables de la acreditación de programas académicos.</p>
+                        </div>
+                        <div class="subseccion">
+                            <h5>Metodología</h5>
+                            <p>Metodología utilizada para la acreditación de programas académicos.</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-acreditacion" target="_blank">Visita el sitio de Programas Académicos</a>
+                </div>
             </div>
         </section>
     </main>
-
-    <section class="descripcion-acreditacion">
-        <h2>¿Qué es la acreditación?</h2>
-        <p class="descripcion">
-            <br>La acreditación es el resultado de un proceso de evaluación y seguimiento sistemático y 
-            voluntario del cumplimiento de las funciones universitarias de una Institución de Educación Superior (IES), 
-            que permite obtener información fidedigna y objetiva sobre la calidad de los Programas Académicos (PA) que desarrolla.<br>
-            <span class="more-text"> 
-                En ese sentido, las IES deben ser las primeras instancias responsables y garantes de la calidad de los PA que cobija.
-                Descansa en la búsqueda permanente de la excelencia y representa el esfuerzo colectivo de la comunidad universitaria
-                para rendir cuentas a sí misma y a la sociedad, sobre la pertinencia, relevancia y calidad de su ser y quehacer institucional.<br>
-
-                <br>Por otra parte, la acreditación es el reconocimiento formal y público otorgado por un ente externo a un PA que ha logrado avances
-                significativos en el cumplimiento de su misión y objetivos declarados, y satisface así un conjunto acordado de criterios, indicadores y 
-                estándares de pertinencia y calidad establecidos por un Organismo Acreditador (OA). En la medida en que crecen y se diversifican las 
-                actividades y ofertas educacionales, investigativas y de extensión de una institución universitaria, se hace indispensable que existan y 
-                operen efectivamente mecanismos de control, cohesión y confiabilidad pública respecto de ellos. Esta necesidad tiene su máxima expresión
-                en la acreditación, que es realizada por un OA, el que a su vez regulado por una instancia superior, que en el caso de México es el 
-                Consejo para la Acreditación de la Educación Superior, A. C. (COPAES).<br>
-
-                <br>Ahora bien, la evaluación está regulada en un instrumento denominado Marco General de Referencia (MGR) del cual surgen los lineamientos 
-                técnico-metodológicos para realizar el proceso de acreditación de un PA. En él se establecen los documentos y pruebas necesarias (evidencias) 
-                para el proceso de acreditación, los atributos a evaluar a través de los indicadores y la definición de cada una de las etapas del proceso.
-                El MGR es el instrumento que coadyuva, mediante la evaluación de los programas académicos de las IES a la mejora continua de la calidad de dichos programas.<br>
-            </span>
-            <a href="#" class="ver-mas">ver más...</a>
-        </p>
-    </section>
-
-    <!-- Acreditaciones y Logotipos -->
-    <div class="acreditaciones-logotipos">
-        <div class="logo-group">
-            <div class="logo">
-                <figure>
-                    <img src="/public/assets/demos/black_image.jpg" alt="Logo Acreditación 1">
-                    <figcaption><a href="https://www.adventistaccreditingassociation.org/" class="btn-acreditacion">AAA</a></figcaption>
-                </figure>
-            </div>
-            <div class="logo">
-                <figure>
-                    <img src="/public/assets/demos/black_image.jpg" alt="Logo Acreditación 2">
-                    <figcaption><a href="https://portal.fimpes.org.mx/" class="btn-acreditacion">FIMPES</a></figcaption>
-                </figure>
-            </div>
-            <div class="logo">
-                <figure>
-                    <img src="/public/assets/demos/black_image.jpg" alt="Logo Acreditación 3">
-                    <figcaption><a href="https://www.gob.mx/sep/" class="btn-acreditacion">SEP</a></figcaption>
-                </figure>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Acreditaciones -->
-    <section id="acreditaciones">
-        <div class="acreditaciones-contenedor">
-            <div class="acreditaciones-caja">
-                <div class="acreditaciones-texto">
-                    <h2>Nacional</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan eleifend mi, eu ultrices arcu fermentum sit amet. 
-                        Nullam porttitor urna sed tincidunt blandit. Curabitur fermentum est nec felis varius, sit amet facilisis felis posuere.
-                    </p><br>
-                    <h3>Contexto de la acreditación</h3>
-                    <p>
-                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam nec massa risus. Duis maximus, arcu non 
-                        varius lobortis, libero mi egestas odio, ac malesuada libero velit vel odio. Cras ac risus non nisl hendrerit sodales. Phasellus suscipit 
-                        metus eget velit viverra, eget sollicitudin velit ultricies. Vestibulum consectetur, ex ut aliquet efficitur, odio mauris luctus magna.
-                    </p>
-                    <p>
-                        Sed venenatis, mauris vel luctus placerat, ligula magna feugiat eros, sit amet malesuada nisl elit id ligula. Fusce id orci vehicula, 
-                        ornare orci sit amet, efficitur elit. Proin nec purus fermentum, posuere risus vel, commodo odio. Suspendisse potenti. Nam efficitur 
-                        orci ac lectus ullamcorper vehicula. Quisque nec ante eget dui cursus accumsan.
-                    </p>
-                    <p>
-                        Cras non ex ac odio elementum interdum in a nunc. Integer nec urna quis nunc condimentum vehicula. Praesent nec neque nec sapien 
-                        egestas lobortis. Donec nec dolor libero.
-                    </p><br>
-                    <h3>Relevancia de la acreditación</h3>
-                    <p>
-                        Aenean sit amet enim ac nisl bibendum vehicula. Sed suscipit libero non est vehicula, vel tempus mi eleifend. Integer vel justo id 
-                        eros luctus interdum ut et sem. Nam tincidunt, odio eget gravida condimentum, ex tortor tristique metus, id cursus lorem tortor nec 
-                        nisi. Vestibulum nec arcu id odio dictum fringilla.
-                    </p>
-                </div>
-                <div class="acreditaciones-imagen">
-                    <img src="/public/assets/demos/black_image.jpg" alt="Descripción de la imagen">
-                </div>
-            </div>
-        </div>
-    </section>    
-    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -146,10 +175,9 @@
             <div class="footer-section">
                 <h4>Enlaces Rápidos</h4>
                 <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Documentos</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#datos-generales">Datos Generales</a></li>
+                    <li><a href="#estadisticas">Estadísticas</a></li>
+                    <li><a href="#acreditaciones-um">Acreditaciones</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -165,6 +193,12 @@
             <p>&copy; 2024 Departamento de Efectividad. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+        }
+    </script>
 
     <script>
         let lastScrollPosition = 0;
@@ -207,6 +241,16 @@
             }
         });
     </script>
-    
+
+
+    <script>
+        document.querySelectorAll('.accordion-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            content.classList.toggle('open');
+            button.querySelector('i').classList.toggle('fa-chevron-up');
+            });
+        });
+    </script>
 </body>
 </html>
