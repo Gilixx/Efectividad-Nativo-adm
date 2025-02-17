@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junta de Gobierno - Departamento de Efectividad</title>
+    <link rel="stylesheet" href="/public/css/junta-gobierno.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Logo and Nav -->
+    <header>
+        <a href="https://www.um.edu.mx/">
+            <div class="logo-container">
+                <img src="https://cdn.um.click/logos-um/logo/" alt="Logo Universidad">
+            </div> 
+        </a>
+        
+        <!-- Sidebar/Nav -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/src/pages/home.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="/noticias"><i class="fas fa-newspaper"></i> Noticias</a></li>
+                    <li><a href="#"><i class="fas fa-graduation-cap"></i> Programas</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Profesores</a></li>
+                    <li><a href="#"><i class="fas fa-calendar"></i> Eventos</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header Section -->
+        <section class="page-header">
+            <div class="title-container">
+                <h1>Junta de Gobierno</h1>
+                <p>Conoce a los miembros y funciones de la Junta de Gobierno de la Universidad</p>
+            </div>
+        </section>
+
+        <!-- Sección de Miembros -->
+        <section class="content-section">
+            <h2>Miembros de la Junta de Gobierno</h2>
+            <p>La Junta de Gobierno está compuesta por destacados académicos y profesionales que guían las decisiones estratégicas de la universidad.</p>
+            
+            <div class="members-grid">
+                <div class="member-card">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Miembro 1">
+                    <h3>Nombre del Miembro 1</h3>
+                    <p>Cargo del Miembro 1</p>
+                </div>
+                <div class="member-card">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Miembro 2">
+                    <h3>Nombre del Miembro 2</h3>
+                    <p>Cargo del Miembro 2</p>
+                </div>
+                <div class="member-card">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Miembro 3">
+                    <h3>Nombre del Miembro 3</h3>
+                    <p>Cargo del Miembro 3</p>
+                </div>
+                <div class="member-card">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Miembro 4">
+                    <h3>Nombre del Miembro 4</h3>
+                    <p>Cargo del Miembro 4</p>
+                </div>
+                <div class="member-card">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Miembro 5">
+                    <h3>Nombre del Miembro 5</h3>
+                    <p>Cargo del Miembro 5</p>
+                </div>
+                <div class="member-card">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Miembro 6">
+                    <h3>Nombre del Miembro 6</h3>
+                    <p>Cargo del Miembro 6</p>
+                </div>
+                <div class="member-card">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Miembro 7">
+                    <h3>Nombre del Miembro 7</h3>
+                    <p>Cargo del Miembro 7</p>
+                </div>
+                <div class="member-card">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Miembro 8">
+                    <h3>Nombre del Miembro 8</h3>
+                    <p>Cargo del Miembro 8</p>
+                </div>
+                <div class="member-card">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Miembro 8">
+                    <h3>Nombre del Miembro 9</h3>
+                    <p>Cargo del Miembro 9</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Manual -->
+        <section class="content-section manual-section">
+            <h2>Manual de la Junta de Gobierno</h2>
+            <p>El manual de la Junta de Gobierno establece las normas y procedimientos que rigen su funcionamiento. Puedes descargarlo aquí:</p>
+            <a href="ruta/al/manual.pdf" class="download-link" download>
+                <i class="fas fa-download"></i> Descargar Manual
+            </a>
+        </section>
+
+        <!-- Sección de Sitio Web -->
+        <section class="content-section website-section">
+            <h2>Sitio Web de la Junta de Gobierno</h2>
+            <p>Para más información sobre la Junta de Gobierno, visita su sitio web oficial:</p>
+            <a href="https://www.um.edu.mx/junta-de-gobierno" class="external-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Visitar Sitio Web
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Departamento de Efectividad</h4>
+                <p>Comprometidos con la excelencia y mejora continua de nuestra institución.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Documentos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> efectividad@universidad.edu</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Campus Universitario</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Departamento de Efectividad. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let lastScrollPosition = 0;
+        const header = document.querySelector('header');
+        const mainContent = document.querySelector('.main-content');
+        const scrollThreshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > lastScrollPosition && currentScroll > scrollThreshold) {
+                header.classList.add('hidden');
+                mainContent.classList.add('header-hidden');
+            } else if (currentScroll < lastScrollPosition) {
+                header.classList.remove('hidden');
+                mainContent.classList.remove('header-hidden');
+            }
+            
+            lastScrollPosition = currentScroll;
+        });
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
