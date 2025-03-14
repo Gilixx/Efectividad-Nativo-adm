@@ -47,8 +47,6 @@ header {
     transition: transform 0.2s ease;
 }
 
-
-
 header.hidden {
     transform: translateY(-100%);
 }
@@ -58,7 +56,6 @@ header.hidden {
     width: 100%;
     overflow: hidden;
 }
-
 
 .image-placeholder {
     width: 100%;
@@ -265,7 +262,7 @@ header.hidden {
     font-size: clamp(14px, 2vw, 16px);
 }
 
-/* Cards Section */
+/* Cards Section - Reemplazado por Slider */
 .cards-section {
     padding: 80px 20px;
     background-color: var(--background-color);
@@ -333,108 +330,83 @@ header.hidden {
     font-size: clamp(14px, 2vw, 16px);
 }
 
-/* Stats Section */
-.stats-section {
-    background-color: var(--background-color);
-    padding: 80px 0;
-    margin: 40px 0;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: clamp(15px, 2vw, 30px);
-    padding: 20px;
-}
-
-.stat-card {
-    text-align: center;
-    padding: 30px;
-    background: linear-gradient(145deg, white, var(--light-accent));
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-5px);
-}
-
-.stat-card i {
-    font-size: 40px;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.stat-card h3 {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.stat-card p {
-    color: var(--text-color);
-    font-size: clamp(14px, 2vw, 16px);
-}
-
-/* Features Section */
-.features-section {
-    padding: 80px 0;
+/* Nuevo Slider de Servicios */
+.services-slider-section {
+    padding: 80px 20px;
     background-color: var(--background-color);
 }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.services-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.service-slide {
+    flex: 0 0 calc(100% / 3); /* Muestra 3 tarjetas en escritorio */
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
     align-items: center;
+    margin-top: 30px;
 }
 
-.feature-content {
-    padding: 40px;
-}
-
-.feature-content h2 {
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.feature-content p {
-    color: var(--text-color);
-    margin-bottom: 30px;
-    line-height: 1.6;
-    font-size: clamp(14px, 2vw, 16px);
-}
-
-.feature-list {
-    list-style: none;
-}
-
-.feature-list li {
-    margin-bottom: 15px;
-    color: var(--text-color);
+.slider-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 5;
 }
 
-.feature-list li i {
-    color: var(--primary-color);
-    margin-right: 10px;
+.slider-btn:hover {
+    background-color: var(--dark-accent);
+    transform: scale(1.1);
 }
 
-.feature-image {
-    width: 100%;
-    height: clamp(300px, 40vw, 400px);
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px var(--light-accent);
+.slider-indicators {
+    display: flex;
+    gap: 8px;
+    margin: 0 15px;
 }
 
-.feature-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.slider-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--light-accent);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-indicator.active {
+    background-color: var(--primary-color);
+    width: 12px;
+    height: 12px;
 }
 
 /* Testimonials Section */
@@ -557,8 +529,31 @@ header.hidden {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Media Query para dispositivos móviles */
+/* Media Queries para Slider */
+@media (max-width: 1024px) {
+    .service-slide {
+        flex: 0 0 50%; /* Muestra 2 tarjetas en tablet */
+    }
+}
+
 @media (max-width: 768px) {
+    .service-slide {
+        flex: 0 0 100%; /* Muestra 1 tarjeta en móvil */
+    }
+    
+    .slider-container {
+        padding: 10px 0;
+    }
+    
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .services-slider-section {
+        padding: 40px 10px;
+    }
+    
     .footer-section {
         text-align: center;
     }
@@ -567,7 +562,8 @@ header.hidden {
         justify-content: center;
     }
 }
-/* Media Queries */
+
+/* Media Queries generales */
 @media (max-width: 480px) {
     :root {
         --header-height: 60px;
@@ -606,27 +602,14 @@ header.hidden {
         width: 16px;
     }
 
-    .cards-grid, .stats-grid, .testimonials-grid {
+    .testimonials-grid {
         grid-template-columns: 1fr;
         gap: 15px;
         padding: 10px;
     }
 
-    .card, .stat-card, .testimonial-card {
+    .testimonial-card {
         padding: 15px;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .feature-content {
-        padding: 20px 10px;
-    }
-
-    .feature-image {
-        height: 200px;
     }
 
     .department-info {
@@ -643,19 +626,6 @@ header.hidden {
     :root {
         --header-height: 70px;
         --content-padding: 15px;
-    }
-
-    .cards-grid, .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .feature-image {
-        height: 300px;
     }
 
     .testimonials-grid {
@@ -685,14 +655,6 @@ header.hidden {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .cards-grid, .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-
     .testimonials-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -706,14 +668,6 @@ header.hidden {
     .main-content {
         max-width: 1200px;
     }
-
-    .cards-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
 }
 
 @media (orientation: landscape) and (max-height: 500px) {
@@ -725,9 +679,13 @@ header.hidden {
         max-height: 80vh;
         overflow-y: auto;
     }
+}
 
-    .feature-image {
-        height: 200px;
+/* Optimizaciones para dispositivos táctiles */
+@media (hover: none) {
+    .slider-btn {
+        opacity: 0.9;
+        background-color: var(--dark-accent);
     }
 }
 
@@ -761,7 +719,7 @@ header.hidden {
         padding: 0;
     }
 
-    .card, .stat-card, .testimonial-card {
+    .testimonial-card {
         break-inside: avoid;
     }
 }
@@ -815,5 +773,425 @@ header.hidden {
     .title-box {
         width: 95%;
         padding: 12px 20px;
+    }
+}
+
+/* Sección de Noticias en Home */
+.home-news-section {
+    padding: 80px 0;
+    background-color: var(--background-color);
+}
+
+/* Noticia destacada */
+.home-featured-news {
+    margin-bottom: 40px;
+}
+
+.featured-news-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.featured-news-card:hover {
+    transform: translateY(-5px);
+}
+
+.featured-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.news-category {
+    display: inline-block;
+    padding: 6px 15px;
+    background-color: var(--light-accent);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.featured-content h3 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--dark-accent);
+    margin-bottom: 15px;
+}
+
+.featured-content p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+/* Grid de noticias */
+.home-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.news-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.05);
+}
+
+.news-content {
+    padding: 20px;
+}
+
+.news-content h4 {
+    color: var(--dark-accent);
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.news-content p {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+}
+
+.read-more {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    color: var(--dark-accent);
+}
+
+.read-more i {
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover i {
+    transform: translateX(3px);
+}
+
+/* Botón Ver Todas */
+.view-all-news {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(84, 68, 239, 0.3);
+}
+
+.view-all-btn:hover {
+    background-color: var(--dark-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(84, 68, 239, 0.4);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .featured-news-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-image {
+        height: 250px;
+    }
+    
+    .home-news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .home-news-section {
+        padding: 60px 0;
+    }
+    
+    .featured-content {
+        padding: 20px;
+    }
+    
+    .news-content {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .home-news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-image {
+        height: 200px;
+    }
+    
+    .featured-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .news-image {
+        height: 160px;
+    }
+}
+
+/* Sección de Misión y Visión en Home */
+.mission-vision-home-section {
+    padding: 80px 0;
+    background: linear-gradient(to bottom, white, var(--background-color));
+}
+
+.mission-vision-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.mv-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.mv-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    transition: all 0.3s ease;
+}
+
+.mission-card::before {
+    background: var(--primary-color);
+}
+
+.vision-card::before {
+    background: var(--accent-color);
+}
+
+.mv-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.mv-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.mission-card .mv-card-icon {
+    background-color: rgba(84, 68, 239, 0.1);
+    color: var(--primary-color);
+}
+
+.vision-card .mv-card-icon {
+    background-color: rgba(242, 205, 0, 0.1);
+    color: var(--accent-color);
+}
+
+.mv-card-icon i {
+    font-size: 24px;
+}
+
+.mv-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dark-accent);
+}
+
+.mv-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.mv-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.mv-card-link i {
+    transition: transform 0.3s ease;
+}
+
+.mv-card-link:hover {
+    color: var(--dark-accent);
+}
+
+.mv-card-link:hover i {
+    transform: translateX(5px);
+}
+
+/* Valores en pills */
+.values-summary {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+}
+
+.values-summary h3 {
+    font-size: 1.5rem;
+    color: var(--dark-accent);
+    margin-bottom: 25px;
+}
+
+.values-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.value-pill {
+    background: var(--light-accent);
+    color: var(--primary-color);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.value-pill:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(84, 68, 239,.3);
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+    .mission-vision-cards {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .mv-card {
+        padding: 25px;
+    }
+    
+    .values-summary {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mission-vision-home-section {
+        padding: 60px 0;
+    }
+    
+    .mv-card-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .mv-card-icon i {
+        font-size: 20px;
+    }
+    
+    .mv-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .values-pills {
+        gap: 8px;
+    }
+    
+    .value-pill {
+        padding: 6px 15px;
+        font-size: 0.85rem;
     }
 }

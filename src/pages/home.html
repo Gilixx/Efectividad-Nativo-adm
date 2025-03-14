@@ -21,7 +21,7 @@
                 <nav class="nav-menu">
                     <ul>
                         <li><a href="#" class="active"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
-                        <li><a href="/src/pages/noticias.html" class="active"><i class="fas fa-newspaper"></i> Noticias</a></li>
+                        <li><a href="/src/pages/equipo.html"><i class="fas fa-newspaper"></i> Equipo </a></li>
                         <li><a href="/src/pages/acreditaciones.html"><i class="fas fa-graduation-cap"></i> <span>Acreditaciones</span></a></li>
                         <li><a href="/src/pages/mision-vision.html"><i class="fas fa-users"></i> <span>Mision-Vision</span></a></li>
                     </ul>
@@ -44,59 +44,212 @@
         <section class="department-info">
             <div class="info-container">
                 <h2>Acerca del Departamento</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>La Dirección de Efectividad Institucional fue creada en el mes de septiembre del año 2006, el objetivo principal es de facilitar a la Administración central los procesos de evaluación de la efectividad a partir del seguimiento y evaluación de los objetivos y metas del Plan Institucional de Desarrollo, además, de elaboración y seguimiento de las Autoevaluaciones realizadas para las Agencias Acreditadoras institucionales y de programas académicos.</p>
             </div>
         </section>
     </main>
-<!-- Sección de Tarjetas -->
-<section class="cards-section">
+
+    <!-- Sección de Misión y Visión -->
+<section class="mission-vision-home-section">
     <div class="section-container">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Medición de Desempeño</h3>
-                <p>Evaluamos y monitoreamos el rendimiento institucional mediante métricas precisas y actualizadas.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">
+        <h2 class="section-title">Misión y Visión</h2>
+        
+        <div class="mission-vision-cards">
+            <!-- Tarjeta de Misión -->
+            <div class="mv-card mission-card">
+                <div class="mv-card-icon">
                     <i class="fas fa-bullseye"></i>
                 </div>
-                <h3>Objetivos Estratégicos</h3>
-                <p>Desarrollamos y alineamos objetivos institucionales con estándares de calidad educativa.</p>
+                <h3>Nuestra Misión</h3>
+                <p>Nuestra misión es promover y asegurar la mejora continua de la calidad académica y administrativa de la universidad a través del análisis de datos, la evaluación de programas, y la implementación de estrategias innovadoras que impulsen el desarrollo institucional y el éxito estudiantil.</p>
+                <a href="/src/pages/mision-vision.html" class="mv-card-link">
+                    Conoce más <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-clipboard-check"></i>
+            
+            <!-- Tarjeta de Visión -->
+            <div class="mv-card vision-card">
+                <div class="mv-card-icon">
+                    <i class="fas fa-eye"></i>
                 </div>
-                <h3>Gestión de Calidad</h3>
-                <p>Implementamos sistemas de gestión de calidad para mejora continua.</p>
+                <h3>Nuestra Visión</h3>
+                <p>Nuestra visión es ser reconocidos como un pilar fundamental en el fortalecimiento de la cultura de calidad y transparencia dentro de la universidad, convirtiéndonos en un referente a nivel nacional e internacional en la implementación de prácticas de efectividad institucional.</p>
+                <a href="/src/pages/mision-vision.html" class="mv-card-link">
+                    Conoce más <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
+        </div>
+        
+        <!-- Valores en formato de lista pequeña -->
+        <div class="values-summary">
+            <h3>Nuestros Valores</h3>
+            <div class="values-pills">
+                <span class="value-pill">Servicio</span>
+                <span class="value-pill">Trabajo en equipo</span>
+                <span class="value-pill">Confianza</span>
+                <span class="value-pill">Calidad</span>
+                <span class="value-pill">Efectividad</span>
+                <span class="value-pill">Innovación</span>
+            </div>
+            <a href="/src/pages/mision-vision.html" class="view-all-btn">
+                Ver más sobre nosotros <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </div>
 </section>
-<!-- Sección de Características -->
-<section class="features-section">
+
+    <!-- Sección de Servicios en Slider -->
+<section class="services-slider-section">
     <div class="section-container">
-        <div class="features-grid">
-            <div class="feature-content">
-                <h2>Mejora Continua</h2>
-                <p>Implementamos estrategias efectivas para el desarrollo institucional.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> Evaluación sistemática</li>
-                    <li><i class="fas fa-check"></i> Análisis de datos</li>
-                    <li><i class="fas fa-check"></i> Optimización de procesos</li>
-                </ul>
+        <h2 class="section-title">Nuestros Servicios</h2>
+        
+        <div class="slider-container">
+            <div class="services-slider" id="servicesSlider">
+                <div class="slider-track">
+                    <!-- Servicio 1 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h3>Modelo de evaluación del Plan Institucional</h3>
+                            <p>Desarrollo y aplicación de modelos para evaluar el cumplimiento del Plan Institucional de Desarrollo.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 2 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Indicadores estratégicos</h3>
+                            <p>Diseño y seguimiento de indicadores clave para medir el desempeño institucional.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 3 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>Biblioteca física y digital</h3>
+                            <p>Gestión de documentos institucionales para consulta y referencia.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 4 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <h3>Manual de acreditaciones</h3>
+                            <p>Elaboración y actualización de guías para los procesos de acreditación institucional.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 5 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>Evaluación del Plan Institucional</h3>
+                            <p>Seguimiento y análisis de resultados del Plan Institucional de Desarrollo.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 6 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3>Procesos de autoevaluación</h3>
+                            <p>Coordinación de autoevaluaciones para acreditaciones institucionales y de programas académicos.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 7 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>Sistema Analítico de Información</h3>
+                            <p>Evaluación del Sistema Analítico de Información Institucional.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 8 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>Informes a la Junta de Gobierno</h3>
+                            <p>Preparación y presentación de informes periódicos para la toma de decisiones.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 9 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <h3>Evaluación de miembros directivos</h3>
+                            <p>Evaluación a miembros de la Junta de Gobierno, rector, vicerrectores y directores.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 10 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-poll"></i>
+                            </div>
+                            <h3>Encuestas de opinión</h3>
+                            <p>Diseño y aplicación de encuestas para diversos públicos institucionales.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 11 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                            <h3>Investigaciones administrativas</h3>
+                            <p>Desarrollo de estudios y análisis para la mejora de procesos administrativos.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 12 -->
+                    <div class="service-slide">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Análisis de certificación internacional</h3>
+                            <p>Evaluación de estándares y procesos para certificaciones internacionales.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="feature-image">
-                <img src="/public/assets/images/54157746908_ac9d63a198_o.jpg" alt="Mejora Continua">
+            
+            <!-- Controles del Slider -->
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn" onclick="moveSlider(-1)"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-indicators" id="sliderIndicators"></div>
+                <button class="slider-btn next-btn" onclick="moveSlider(1)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </div>
 </section>
+
 <!-- Sección de Testimonios -->
 <section class="testimonials-section">
     <div class="section-container">
@@ -126,55 +279,77 @@
     </div>
 </section>
 
-    <script>
-        let lastScrollPosition = 0;
-        const header = document.querySelector('header');
-        const mainContent = document.querySelector('.main-content');
-        const scrollThreshold = 50;
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-            
-            if (currentScroll > lastScrollPosition && currentScroll > scrollThreshold) {
-                header.classList.add('hidden');
-                mainContent.classList.add('header-hidden');
-            } else if (currentScroll < lastScrollPosition) {
-                header.classList.remove('hidden');
-                mainContent.classList.remove('header-hidden');
-            }
-            
-            lastScrollPosition = currentScroll;
-        });
-
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('expanded');
-        }
-    </script>
-</body>
-
-<!-- Sección de Estadísticas -->
-<section class="stats-section">
+<!-- Sección de Noticias Recientes -->
+<section class="home-news-section">
     <div class="section-container">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <i class="fas fa-user-graduate"></i>
-                <h3>15,000+</h3>
-                <p>Estudiantes Evaluados</p>
+        <h2 class="section-title">Noticias Recientes</h2>
+        
+        <!-- Noticia Principal -->
+        <div class="home-featured-news">
+            <div class="featured-news-card">
+                <div class="featured-image">
+                    <img src="/path/to/featured-image.jpg" alt="Noticia destacada">
+                </div>
+                <div class="featured-content">
+                    <span class="news-category">Destacado</span>
+                    <h3>Título de la Noticia Principal</h3>
+                    <p>Descripción breve de la noticia destacada que capture la atención del lector y proporcione información relevante sobre el contenido...</p>
+                    <div class="news-meta">
+                        <span><i class="fas fa-calendar"></i> 8 Marzo, 2025</span>
+                        <a href="/src/pages/noticias.html" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-chart-bar"></i>
-                <h3>98%</h3>
-                <p>Índice de Efectividad</p>
+        </div>
+        
+        <!-- Grid de Noticias Recientes -->
+        <div class="home-news-grid">
+            <!-- Noticia 1 -->
+            <div class="news-card">
+                <div class="news-image">
+                    <img src="/path/to/news-1.jpg" alt="Noticia 1">
+                </div>
+                <div class="news-content">
+                    <span class="news-category">Académico</span>
+                    <h4>Título de la Noticia</h4>
+                    <p>Breve descripción de la noticia que proporcione contexto al lector...</p>
+                    <div class="news-meta">
+                        <span><i class="fas fa-calendar"></i> 7 Marzo, 2025</span>
+                        <a href="/src/pages/noticias.html" class="read-more">Leer más</a>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-award"></i>
-                <h3>50+</h3>
-                <p>Programas Acreditados</p>
+            
+            <!-- Noticia 2 -->
+            <div class="news-card">
+                <div class="news-image">
+                    <img src="/path/to/news-2.jpg" alt="Noticia 2">
+                </div>
+                <div class="news-content">
+                    <span class="news-category">Eventos</span>
+                    <h4>Título de la Noticia</h4>
+                    <p>Breve descripción de la noticia que proporcione contexto al lector...</p>
+                    <div class="news-meta">
+                        <span><i class="fas fa-calendar"></i> 5 Marzo, 2025</span>
+                        <a href="/src/pages/noticias.html" class="read-more">Leer más</a>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-handshake"></i>
-                <h3>100+</h3>
-                <p>Alianzas Estratégicas</p>
+            
+            <!-- Noticia 3 -->
+            <div class="news-card">
+                <div class="news-image">
+                    <img src="/path/to/news-3.jpg" alt="Noticia 3">
+                </div>
+                <div class="news-content">
+                    <span class="news-category">Anuncios</span>
+                    <h4>Título de la Noticia</h4>
+                    <p>Breve descripción de la noticia que proporcione contexto al lector...</p>
+                    <div class="news-meta">
+                        <span><i class="fas fa-calendar"></i> 2 Marzo, 2025</span>
+                        <a href="/src/pages/noticias.html" class="read-more">Leer más</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -210,4 +385,96 @@
         <p>&copy; 2024 Departamento de Efectividad. Todos los derechos reservados.</p>
     </div>
 </footer>
+
+<script>
+    let lastScrollPosition = 0;
+    const header = document.querySelector('header');
+    const mainContent = document.querySelector('.main-content');
+    const scrollThreshold = 50;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        
+        if (currentScroll > lastScrollPosition && currentScroll > scrollThreshold) {
+            header.classList.add('hidden');
+            mainContent.classList.add('header-hidden');
+        } else if (currentScroll < lastScrollPosition) {
+            header.classList.remove('hidden');
+            mainContent.classList.remove('header-hidden');
+        }
+        
+        lastScrollPosition = currentScroll;
+    });
+
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('expanded');
+    }
+    
+    // Funcionalidad del Slider de Servicios
+    let currentSlide = 0;
+    const slidesToShow = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    const totalSlides = document.querySelectorAll('.service-slide').length;
+    const sliderTrack = document.querySelector('.slider-track');
+    const sliderIndicators = document.getElementById('sliderIndicators');
+    
+    // Inicializar slider
+    function initSlider() {
+        // Crear indicadores
+        for (let i = 0; i < Math.ceil(totalSlides / slidesToShow); i++) {
+            const indicator = document.createElement('span');
+            indicator.classList.add('slider-indicator');
+            indicator.onclick = () => goToSlide(i);
+            sliderIndicators.appendChild(indicator);
+        }
+        
+        // Activar primer indicador
+        updateSlider();
+        
+        // Auto deslizamiento cada 5 segundos
+        setInterval(() => {
+            moveSlider(1);
+        }, 5000);
+        
+        // Ajustar en cambio de tamaño de ventana
+        window.addEventListener('resize', () => {
+            const newSlidesToShow = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+            if (newSlidesToShow !== slidesToShow) {
+                location.reload(); // Recargar para aplicar nuevos estilos
+            }
+        });
+    }
+    
+    function moveSlider(direction) {
+        const maxSlide = Math.ceil(totalSlides / slidesToShow) - 1;
+        currentSlide = (currentSlide + direction + maxSlide + 1) % (maxSlide + 1);
+        updateSlider();
+    }
+    
+    function goToSlide(index) {
+        currentSlide = index;
+        updateSlider();
+    }
+    
+    function updateSlider() {
+        // Mover el track
+        const slideWidth = 100 / slidesToShow;
+        sliderTrack.style.transform = `translateX(-${currentSlide * slideWidth * slidesToShow}%)`;
+        
+        // Actualizar indicadores
+        const indicators = document.querySelectorAll('.slider-indicator');
+        indicators.forEach((indicator, index) => {
+            if (index === currentSlide) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+    }
+    
+    // Iniciar el slider cuando el DOM esté cargado
+    document.addEventListener('DOMContentLoaded', initSlider);
+</script>
+</body>
 </html>
+
+    
