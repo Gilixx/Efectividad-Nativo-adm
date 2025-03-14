@@ -227,7 +227,7 @@ header.hidden {
 .image-placeholder {
     width: 700px;
     height: 400px;
-    background-image: url('/public/assets/images/54110268084_9281d07028_o.jpg');
+    background-image: url('public/assets/images/54110268084_9281d07028_o.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
