@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipo</title>
     <link rel="stylesheet" href="/public/styles/equipo.css">
+    <!-- Logo -->
+    <link rel="icon" href="https://cdn.um.click/logos-um/logo/">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -27,7 +30,8 @@
                     <li><a href="/src/pages/equipo.html"><i class="fas fa-newspaper"></i> Equipo </a></li>
                     <li><a href="/src/pages/acreditaciones.html"><i class="fas fa-graduation-cap"></i> <span>Acreditaciones</span></a></li>
                     <li><a href="/src/pages/mision-vision.html"><i class="fas fa-users"></i> <span>Mision-Vision</span></a></li>
-                    <li><a href="/src/pages/junta-gobierno.html"><i class="fas fa-globe"></i> <span>junta-de-gobierno</span></a></li>
+                    <li><a href="/src/pages/junta-gobierno.html"><i class="fas fa-globe"></i> <span>Junta de Gobierno</span></a></li>
+                    <li><a href="/src/pages/pide.html"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -68,8 +72,8 @@
             <div class="team-container">
                 <div class="team-member">
                     <img src="/public/assets/demos/black_image.jpg" alt="Nombre 1">
-                    <h3>Nombre 1</h3>
-                    <h4>Puesto de Trabajo</h4>
+                    <h3>Mtro. Jaime Alcántara</h3>
+                    <h4>Asistente de Acreditaciones</h4>
                     <p>Pequeña Descripción</p>
                     <div class="social-media">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -78,8 +82,8 @@
                 </div>
                 <div class="team-member">
                     <img src="/public/assets/demos/black_image.jpg" alt="Nombre 2">
-                    <h3>Nombre 2</h3>
-                    <h4>Puesto de Trabajo</h4>
+                    <h3>Lic. Jair Jazziel Alcántara</h3>
+                    <h4>Director</h4>
                     <p>Pequeña Descripción</p>
                     <div class="social-media">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -88,8 +92,8 @@
                 </div>
                 <div class="team-member">
                     <img src="/public/assets/demos/black_image.jpg" alt="Nombre 3">
-                    <h3>Nombre 3</h3>
-                    <h4>Puesto de Trabajo</h4>
+                    <h3>Lic. Aída Aracely Vázquez</h3>
+                    <h4>Asistente Administrativo</h4>
                     <p>Pequeña Descripción</p>
                     <div class="social-media">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -98,8 +102,8 @@
                 </div>
                 <div class="team-member">
                     <img src="/public/assets/demos/black_image.jpg" alt="Nombre 4">
-                    <h3>Nombre 4</h3>
-                    <h4>Puesto de Trabajo</h4>
+                    <h3>Lic. Ady Dennys Rosas</h3>
+                    <h4>Estudiante de Posgrado</h4>
                     <p>Pequeña Descripción</p>
                     <div class="social-media">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -109,51 +113,53 @@
             </div>
         </section>
 
-        <section class="testimonial-section">
-            <div class="testimonial-carousel">
-                <div class="testimonial-item">
-                    <p>
-                        "Gracias al apoyo continuo del departamento, hemos logrado mejoras significativas en nuestros procesos internos y en la satisfacción estudiantil."
-                    </p>
-                    <div class="testimonial-author">
-                        <img src="/public/assets/demos/black_image.jpg" alt="Nombre 1">
-                        <div class="author-info">
-                            <h4>Nombre 1</h4>
-                            <h5>Puesto Académico</h5>
-                            <p>Universidad</p>
+        <!-- Sección de Testimonios en Slider -->
+        <section class="testimonials-slider-section">
+            <div class="section-container">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                
+                <div class="slider-container">
+                    <div class="testimonials-slider" id="testimonialsSlider">
+                        <div class="slider-track">
+                            <!-- Testimonio 1 -->
+                            <div class="testimonial-slide">
+                                <div class="card">
+                                    <div class="card-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="testimonial-text">"El modelo de evaluación del Plan Institucional ha sido fundamental para nuestro crecimiento. ¡Altamente recomendado!"</p>
+                                    <h3 class="testimonial-author">Juan Pérez</h3>
+                                    <p class="testimonial-role">Director de Planeación</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonio 2 -->
+                            <div class="testimonial-slide">
+                                <div class="card">
+                                    <div class="card-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="testimonial-text">"Los indicadores estratégicos nos han permitido tomar decisiones más informadas y mejorar nuestro desempeño."</p>
+                                    <h3 class="testimonial-author">María Gómez</h3>
+                                    <p class="testimonial-role">Gerente de Proyectos</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonio 3 -->
+                            <div class="testimonial-slide">
+                                <div class="card">
+                                    <div class="card-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="testimonial-text">"La biblioteca física y digital es un recurso invaluable para nuestra organización. ¡Excelente servicio!"</p>
+                                    <h3 class="testimonial-author">Carlos Ruiz</h3>
+                                    <p class="testimonial-role">Coordinador de Investigación</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-item">
-                    <p>
-                        "Gracias al apoyo continuo del departamento, hemos logrado mejoras significativas en nuestros procesos internos y en la satisfacción estudiantil."
-                    </p>
-                    <div class="testimonial-author">
-                        <img src="/public/assets/demos/black_image.jpg" alt="Nombre 2">
-                        <div class="author-info">
-                            <h4>Nombre 2</h4>
-                            <h5>Puesto Académico</h5>
-                            <p>Universidad</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <p>
-                        "Gracias al apoyo continuo del departamento, hemos logrado mejoras significativas en nuestros procesos internos y en la satisfacción estudiantil."
-                    </p>
-                    <div class="testimonial-author">
-                        <img src="/public/assets/demos/black_image.jpg" alt="Nombre 3">
-                        <div class="author-info">
-                            <h4>Nombre 3</h4>
-                            <h5>Puesto Académico</h5>
-                            <p>Universidad</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Agrega más elementos de testimonios aquí -->
             </div>
-            <button class="prev-btn">❮</button>
-            <button class="next-btn">❯</button>
         </section>
     </main>
 
