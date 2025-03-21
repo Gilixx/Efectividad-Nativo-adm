@@ -1,4 +1,4 @@
-
+/* Variables CSS */
 :root {
     /* Colores base */
     --background-color: #f8f9fc;
@@ -162,16 +162,18 @@ header.hidden {
     margin: 0 auto;
     transition: padding-top 0.2s ease;
     width: 100%;
+    padding-bottom: 80px;
 }
 
 /* Page Header Styles */
 .page-header {
-    padding: 40px 0;
+    padding: 60px 0;
     text-align: center;
     background: linear-gradient(45deg, var(--dark-accent), var(--primary-color));
     color: white;
     border-radius: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .title-container {
@@ -181,29 +183,193 @@ header.hidden {
 }
 
 .page-header h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: 15px;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .page-header p {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    opacity: 0.9;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-/* Content Section Styles */
+/* Content Section Styles - NUEVA VERSIÓN MEJORADA */
 .content-section {
     background: white;
     border-radius: 15px;
-    padding: 30px;
+    padding: 40px;
+    margin-bottom: 60px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+}
+
+/* Título de la sección con mayor impacto visual */
+.content-section h2 {
+    font-size: 2.2rem;
+    color: var(--dark-accent);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Párrafo introductorio destacado */
+.content-section > p, .content-section .intro-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    max-width: 900px;
+    border-left: 3px solid var(--light-accent);
+    padding-left: 20px;
+    font-style: italic;
+}
+
+/* Grid de miembros mejorado */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Tarjetas de miembros con efecto hover y transición */
+.member-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    border-top: 3px solid transparent;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-top: 3px solid var(--primary-color);
+}
+
+/* Imágenes de los miembros con marco */
+.member-card img {
+    width: 85%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.member-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Nombre del miembro */
+.member-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Cargo del miembro */
+.member-card p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.member-card p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--light-accent);
+    border-radius: 2px;
+}
+
+/* Sección de Manual y Sitio Web */
+.manual-section, .website-section {
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
     margin-bottom: 40px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.manual-section:hover, .website-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.manual-section h2, .website-section h2 {
+    font-size: 1.8rem;
+    color: var(--dark-accent);
+    margin-bottom: 20px;
+}
+
+.manual-section p, .website-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 25px;
+}
+
+/* Enlaces de descarga y externos */
+.download-link, .external-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.download-link:hover, .external-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(45deg, var(--dark-accent), var(--primary-color));
+}
+
+.download-link i, .external-link i {
+    margin-right: 12px;
+    font-size: 1.2rem;
 }
 
 /* Footer Styles */
 .footer {
     position: relative;
     background: linear-gradient(135deg, var(--dark-accent), var(--primary-color));
-    padding: 60px 0 0;
+    padding: 80px 0 0;
     color: white;
 }
 
@@ -219,8 +385,21 @@ header.hidden {
 
 .footer-section h4 {
     color: white;
-    font-size: clamp(1.1rem, 2vw, 1.2rem);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
 }
 
 .footer-section p {
@@ -240,10 +419,13 @@ header.hidden {
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: color 0.3s ease;
+    display: inline-block;
+    padding: 3px 0;
 }
 
 .footer-section ul li a:hover {
     color: var(--accent-color);
+    transform: translateX(3px);
 }
 
 .contact-info li {
@@ -259,7 +441,7 @@ header.hidden {
 }
 
 .footer-bottom {
-    margin-top: 40px;
+    margin-top: 60px;
     padding: 20px;
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -269,150 +451,22 @@ header.hidden {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Añade esto al final de tu archivo CSS */
-
-/* Más espacio en el contenido principal */
-.main-content {
-    padding-top: calc(var(--header-height) + 80px); /* Más espacio arriba */
-    padding-bottom: 80px; /* Más espacio abajo */
-}
-
-/* Separación entre secciones */
-.content-section {
-    margin-bottom: 80px; /* Más espacio entre secciones */
-}
-
-/* Más espacio en las tarjetas de miembros */
-.members-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px; /* Más espacio entre tarjetas */
-    margin-top: 40px; /* Más espacio arriba del grid */
-}
-
-.member-card {
-    background: white;
-    border-radius: 15px;
-    padding: 30px; /* Más padding interno */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.member-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-}
-
-.member-card img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 25px; /* Más espacio debajo de la imagen */
-}
-
-.member-card h3 {
-    font-size: 1.4rem; /* Tamaño de fuente más grande */
-    margin-bottom: 15px; /* Más espacio debajo del nombre */
-    color: var(--dark-accent);
-}
-
-.member-card p {
-    font-size: 1.1rem; /* Tamaño de fuente más grande */
-    color: var(--text-color);
-}
-
-/* Estilo para los enlaces de descarga y externos */
-.download-link, .external-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 15px 30px; /* Más padding */
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    margin-top: 30px; /* Más espacio arriba */
-    font-size: 1.1rem; /* Tamaño de fuente más grande */
-}
-
-.download-link:hover, .external-link:hover {
-    background-color: var(--secondary-color);
-}
-
-.download-link i, .external-link i {
-    margin-right: 10px;
-}
-
-/* Más espacio en el footer */
-.footer {
-    padding-top: 100px; /* Más espacio arriba */
-}
-
-.footer-content {
-    gap: 60px; /* Más espacio entre columnas */
-}
-
-.footer-bottom {
-    margin-top: 80px; /* Más espacio arriba */
-}
-
-/* Estilos para las secciones de Manual y Sitio Web */
-.manual-section, .website-section {
-    margin-top: 80px; /* Más espacio arriba de cada sección */
-    padding: 40px; /* Más padding interno */
-    background: white; /* Fondo blanco para destacar */
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-.manual-section h2, .website-section h2 {
-    margin-bottom: 20px; /* Más espacio debajo del título */
-    color: var(--dark-accent); /* Color destacado */
-}
-
-.manual-section p, .website-section p {
-    margin-bottom: 30px; /* Más espacio debajo del párrafo */
-    font-size: 1.1rem; /* Tamaño de fuente más grande */
-}
-
-/* Estilos para los enlaces de descarga y externos */
-.download-link, .external-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 15px 30px; /* Más padding */
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    font-size: 1.1rem; /* Tamaño de fuente más grande */
-}
-
-.download-link:hover, .external-link:hover {
-    background-color: var(--secondary-color);
-}
-
-.download-link i, .external-link i {
-    margin-right: 10px;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    .members-grid {
-        gap: 20px; /* Menos espacio entre tarjetas en móviles */
-    }
-
-    .member-card {
-        padding: 20px; /* Menos padding en móviles */
-    }
-
-    .download-link, .external-link {
-        padding: 12px 25px; /* Menos padding en móviles */
-        font-size: 1rem; /* Tamaño de fuente más pequeño */
-    }
-}
-
 /* Media Queries */
+@media (max-width: 992px) {
+    .main-content {
+        padding-top: calc(var(--header-height) + 30px);
+    }
+    
+    .content-section {
+        padding: 30px;
+    }
+    
+    .members-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+    }
+}
+
 @media (max-width: 768px) {
     :root {
         --header-height: 70px;
@@ -425,15 +479,36 @@ header.hidden {
     }
 
     .page-header {
-        padding: 30px 0;
+        padding: 40px 0;
+        margin-bottom: 40px;
     }
 
     .content-section {
-        padding: 20px;
+        padding: 25px 20px;
+        margin-bottom: 40px;
+    }
+    
+    .content-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .content-section > p, .content-section .intro-text {
+        font-size: 1.1rem;
+        padding-left: 15px;
+    }
+    
+    .members-grid {
+        gap: 20px;
+        margin-top: 30px;
     }
 
     .footer-section {
         text-align: center;
+    }
+    
+    .footer-section h4::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
     
     .contact-info li {
@@ -452,22 +527,52 @@ header.hidden {
     }
 
     .page-header {
-        padding: 20px 0;
+        padding: 30px 0;
         border-radius: 10px;
     }
 
     .content-section {
-        padding: 15px;
+        padding: 20px 15px;
+        border-radius: 10px;
+    }
+    
+    .content-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .member-card {
+        padding: 20px 15px;
+    }
+    
+    .download-link, .external-link {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        display: block;
+        text-align: center;
     }
 }
 
-/* Utility Classes */
+/* Utilidades adicionales */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--content-padding);
 }
 
-.section {
-    margin-bottom: 40px;
+.members-section {
+    position: relative;
+    z-index: 1;
+}
+
+.members-section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    background-color: var(--light-accent);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.6;
 }
