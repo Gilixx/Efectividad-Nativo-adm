@@ -1,4 +1,3 @@
-
 :root {
     /* Colores base */
     --background-color: #f8f9fc;
@@ -312,6 +311,8 @@ header.hidden {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     padding: 20px;
+    max-width: 280px;
+    margin: 0 auto;
 }
 
 .team-profile .team-member img {
@@ -343,123 +344,197 @@ header.hidden {
 .team-profile .team-member .social-media {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
+    margin-top: 15px;
 }
 
 .team-profile .team-member .social-media a {
-    color: var(--dark-accent);
+    color: var(--primary-color);
     font-size: 1.2rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--light-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .team-profile .team-member .social-media a:hover {
-    color: var(--primary-color);
-}
-
-/* Testimonial Section */
-.testimonial-section {
-    position: relative;
-    padding: 60px 20px;
-    background: url('ruta/a/fondo-testimonial.jpg') no-repeat center center/cover;
+    background-color: var(--primary-color);
     color: white;
+    transform: translateY(-3px);
+}
+
+/* Estilos para la sección de Testimonios */
+.testimonials-slider-section {
+    background-color: var(--background-color);
+    padding: 60px 0;
+    margin: 40px 0;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.section-title {
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: var(--dark-accent);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.slider-container {
+    position: relative;
     overflow: hidden;
+    padding: 20px 0;
 }
 
-.testimonial-carousel {
-    display: flex;
-    transition: transform 0.5s ease;
+.testimonials-slider {
     width: 100%;
-    max-width: 800px;
+    overflow: hidden;
+    position: relative;
 }
 
-.testimonial-item {
+.slider-track {
+    display: flex;
+    gap: 30px;
+    padding: 20px 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-slide {
     min-width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 40px;
-    border-radius: 15px;
-    box-sizing: border-box;
-    margin: 0 10px; /* Margen lateral para separación */
+    flex: 0 0 auto;
 }
 
-.testimonial-item p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+.testimonial-slide .card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    border-left: 4px solid var(--accent-color);
+    position: relative;
+}
+
+.testimonial-slide .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-slide .card-icon {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-slide .card-icon i {
+    color: white;
+    font-size: 18px;
+}
+
+.testimonial-text {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 20px;
+    margin-top: 15px;
 }
 
 .testimonial-author {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.testimonial-author img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-}
-
-.author-info {
-    text-align: left;
-}
-
-.author-info h4 {
-    font-size: 1.5rem;
+    color: var(--dark-accent);
+    font-size: 1.1rem;
+    font-weight: 600;
     margin-bottom: 5px;
 }
 
-.author-info h5 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+.testimonial-role {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
 }
 
-.author-info p {
-    font-size: 1rem;
-    margin: 0;
-}
-
-.prev-btn, .next-btn {
+/* Controles de navegación del slider */
+.slider-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
     color: white;
-    border: none;
     border-radius: 50%;
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    z-index: 1;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.prev-btn {
+.slider-arrow:hover {
+    background-color: var(--dark-accent);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-arrow.prev {
     left: 10px;
 }
 
-.next-btn {
+.slider-arrow.next {
     right: 10px;
 }
 
+.slider-arrow i {
+    font-size: 18px;
+}
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .team-intro {
-        flex-direction: column;
-        text-align: center;
-    }
+/* Estilos para controles del slider (opcional) */
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
 
-    .team-intro .team-image {
-        margin-top: 20px;
-    }
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--light-accent);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-    .team-profile .team-container {
-        grid-template-columns: 1fr;
-    }
+.slider-dot.active {
+    background-color: var(--primary-color);
 }
 
 /* Footer Styles */
@@ -534,30 +609,30 @@ header.hidden {
 
 /* Media Queries */
 @media (max-width: 768px) {
-    :root {
-        --header-height: 70px;
-        --sidebar-width: 60px;
-        --sidebar-expanded: 250px;
-    }
-
-    .logo-container img {
-        max-height: 40px;
-    }
-
-    .page-header {
-        padding: 30px 0;
-    }
-
-    .content-section {
-        padding: 20px;
-    }
-
-    .footer-section {
+    .team-intro {
+        flex-direction: column;
         text-align: center;
     }
+
+    .team-intro .team-image {
+        margin-top: 20px;
+    }
+
+    .team-profile .team-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
     
-    .contact-info li {
-        justify-content: center;
+    .slider-arrow {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .slider-arrow.prev {
+        left: 5px;
+    }
+    
+    .slider-arrow.next {
+        right: 5px;
     }
 }
 
@@ -578,6 +653,14 @@ header.hidden {
 
     .content-section {
         padding: 15px;
+    }
+    
+    .team-profile .team-member {
+        max-width: 100%;
+    }
+    
+    .testimonial-slide .card {
+        padding: 20px;
     }
 }
 

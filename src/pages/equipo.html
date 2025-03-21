@@ -113,14 +113,22 @@
             </div>
         </section>
 
-        <!-- Sección de Testimonios en Slider -->
+        <!-- Sección de Testimonios con flechas de navegación -->
         <section class="testimonials-slider-section">
             <div class="section-container">
                 <h2 class="section-title">Lo que dicen nuestros clientes</h2>
                 
+                <!-- Flechas de navegación -->
+                <div class="slider-arrow prev" onclick="moveSlider(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="slider-arrow next" onclick="moveSlider(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                
                 <div class="slider-container">
                     <div class="testimonials-slider" id="testimonialsSlider">
-                        <div class="slider-track">
+                        <div class="slider-track" id="sliderTrack">
                             <!-- Testimonio 1 -->
                             <div class="testimonial-slide">
                                 <div class="card">
@@ -159,6 +167,13 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Indicadores del slider -->
+                <div class="slider-controls">
+                    <div class="slider-dot active" onclick="goToSlide(0)"></div>
+                    <div class="slider-dot" onclick="goToSlide(1)"></div>
+                    <div class="slider-dot" onclick="goToSlide(2)"></div>
+                </div>
             </div>
         </section>
     </main>
@@ -194,6 +209,7 @@
     </footer>
 
     <script>
+        // Script para el header responsive
         let lastScrollPosition = 0;
         const header = document.querySelector('header');
         const mainContent = document.querySelector('.main-content');
@@ -216,48 +232,43 @@
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('expanded');
         }
-    </script>
 
-    <script>
-                document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.querySelector('.testimonial-carousel');
-            const items = document.querySelectorAll('.testimonial-item');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            let currentIndex = 0;
-
-            function updateCarousel() {
-                const offset = -currentIndex * 100;
-                carousel.style.transform = `translateX(${offset}%)`;
-                carousel.style.transition = 'transform 0.5s ease';
-            }
-
-            function goToNext() {
-                if (currentIndex === items.length - 1) {
-                    currentIndex = 0; // Ir a la primera diapositiva
-                } else {
-                    currentIndex++;
+        // Script para controlar el slider de testimonios
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables para controlar el slider
+            let currentSlide = 0;
+            const totalSlides = document.querySelectorAll('.testimonial-slide').length;
+            const sliderTrack = document.getElementById('sliderTrack');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            // Función para navegar a una diapositiva específica
+            window.goToSlide = function(slideIndex) {
+                if (slideIndex >= 0 && slideIndex < totalSlides) {
+                    currentSlide = slideIndex;
+                    updateSlider();
                 }
-                updateCarousel();
+            };
+            
+            // Función para mover el slider adelante o atrás
+            window.moveSlider = function(direction) {
+                currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+                updateSlider();
+            };
+            
+            // Actualizar la posición del slider y el estado de los indicadores
+            function updateSlider() {
+                // Mover el slider
+                sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Actualizar los indicadores
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
             }
-
-            function goToPrev() {
-                if (currentIndex === 0) {
-                    currentIndex = items.length - 1; // Ir a la última diapositiva
-                } else {
-                    currentIndex--;
-                }
-                updateCarousel();
-            }
-
-            prevBtn.addEventListener('click', goToPrev);
-            nextBtn.addEventListener('click', goToNext);
-
-            // Auto-slide opcional
-            setInterval(goToNext, 5000); // Cambiar de diapositiva cada 5 segundos
+            
+            // Inicializar el slider
+            updateSlider();
         });
-
     </script>
-
 </body>
 </html>
