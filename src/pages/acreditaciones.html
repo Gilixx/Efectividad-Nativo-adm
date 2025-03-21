@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,167 +5,252 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Acreditaciones institucionales y programáticas de la Universidad.">
     <meta name="keywords" content="acreditaciones, universidad, educación, calidad">
-    <title>Acreditaciones</title>
+    <title>Acreditaciones - Departamento de Efectividad</title>
     <link rel="stylesheet" href="/public/styles/acreditaciones.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Logo -->
     <link rel="icon" href="https://cdn.um.click/logos-um/logo/">
 </head>
 <body>
     <!-- Header with Logo and Nav -->
-     <header>
-        <a href="https://www.um.edu.mx/"><div class="logo-container">
+    <header>
+        <a href="https://www.um.edu.mx/">
+            <div class="logo-container">
                 <img src="https://cdn.um.click/logos-um/logo/" alt="Logo Universidad">
             </div> 
         </a>
-            <div class="sidebar" id="sidebar">
-                <div class="sidebar-toggle" onclick="toggleSidebar()">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <nav class="nav-menu">
-                    <ul>
+        
+        <!-- Sidebar/Nav -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Abrir menú de navegación">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-menu">
+                <ul>
                     <li><a href="/index.html"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
-                    <li><a href="/src/pages/equipo.html"><i class="fas fa-users"></i> Equipo </a></li>
-                    <li><a href="/src/pages/acreditaciones.html"><i class="fas fa-graduation-cap"></i> <span>Acreditaciones</span></a></li>
+                    <li><a href="/src/pages/equipo.html"><i class="fas fa-users"></i> <span>Equipo</span></a></li>
+                    <li><a href="/src/pages/acreditaciones.html" class="active"><i class="fas fa-award"></i> <span>Acreditaciones</span></a></li>
                     <li><a href="/src/pages/mision-vision.html"><i class="fas fa-compass"></i> <span>Misión-Visión</span></a></li>
                     <li><a href="/src/pages/junta-gobierno.html"><i class="fas fa-university"></i> <span>Junta de Gobierno</span></a></li>
-                    <li><a href="/src/pages/pide.html" class="active"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
-                    </ul>
-                </nav>
-            </div>
+                    <li><a href="/src/pages/pide.html"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Datos Generales -->
-        <section id="datos-generales" class="section">
-            <h2>Datos Generales</h2>
-            <div class="content-with-image">
-                <img src="/public/assets/demos/black_image.jpg" alt="Datos Generales de la Universidad">
-                <p>Información general sobre la universidad y su compromiso con la calidad educativa.</p>
+        <!-- Page Header Section -->
+        <section class="page-header" id="top">
+            <div class="title-container">
+                <h1>Acreditaciones</h1>
+                <p>Nuestro compromiso con la excelencia académica y los más altos estándares de calidad</p>
             </div>
         </section>
 
-        <!-- Estadísticas -->
-        <section id="estadisticas" class="section">
-            <h2>Estadísticas</h2>
-            <div class="content-with-image">
-                <img src="/public/assets/demos/black_image.jpg" alt="Estadísticas de la Universidad">
-                <p>Datos estadísticos sobre las acreditaciones y logros de la universidad.</p>
+        <!-- Sección: Acreditaciones Institucionales -->
+        <section class="content-section">
+            <div class="box">
+                <div class="section-text">
+                    <h2>Acreditaciones Institucionales</h2>
+                    <p>Nuestras acreditaciones institucionales respaldan el compromiso de nuestra universidad con la calidad educativa. Estos reconocimientos nos posicionan como una institución de excelencia a nivel nacional e internacional, validando nuestros procesos académicos y administrativos.</p>
+                </div>
+                <div class="section-image">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Acreditaciones Institucionales">
+                </div>
             </div>
         </section>
 
-        <!-- Acreditaciones en la UM -->
-        <section id="acreditaciones-um" class="section">
-            <h2>Acreditaciones en la UM</h2>
-            <p>Información detallada sobre las acreditaciones institucionales y programáticas.</p>
-
-            <!-- AAA -->
-            <div class="acreditacion-accordion">
-                <button class="accordion-toggle">
-                    <h3>AAA</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="accordion-content">
-                    <div class="acreditacion-section">
-                        <h4>¿Qué es la AAA</h4>
-                        <div class="subseccion">
-                            <p>Descipción de AAA y su importancia.</p>
+        <!-- Sección: AAA (Adventist Accrediting Association) -->
+        <section class="content-section">
+            <div class="box">
+                <div class="section-text">
+                    <h2>AAA (Adventist Accrediting Association)</h2>
+                    <p>La Asociación de Acreditación Adventista (AAA) es el organismo de acreditación oficial para las instituciones educativas de la Iglesia Adventista del Séptimo Día. Está comprometida con la calidad educativa y el cumplimiento de los más altos estándares internacionales.</p>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Proceso de Acreditación</h4>
+                                <p>La AAA evalúa tanto la calidad académica como la fidelidad a la misión adventista mediante un riguroso proceso de autoevaluación institucional y visitas de evaluación por pares académicos.</p>
+                            </div>
                         </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <div>
+                                <h4>Vigencia de Acreditación</h4>
+                                <p>Nuestra institución cuenta con acreditación plena por 5 años (2022-2027), reconociendo nuestra excelencia académica y compromiso con los valores institucionales.</p>
+                            </div>
+                        </div>
+                        <a href="https://www.adventistaccreditingassociation.org/" class="btn-primary" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Visitar sitio oficial AAA
+                        </a>
                     </div>
-                    <div class="acreditacion-section">
-                        <h4>Proceso de Acreditación</h4>
-                        <div class="subseccion">
-                            <h5>¿Cómo acredita?</h5>
-                            <p>Proceso de acreditación de la AAA.</p>
-                        </div>
-                        <div class="subseccion">
-                            <h5>Metodología</h5>
-                            <p>Metodología utilizada por la AAA para la acreditación.</p>
-                        </div>
-                    </div>
-                    <div class="acreditacion-section">
-                        <h4>Instituciones y Áreas</h4>
-                        <div class="subseccion">
-                            <h5>Instituciones acreditadas</h5>
-                            <p>Lista de instituciones acreditadas por la AAA.</p>
-                        </div>
-                        <div class="subseccion">
-                            <h5>Áreas evaluadas</h5>
-                            <p>Áreas evaluadas por la AAA.</p>
-                        </div>
-                    </div>
-                    <a href="https://www.adventistaccreditingassociation.org/" class="btn-acreditacion" target="_blank">Visita el sitio de la AAA</a>
+                </div>
+                <div class="section-image">
+                    <img src="/public/assets/demos/black_image.jpg" alt="AAA (Adventist Accrediting Association)">
                 </div>
             </div>
+        </section>
 
-            <!-- FIMPES -->
-            <div class="acreditacion-accordion">
-                <button class="accordion-toggle">
-                    <h3>FIMPES</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="accordion-content">
-                    <div class="acreditacion-section">
-                        <h4>¿Qué es el FIMPES</h4>
-                        <div class="subseccion">
-                            <p>Descipción de FIMPES y su importancia.</p>
+        <!-- Sección: FIMPES -->
+        <section class="content-section">
+            <div class="box">
+                <div class="section-image">
+                    <img src="/public/assets/demos/black_image.jpg" alt="FIMPES">
+                </div>
+                <div class="section-text">
+                    <h2>FIMPES</h2>
+                    <p>La Federación de Instituciones Mexicanas Particulares de Educación Superior (FIMPES) es una asociación civil que agrupa a las principales universidades privadas de México. Su acreditación representa un alto reconocimiento de calidad educativa a nivel nacional.</p>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Estatus de Acreditación</h4>
+                                <p>Nuestra universidad ha obtenido la acreditación "Lisa y Llana", el máximo nivel otorgado por FIMPES, demostrando el cumplimiento integral de todos los criterios de calidad establecidos.</p>
+                            </div>
                         </div>
+                        <div class="info-item">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h4>Beneficios</h4>
+                                <p>Esta acreditación nos permite participar en programas federales, facilita la movilidad estudiantil y docente, y garantiza el reconocimiento oficial de nuestros programas académicos.</p>
+                            </div>
+                        </div>
+                        <a href="https://portal.fimpes.org.mx/" class="btn-primary" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Visitar sitio oficial FIMPES
+                        </a>
                     </div>
-                    <div class="acreditacion-section">
-                        <h4>Proceso de Acreditación</h4>
-                        <div class="subseccion">
-                            <h5>¿Cómo acredita?</h5>
-                            <p>Proceso de acreditación de la FIMPES.</p>
-                        </div>
-                        <div class="subseccion">
-                            <h5>Metodología</h5>
-                            <p>Metodología utilizada por la FIMPES para la acreditación.</p>
-                        </div>
-                    </div>
-                    <div class="acreditacion-section">
-                        <h4>Instituciones y Áreas</h4>
-                        <div class="subseccion">
-                            <h5>Instituciones acreditadas</h5>
-                            <p>Lista de instituciones acreditadas por la FIMPES.</p>
-                        </div>
-                        <div class="subseccion">
-                            <h5>Áreas evaluadas</h5>
-                            <p>Áreas evaluadas por la FIMPES.</p>
-                        </div>
-                    </div>
-                    <a href="https://portal.fimpes.org.mx/" class="btn-acreditacion" target="_blank">Visita el sitio de la FIMPES</a>
                 </div>
             </div>
+        </section>
 
-            <!-- Programas Académicos -->
-            <div class="acreditacion-accordion">
-                <button class="accordion-toggle">
-                    <h3>Programas Académicos</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="accordion-content">
-                    <div class="acreditacion-section">
-                        <h4>¿Qué es Programas Académicos están acreditados?</h4>
-                        <div class="subseccion">
-                            <p>Descipción de Programas Académicos.</p>
+        <!-- Sección: Programas Académicos Acreditados -->
+        <section class="content-section">
+            <div class="box">
+                <div class="section-text">
+                    <h2>Programas Académicos Acreditados</h2>
+                    <p>Además de las acreditaciones institucionales, nuestros programas académicos son evaluados y acreditados por organismos especializados por área de conocimiento, garantizando la calidad específica de cada carrera.</p>
+                    <div class="programs-grid">
+                        <div class="program-card">
+                            <div class="program-icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <h3>Ciencias de la Salud</h3>
+                            <p>Acreditados por COMAEM, CONCAPREN y CONAEDO</p>
+                        </div>
+                        <div class="program-card">
+                            <div class="program-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Ingenierías</h3>
+                            <p>Acreditados por CACEI y CONAIC</p>
+                        </div>
+                        <div class="program-card">
+                            <div class="program-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h3>Ciencias Sociales</h3>
+                            <p>Acreditados por CACECA y CNEIP</p>
+                        </div>
+                        <div class="program-card">
+                            <div class="program-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h3>Educación</h3>
+                            <p>Acreditados por CEPPE</p>
                         </div>
                     </div>
-                    <div class="acreditacion-section">
-                        <h4>Organismos y Metodología</h4>
-                        <div class="subseccion">
-                            <h5>Organismos acreditadores</h5>
-                            <p>Organismos responsables de la acreditación de programas académicos.</p>
-                        </div>
-                        <div class="subseccion">
-                            <h5>Metodología</h5>
-                            <p>Metodología utilizada para la acreditación de programas académicos.</p>
-                        </div>
-                    </div>
-                    <a href="#" class="btn-acreditacion" target="_blank">Visita el sitio de Programas Académicos</a>
+                    <a href="#" class="btn-primary">
+                        <i class="fas fa-file-alt"></i> Ver detalle de programas acreditados
+                    </a>
                 </div>
+            </div>
+        </section>
+
+        <!-- Sección: Estadísticas de Acreditación -->
+        <section class="content-section">
+            <div class="box stats-box">
+                <h2 class="text-center">Nuestras Cifras de Acreditación</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-university"></i>
+                        <h3>2</h3>
+                        <p>Acreditaciones Institucionales</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>85%</h3>
+                        <p>Programas Acreditados</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-globe-americas"></i>
+                        <h3>7</h3>
+                        <p>Organismos Acreditadores</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-award"></i>
+                        <h3>15+</h3>
+                        <p>Años de Excelencia Acreditada</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Proceso de Acreditación -->
+        <section class="content-section">
+            <div class="box">
+                <div class="section-image">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Proceso de Acreditación">
+                </div>
+                <div class="section-text">
+                    <h2>Proceso de Acreditación</h2>
+                    <p>El camino hacia la acreditación institucional y programática involucra un riguroso proceso de evaluación que garantiza el cumplimiento de los más altos estándares de calidad educativa.</p>
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Autoevaluación</h4>
+                                <p>Realizamos un diagnóstico interno exhaustivo de todos nuestros procesos académicos y administrativos.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Visita de Evaluadores</h4>
+                                <p>Recibimos la visita de pares evaluadores que verifican in situ el cumplimiento de los criterios de calidad.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Dictamen</h4>
+                                <p>El organismo acreditador emite un dictamen con observaciones y recomendaciones.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Mejora Continua</h4>
+                                <p>Implementamos un plan de mejora continua para mantener y elevar nuestros estándares de calidad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección CTA -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>¿Necesitas más información sobre acreditaciones?</h2>
+                <p>Nuestro equipo de Efectividad Institucional está disponible para resolver tus dudas.</p>
+                <a href="mailto:efectividad@universidad.edu" class="btn-accent">
+                    <i class="fas fa-envelope"></i> Contáctanos
+                </a>
             </div>
         </section>
     </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -177,9 +261,10 @@
             <div class="footer-section">
                 <h4>Enlaces Rápidos</h4>
                 <ul>
-                    <li><a href="#datos-generales">Datos Generales</a></li>
-                    <li><a href="#estadisticas">Estadísticas</a></li>
-                    <li><a href="#acreditaciones-um">Acreditaciones</a></li>
+                    <li><a href="#top">Inicio</a></li>
+                    <li><a href="#Institucionales">Acreditaciones Institucionales</a></li>
+                    <li><a href="#Programas">Programas Acreditados</a></li>
+                    <li><a href="#Proceso">Proceso de Acreditación</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -195,12 +280,6 @@
             <p>&copy; 2024 Departamento de Efectividad. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('expanded');
-        }
-    </script>
 
     <script>
         let lastScrollPosition = 0;
@@ -225,34 +304,6 @@
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('expanded');
         }
-    </script>
-
-    <script>
-        document.querySelector(".ver-mas").addEventListener("click", function(event) {
-            event.preventDefault(); // Evita que el enlace recargue la página
-        
-            const moreText = document.querySelector(".more-text");
-            const verMasLink = document.querySelector(".ver-mas");
-        
-            if (moreText.style.display === "none" || moreText.style.display === "") {
-                moreText.style.display = "inline";
-                verMasLink.textContent = "ver menos...";
-            } else {
-                moreText.style.display = "none";
-                verMasLink.textContent = "ver más...";
-            }
-        });
-    </script>
-
-
-    <script>
-        document.querySelectorAll('.accordion-toggle').forEach(button => {
-            button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            content.classList.toggle('open');
-            button.querySelector('i').classList.toggle('fa-chevron-up');
-            });
-        });
     </script>
 </body>
 </html>
