@@ -874,3 +874,340 @@ header.hidden {
         left: 0;
     }
 }
+
+/* Estilos para el slider de programas académicos */
+.programs-slider-container {
+    position: relative;
+    margin: 40px 0;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+/* Flechas de navegación */
+.slider-arrows {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.slider-arrow {
+    background-color: var(--primary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    margin: 0 10px;
+}
+
+.slider-arrow:hover {
+    background-color: var(--dark-accent);
+    transform: scale(1.1);
+}
+
+.slider-arrow:focus {
+    outline: none;
+}
+
+/* Contenedor del slider */
+.programs-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge */
+    gap: 20px;
+    padding: 10px 5px;
+    scroll-snap-type: x mandatory;
+}
+
+/* Ocultar scrollbar */
+.programs-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Tarjetas de programa */
+.program-card {
+    flex: 0 0 calc(33.333% - 20px);
+    min-width: 280px;
+    background-color: var(--light-accent);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    scroll-snap-align: start;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header de la tarjeta */
+.program-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.program-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.program-icon i {
+    font-size: 24px;
+    color: white;
+}
+
+.program-card h3 {
+    color: var(--dark-accent);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.program-summary {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Detalles del programa (expandible) */
+.program-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.3s ease;
+    opacity: 0;
+    margin-top: 0;
+    font-size: 0.9rem;
+}
+
+.program-details.expanded {
+    max-height: 500px;
+    padding-top: 15px;
+    opacity: 1;
+    margin-top: 10px;
+    border-top: 1px solid rgba(84, 68, 239, 0.2);
+}
+
+.program-details p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.program-details ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.program-details li {
+    margin-bottom: 8px;
+}
+
+.program-details strong {
+    color: var(--dark-accent);
+}
+
+/* Botón para expandir/contraer */
+.toggle-details {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 8px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: auto;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.toggle-details:hover {
+    color: var(--dark-accent);
+}
+
+.toggle-details i {
+    transition: transform 0.3s ease;
+}
+
+.toggle-details.active i {
+    transform: rotate(180deg);
+}
+
+/* Indicadores de posición */
+.slider-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--light-accent);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Animación de aparición */
+.fadeIn {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Adaptación para vistas móviles */
+@media (max-width: 992px) {
+    .program-card {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .program-card {
+        flex: 0 0 calc(100% - 40px);
+        margin: 0 20px;
+    }
+    
+    .slider-arrows {
+        width: calc(100% + 20px);
+        left: -10px;
+    }
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    background-color: white;
+    color: var(--dark-accent);
+    text-decoration: none;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+    font-weight: 600;
+    cursor: pointer;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+}
+
+/* Estilos para la sección de descarga */
+.download-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--light-accent);
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.download-info {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--dark-accent);
+}
+
+/* Estilos para el botón de descarga */
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    background-color: #d63031; /* Color rojo característico de PDF */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    gap: 10px;
+    border: none;
+}
+
+.btn-download:hover {
+    background-color: #b71c1c; /* Rojo más oscuro al pasar el cursor */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-download:active {
+    transform: translateY(-1px);
+}
+
+.btn-download i {
+    font-size: 1.2rem;
+}
+
+/* Adaptaciones responsivas */
+@media (max-width: 768px) {
+    .download-section {
+        padding: 15px;
+    }
+    
+    .btn-download {
+        width: 100%;
+        justify-content: center;
+    }
+}

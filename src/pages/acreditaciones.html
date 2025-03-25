@@ -27,11 +27,10 @@
             <nav class="nav-menu">
                 <ul>
                     <li><a href="/index.html"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
-                    <li><a href="/src/pages/equipo.html"><i class="fas fa-users"></i> <span>Equipo</span></a></li>
                     <li><a href="/src/pages/acreditaciones.html" class="active"><i class="fas fa-award"></i> <span>Acreditaciones</span></a></li>
-                    <li><a href="/src/pages/mision-vision.html"><i class="fas fa-compass"></i> <span>Misión-Visión</span></a></li>
                     <li><a href="/src/pages/junta-gobierno.html"><i class="fas fa-university"></i> <span>Junta de Gobierno</span></a></li>
-                    <li><a href="/src/pages/pide.html"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
+                    <li><a href="/src/pages/pide.html" class="active"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
+                    <li><a href="/src/pages/equipo.html"><i class="fas fa-users"></i> Equipo </a></li>
                 </ul>
             </nav>
         </div>
@@ -55,7 +54,7 @@
                     <p>Nuestras acreditaciones institucionales respaldan el compromiso de nuestra universidad con la calidad educativa. Estos reconocimientos nos posicionan como una institución de excelencia a nivel nacional e internacional, validando nuestros procesos académicos y administrativos.</p>
                 </div>
                 <div class="section-image">
-                    <img src="/public/assets/demos/black_image.jpg" alt="Acreditaciones Institucionales">
+                    <img src="/public/assets/images/54397843098_e5c51a153a_o.jpg" alt="Acreditaciones Institucionales">
                 </div>
             </div>
         </section>
@@ -81,13 +80,18 @@
                                 <p>Nuestra institución cuenta con acreditación plena por 5 años (2022-2027), reconociendo nuestra excelencia académica y compromiso con los valores institucionales.</p>
                             </div>
                         </div>
-                        <a href="https://www.adventistaccreditingassociation.org/" class="btn-primary" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Visitar sitio oficial AAA
-                        </a>
+                        <div class="button-group">
+                            <a href="https://www.adventistaccreditingassociation.org/" class="btn-primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Visitar sitio oficial AAA
+                            </a>
+                            <a href="https://sites.google.com/d/1zzlDXgJmiU8R4_HEIWqXFiRElVwDIcvT/p/1VORSju9Fn3sGvJSqk6qykH5EaC831P3v/edit" class="btn-secondary">
+                                <i class="fas fa-building"></i> Oficina Institucional AAA
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="section-image">
-                    <img src="/public/assets/demos/black_image.jpg" alt="AAA (Adventist Accrediting Association)">
+                    <img src="/public/assets/images/5471792902_050f419eb7_o.jpg" alt="AAA (Adventist Accrediting Association)">
                 </div>
             </div>
         </section>
@@ -96,7 +100,7 @@
         <section class="content-section">
             <div class="box">
                 <div class="section-image">
-                    <img src="/public/assets/demos/black_image.jpg" alt="FIMPES">
+                    <img src="/public/assets/images/16696244581_6d14d4576c_o.jpg" alt="FIMPES">
                 </div>
                 <div class="section-text">
                     <h2>FIMPES</h2>
@@ -116,56 +120,170 @@
                                 <p>Esta acreditación nos permite participar en programas federales, facilita la movilidad estudiantil y docente, y garantiza el reconocimiento oficial de nuestros programas académicos.</p>
                             </div>
                         </div>
-                        <a href="https://portal.fimpes.org.mx/" class="btn-primary" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Visitar sitio oficial FIMPES
-                        </a>
+                        <div class="button-group">
+                            <a href="https://portal.fimpes.org.mx/" class="btn-primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Visitar sitio oficial FIMPES
+                            </a>
+                            <a href="https://sites.google.com/d/1kvXkW-zYuvvV7KJ1MNo7GXDtXwmoNE7k/p/1U3dyBxGr53FbyF3IK9qMJJ-ugDl6wjRi/edit" class="btn-secondary">
+                                <i class="fas fa-building"></i> Oficina Institucional FIMPES
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección: Programas Académicos Acreditados -->
-        <section class="content-section">
-            <div class="box">
-                <div class="section-text">
-                    <h2>Programas Académicos Acreditados</h2>
-                    <p>Además de las acreditaciones institucionales, nuestros programas académicos son evaluados y acreditados por organismos especializados por área de conocimiento, garantizando la calidad específica de cada carrera.</p>
-                    <div class="programs-grid">
-                        <div class="program-card">
+ <!-- Sección: Programas Académicos Acreditados como Slider -->
+<section class="content-section">
+    <div class="box">
+        <div class="section-text">
+            <h2>Programas Académicos Acreditados</h2>
+            <p>Además de las acreditaciones institucionales, nuestros programas académicos son evaluados y acreditados por organismos especializados por área de conocimiento, garantizando la calidad específica de cada carrera.</p>
+            
+            <div class="programs-slider-container">
+                <div class="slider-arrows">
+                    <button class="slider-arrow prev-arrow" aria-label="Anterior programa">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-arrow next-arrow" aria-label="Siguiente programa">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="programs-slider">
+                    <!-- Programa 1: Medicina -->
+                    <div class="program-card">
+                        <div class="program-header">
                             <div class="program-icon">
                                 <i class="fas fa-stethoscope"></i>
                             </div>
-                            <h3>Ciencias de la Salud</h3>
-                            <p>Acreditados por COMAEM, CONCAPREN y CONAEDO</p>
+                            <h3>Medicina</h3>
                         </div>
-                        <div class="program-card">
-                            <div class="program-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <h3>Ingenierías</h3>
-                            <p>Acreditados por CACEI y CONAIC</p>
+                        <p class="program-summary">Acreditado por COMAEM (2023-2028)</p>
+                        <div class="program-details">
+                            <p>Nuestro programa de Licenciatura en Médico Cirujano está acreditado por el Consejo Mexicano para la Acreditación de la Educación Médica, A.C. (COMAEM), garantizando los más altos estándares educativos en el campo médico.</p>
+                            <ul>
+                                <li><strong>Vigencia:</strong> 2023-2028</li>
+                                <li><strong>Estatus:</strong> Acreditada</li>
+                                <li><strong>Reconocimiento:</strong> Nacional e internacional</li>
+                                <li><strong>Campos clínicos:</strong> Hospitales certificados</li>
+                            </ul>
                         </div>
-                        <div class="program-card">
-                            <div class="program-icon">
-                                <i class="fas fa-balance-scale"></i>
-                            </div>
-                            <h3>Ciencias Sociales</h3>
-                            <p>Acreditados por CACECA y CNEIP</p>
-                        </div>
-                        <div class="program-card">
-                            <div class="program-icon">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <h3>Educación</h3>
-                            <p>Acreditados por CEPPE</p>
-                        </div>
+                        <button class="toggle-details">Ver más <i class="fas fa-chevron-down"></i></button>
                     </div>
-                    <a href="#" class="btn-primary">
-                        <i class="fas fa-file-alt"></i> Ver detalle de programas acreditados
-                    </a>
+                    
+                    <!-- Programa 2: Enfermería -->
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-user-nurse"></i>
+                            </div>
+                            <h3>Enfermería</h3>
+                        </div>
+                        <p class="program-summary">Acreditado por COMACE (2017-2022)</p>
+                        <div class="program-details">
+                            <p>La Licenciatura en Enfermería cuenta con acreditación del Consejo Mexicano de Acreditación y Certificación de Enfermería, A.C. (COMACE), lo que avala la calidad en la formación de profesionales de la salud.</p>
+                            <ul>
+                                <li><strong>Vigencia:</strong> 2017-2022</li>
+                                <li><strong>Proceso actual:</strong> En renovación</li>
+                                <li><strong>Campos clínicos:</strong> Hospitales y centros de salud certificados</li>
+                                <li><strong>Enfoque:</strong> Atención integral y humanizada del paciente</li>
+                            </ul>
+                        </div>
+                        <button class="toggle-details">Ver más <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    
+                    <!-- Programa 3: Nutrición -->
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-apple-alt"></i>
+                            </div>
+                            <h3>Nutrición</h3>
+                        </div>
+                        <p class="program-summary">En proceso (CONCAPREN 2018-2023)</p>
+                        <div class="program-details">
+                            <p>Nuestra Licenciatura en Nutrición está en proceso de reacreditación por el Consejo Nacional para la Calidad de los Programas Educativos en Nutriología, A.C. (CONCAPREN), que certifica la calidad educativa en esta disciplina.</p>
+                            <ul>
+                                <li><strong>Acreditación previa:</strong> 2018-2023</li>
+                                <li><strong>Estatus actual:</strong> En proceso de renovación</li>
+                                <li><strong>Centros de práctica:</strong> Hospitales, clínicas y centros comunitarios</li>
+                                <li><strong>Enfoque:</strong> Nutrición clínica, deportiva y comunitaria</li>
+                            </ul>
+                        </div>
+                        <button class="toggle-details">Ver más <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    
+                    <!-- Programa 4: Contaduría -->
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h3>Contaduría Pública</h3>
+                        </div>
+                        <p class="program-summary">Acreditado por CACECA (2019-2024)</p>
+                        <div class="program-details">
+                            <p>La Licenciatura en Contaduría Pública está acreditada por el Consejo de Acreditación de la Enseñanza de la Contaduría Pública y Administración, A.C. (CACECA), garantizando la calidad en la formación de profesionales financieros.</p>
+                            <ul>
+                                <li><strong>Vigencia:</strong> 2019-2024</li>
+                                <li><strong>Estatus:</strong> Acreditada</li>
+                                <li><strong>Reconocimiento:</strong> Nacional</li>
+                                <li><strong>Centros de práctica:</strong> Firmas contables y empresas reconocidas</li>
+                            </ul>
+                        </div>
+                        <button class="toggle-details">Ver más <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    
+                    <!-- Programa 5: Psicología -->
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>Psicología Clínica</h3>
+                        </div>
+                        <p class="program-summary">Acreditado por CNEIP (2023-2028)</p>
+                        <div class="program-details">
+                            <p>La Licenciatura en Psicología Clínica está acreditada por el Consejo Nacional para la Enseñanza e Investigación en Psicología, A.C. (CNEIP), validando la excelencia académica en la formación de psicólogos.</p>
+                            <ul>
+                                <li><strong>Vigencia:</strong> 2023-2028</li>
+                                <li><strong>Estatus:</strong> Acreditada</li>
+                                <li><strong>Reconocimiento:</strong> Nacional</li>
+                                <li><strong>Centros de práctica:</strong> Clínicas, hospitales y centros de salud mental</li>
+                            </ul>
+                        </div>
+                        <button class="toggle-details">Ver más <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    
+                    <!-- Programa 6: Arquitectura -->
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-drafting-compass"></i>
+                            </div>
+                            <h3>Arquitectura</h3>
+                        </div>
+                        <p class="program-summary">Acreditado por ANPADEH (2023-2028)</p>
+                        <div class="program-details">
+                            <p>La Licenciatura en Arquitectura cuenta con acreditación de la Acreditadora Nacional de Programas de Arquitectura y Disciplinas del Espacio Habitable A.C. (ANPADEH), certificando la calidad educativa en diseño y construcción.</p>
+                            <ul>
+                                <li><strong>Vigencia:</strong> 2023-2028</li>
+                                <li><strong>Estatus:</strong> Acreditada</li>
+                                <li><strong>Reconocimiento:</strong> Nacional</li>
+                                <li><strong>Infraestructura:</strong> Laboratorios de materiales y talleres de diseño</li>
+                            </ul>
+                        </div>
+                        <button class="toggle-details">Ver más <i class="fas fa-chevron-down"></i></button>
+                    </div>
                 </div>
+                
+                <!-- Indicadores de Posición -->
+                <div class="slider-indicators"></div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
         <!-- Sección: Estadísticas de Acreditación -->
         <section class="content-section">
@@ -179,17 +297,17 @@
                     </div>
                     <div class="stat-card">
                         <i class="fas fa-graduation-cap"></i>
-                        <h3>85%</h3>
-                        <p>Programas Acreditados</p>
+                        <h3>42%</h3>
+                        <p>Matricula en programas acreditados</p>
                     </div>
                     <div class="stat-card">
                         <i class="fas fa-globe-americas"></i>
-                        <h3>7</h3>
-                        <p>Organismos Acreditadores</p>
+                        <h3>6</h3>
+                        <p>Programas Academicos Acreditados</p>
                     </div>
                     <div class="stat-card">
                         <i class="fas fa-award"></i>
-                        <h3>15+</h3>
+                        <h3>35+</h3>
                         <p>Años de Excelencia Acreditada</p>
                     </div>
                 </div>
@@ -197,47 +315,55 @@
         </section>
 
         <!-- Sección: Proceso de Acreditación -->
-        <section class="content-section">
-            <div class="box">
-                <div class="section-image">
-                    <img src="/public/assets/demos/black_image.jpg" alt="Proceso de Acreditación">
+<section class="content-section">
+    <div class="box">
+        <div class="section-image">
+            <img src="/public/assets/images/54089949337_aa3ab0f1e3_o.jpg" alt="Proceso de Acreditación">
+        </div>
+        <div class="section-text">
+            <h2>Proceso de Acreditación</h2>
+            <p>El camino hacia la acreditación institucional y programática involucra un riguroso proceso de evaluación que garantiza el cumplimiento de los más altos estándares de calidad educativa.</p>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Autoevaluación</h4>
+                        <p>Realizamos un diagnóstico interno exhaustivo de todos nuestros procesos académicos y administrativos.</p>
+                    </div>
                 </div>
-                <div class="section-text">
-                    <h2>Proceso de Acreditación</h2>
-                    <p>El camino hacia la acreditación institucional y programática involucra un riguroso proceso de evaluación que garantiza el cumplimiento de los más altos estándares de calidad educativa.</p>
-                    <div class="process-steps">
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h4>Autoevaluación</h4>
-                                <p>Realizamos un diagnóstico interno exhaustivo de todos nuestros procesos académicos y administrativos.</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h4>Visita de Evaluadores</h4>
-                                <p>Recibimos la visita de pares evaluadores que verifican in situ el cumplimiento de los criterios de calidad.</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h4>Dictamen</h4>
-                                <p>El organismo acreditador emite un dictamen con observaciones y recomendaciones.</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h4>Mejora Continua</h4>
-                                <p>Implementamos un plan de mejora continua para mantener y elevar nuestros estándares de calidad.</p>
-                            </div>
-                        </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Visita de Evaluadores</h4>
+                        <p>Recibimos la visita de pares evaluadores que verifican in situ el cumplimiento de los criterios de calidad.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Dictamen</h4>
+                        <p>El organismo acreditador emite un dictamen con observaciones y recomendaciones.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Mejora Continua</h4>
+                        <p>Implementamos un plan de mejora continua para mantener y elevar nuestros estándares de calidad.</p>
                     </div>
                 </div>
             </div>
-        </section>
+            
+            <!-- Botón de descarga del manual de proceso de acreditación -->
+            <div class="download-section">
+                <p class="download-info">¿Quieres conocer más detalles sobre nuestro proceso de acreditación? Descarga nuestro manual completo:</p>
+                <a href="/public/assets/docs/Manual Acreditaciones muestra.pdf" class="btn-download" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Manual de Proceso de Acreditación
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- Sección CTA -->
         <section class="cta-section">
@@ -305,5 +431,93 @@
             document.getElementById('sidebar').classList.toggle('expanded');
         }
     </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar slider
+    initProgramsSlider();
+    
+    // Inicializar botones expandibles
+    initExpandButtons();
+});
+
+function initProgramsSlider() {
+    const slider = document.querySelector('.programs-slider');
+    const cards = slider.querySelectorAll('.program-card');
+    const prevButton = document.querySelector('.prev-arrow');
+    const nextButton = document.querySelector('.next-arrow');
+    const indicatorsContainer = document.querySelector('.slider-indicators');
+    
+    // Crear indicadores dinámicamente
+    cards.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.classList.add('indicator');
+        if (index === 0) indicator.classList.add('active');
+        indicator.dataset.index = index;
+        
+        indicator.addEventListener('click', () => {
+            scrollToCard(index);
+        });
+        
+        indicatorsContainer.appendChild(indicator);
+    });
+    
+    // Botones de navegación
+    prevButton.addEventListener('click', () => {
+        slider.scrollBy({ left: -slider.offsetWidth / 2, behavior: 'smooth' });
+    });
+    
+    nextButton.addEventListener('click', () => {
+        slider.scrollBy({ left: slider.offsetWidth / 2, behavior: 'smooth' });
+    });
+    
+    // Actualizar indicadores al hacer scroll
+    slider.addEventListener('scroll', () => {
+        const scrollPosition = slider.scrollLeft;
+        const cardWidth = cards[0].offsetWidth + 20; // Incluir gap
+        const index = Math.round(scrollPosition / cardWidth);
+        
+        updateIndicators(Math.min(index, cards.length - 1));
+    });
+    
+    function scrollToCard(index) {
+        const cardWidth = cards[0].offsetWidth + 20; // Incluir gap
+        slider.scrollTo({
+            left: index * cardWidth,
+            behavior: 'smooth'
+        });
+    }
+    
+    function updateIndicators(activeIndex) {
+        const indicators = indicatorsContainer.querySelectorAll('.indicator');
+        indicators.forEach((indicator, index) => {
+            if (index === activeIndex) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+    }
+}
+
+function initExpandButtons() {
+    const toggleButtons = document.querySelectorAll('.toggle-details');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const card = this.closest('.program-card');
+            const details = card.querySelector('.program-details');
+            
+            details.classList.toggle('expanded');
+            this.classList.toggle('active');
+            
+            if (this.classList.contains('active')) {
+                this.innerHTML = 'Ver menos <i class="fas fa-chevron-up"></i>';
+            } else {
+                this.innerHTML = 'Ver más <i class="fas fa-chevron-down"></i>';
+            }
+        });
+    });
+}</script>
+
 </body>
 </html>
