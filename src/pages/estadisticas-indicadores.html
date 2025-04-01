@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estadísticas e Indicadores del Departamento de Efectividad Institucional.">
+    <meta name="keywords" content="estadísticas, indicadores, universidad, datos, efectividad institucional">
+    <title>Estadísticas e Indicadores</title>
+    <link rel="stylesheet" href="/public/styles/estadisticas-indicadores.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Logo -->
+    <link rel="icon" href="https://cdn.um.click/logos-um/logo/">
+</head>
+<body>
+    <!-- Header with Logo and Nav -->
+    <header>
+        <a href="https://www.um.edu.mx/">
+            <div class="logo-container">
+                <img src="https://cdn.um.click/logos-um/logo/" alt="Logo Universidad">
+            </div> 
+        </a>
+        
+        <!-- Sidebar/Nav -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Abrir menú de navegación">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/index.html"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
+                    <li><a href="/src/pages/acreditaciones.html"><i class="fas fa-award"></i> <span>Acreditaciones</span></a></li>
+                    <li><a href="/src/pages/estadisticas.html" class="active"><i class="fas fa-chart-bar"></i> <span>Estadísticas</span></a></li>
+                    <li><a href="/src/pages/junta-gobierno.html"><i class="fas fa-university"></i> <span>Junta de Gobierno</span></a></li>
+                    <li><a href="/src/pages/pide.html"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
+                    <li><a href="/src/pages/equipo.html"><i class="fas fa-users"></i> <span>Equipo</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header Section -->
+        <section class="page-header" id="top">
+            <div class="title-container">
+                <h1>Estadísticas e Indicadores</h1>
+                <p>Visualiza y analiza los datos más relevantes de nuestra institución</p>
+            </div>
+        </section>
+
+        <!-- Sección: Las estadísticas en la UM -->
+        <section class="content-section">
+            <div class="box">
+                <div class="section-text">
+                    <h2>Las estadísticas en la UM</h2>
+                    <p>Las estadísticas en la Universidad de Montemorelos nos permiten comprender mejor nuestra comunidad educativa, monitorear el progreso y tomar decisiones informadas. Estos datos son fundamentales para el mejoramiento continuo y el logro de nuestros objetivos institucionales.</p>
+                    <p>A través de nuestro sistema de indicadores, recopilamos, analizamos y presentamos información relevante sobre diversos aspectos de la vida universitaria, desde la matrícula estudiantil hasta la efectividad de nuestros programas académicos.</p>
+                </div>
+                <div class="section-image">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Estadísticas en la UM">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Visualizador de estadísticas -->
+        <section class="content-section">
+            <h2 class="section-title">Visualizador de estadísticas</h2>
+            
+            <div class="stats-tabs">
+                <div class="tabs-nav">
+                    <button class="tab-button active" data-tab="enrollment">Matrícula</button>
+                    <button class="tab-button" data-tab="demographic">Demografía</button>
+                    <button class="tab-button" data-tab="countries">Países</button>
+                    <button class="tab-button" data-tab="academic">Académico</button>
+                </div>
+                
+                <div class="tab-content">
+                    <!-- Tab 1: Matrícula -->
+                    <div class="tab-pane active" id="enrollment-tab">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3>Estudiantes de primer ingreso (2023)</h3>
+                                <div class="chart-filters">
+                                    <select id="enrollment-level-filter">
+                                        <option value="all">Todos los niveles</option>
+                                        <option value="undergraduate">Pregrado</option>
+                                        <option value="graduate">Posgrado</option>
+                                    </select>
+                                    <select id="enrollment-mode-filter">
+                                        <option value="all">Todas las modalidades</option>
+                                        <option value="presential">Presencial</option>
+                                        <option value="online">En línea</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="enrollmentChart"></canvas>
+                            </div>
+                            <div class="chart-legend">
+                                <p>Distribución de estudiantes de primer ingreso por programa académico</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 2: Demografía -->
+                    <div class="tab-pane" id="demographic-tab">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3>Datos demográficos de estudiantes</h3>
+                                <div class="chart-filters">
+                                    <select id="demographic-semester-filter">
+                                        <option value="1">Primer Semestre</option>
+                                        <option value="2">Segundo Semestre</option>
+                                    </select>
+                                    <select id="demographic-type-filter">
+                                        <option value="gender">Género</option>
+                                        <option value="age">Edad</option>
+                                        <option value="state">Estado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="demographicChart"></canvas>
+                            </div>
+                            <div class="chart-legend">
+                                <p>Distribución demográfica de la población estudiantil</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 3: Países -->
+                    <div class="tab-pane" id="countries-tab">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3>Estudiantes por país de origen</h3>
+                                <div class="chart-filters">
+                                    <select id="countries-semester-filter">
+                                        <option value="1">Primer Semestre</option>
+                                        <option value="2">Segundo Semestre</option>
+                                    </select>
+                                    <select id="countries-view-filter">
+                                        <option value="all">Todos los países</option>
+                                        <option value="top10">Top 10 países</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="countriesChart"></canvas>
+                            </div>
+                            <div class="chart-legend">
+                                <p>Distribución de estudiantes por país de origen</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 4: Académico -->
+                    <div class="tab-pane" id="academic-tab">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3>Indicadores académicos</h3>
+                                <div class="chart-filters">
+                                    <select id="academic-indicator-filter">
+                                        <option value="retention">Tasa de retención</option>
+                                        <option value="graduation">Tasa de graduación</option>
+                                        <option value="satisfaction">Satisfacción estudiantil</option>
+                                    </select>
+                                    <select id="academic-year-filter">
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="academicChart"></canvas>
+                            </div>
+                            <div class="chart-legend">
+                                <p>Indicadores de desempeño académico por programa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Los indicadores en la UM -->
+        <section class="content-section">
+            <div class="box">
+                <div class="section-text">
+                    <h2>Los indicadores en la UM</h2>
+                    <p>Los indicadores institucionales son métricas clave que nos permiten evaluar el desempeño y la efectividad de nuestros procesos educativos y administrativos. Estos indicadores están alineados con nuestra misión y visión, y nos ayudan a identificar áreas de oportunidad y fortalezas.</p>
+                    <p>Nuestro sistema de indicadores se basa en estándares nacionales e internacionales de calidad educativa, y se actualiza periódicamente para reflejar las tendencias actuales en educación superior.</p>
+                </div>
+                <div class="section-image">
+                    <img src="/public/assets/demos/black_image.jpg" alt="Indicadores en la UM">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Visualizador de indicadores -->
+        <section class="content-section">
+            <h2 class="section-title">Visualizador de indicadores</h2>
+            
+            <div class="indicators-dashboard">
+                <div class="indicators-filters">
+                    <select id="indicator-year-filter">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+                    <select id="indicator-type-filter">
+                        <option value="all">Todos los indicadores</option>
+                        <option value="academic">Académicos</option>
+                        <option value="financial">Financieros</option>
+                        <option value="infrastructure">Infraestructura</option>
+                        <option value="research">Investigación</option>
+                    </select>
+                </div>
+                
+                <div class="indicators-grid">
+                    <!-- Indicador 1 -->
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="indicator-info">
+                            <h3>Tasa de retención</h3>
+                            <div class="indicator-chart">
+                                <canvas id="retentionChart"></canvas>
+                            </div>
+                            <div class="indicator-value">
+                                <span class="value">87.5%</span>
+                                <span class="change positive">+2.3%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Indicador 2 -->
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="indicator-info">
+                            <h3>Tasa de graduación</h3>
+                            <div class="indicator-chart">
+                                <canvas id="graduationChart"></canvas>
+                            </div>
+                            <div class="indicator-value">
+                                <span class="value">78.2%</span>
+                                <span class="change positive">+1.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Indicador 3 -->
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="indicator-info">
+                            <h3>Satisfacción estudiantil</h3>
+                            <div class="indicator-chart">
+                                <canvas id="satisfactionChart"></canvas>
+                            </div>
+                            <div class="indicator-value">
+                                <span class="value">92.1%</span>
+                                <span class="change positive">+3.7%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Indicador 4 -->
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="indicator-info">
+                            <h3>Calificación docente</h3>
+                            <div class="indicator-chart">
+                                <canvas id="teacherChart"></canvas>
+                            </div>
+                            <div class="indicator-value">
+                                <span class="value">4.7/5.0</span>
+                                <span class="change positive">+0.2</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Indicador 5 -->
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="indicator-info">
+                            <h3>Producción investigativa</h3>
+                            <div class="indicator-chart">
+                                <canvas id="researchChart"></canvas>
+                            </div>
+                            <div class="indicator-value">
+                                <span class="value">45</span>
+                                <span class="change positive">+12</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Indicador 6 -->
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="indicator-info">
+                            <h3>Ocupación de aulas</h3>
+                            <div class="indicator-chart">
+                                <canvas id="classroomChart"></canvas>
+                            </div>
+                            <div class="indicator-value">
+                                <span class="value">83.4%</span>
+                                <span class="change negative">-1.2%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Departamento de Efectividad</h4>
+                <p>Comprometidos con la excelencia y mejora continua de nuestra institución.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="/index.html">Inicio</a></li>
+                    <li><a href="/src/pages/acreditaciones.html">Acreditaciones</a></li>
+                    <li><a href="/src/pages/mision-vision.html">Misión y Visión</a></li>
+                    <li><a href="/src/pages/estadisticas.html">Estadísticas</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> efectividad@universidad.edu</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Campus Universitario</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Departamento de Efectividad. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+    // Script 1: Configuración y colores
+    // Configurar las pestañas (tabs)
+const tabButtons = document.querySelectorAll('.tab-button');
+const tabPanes = document.querySelectorAll('.tab-pane');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        
+        // Desactivar todas las pestañas
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+        
+        // Activar la pestaña seleccionada
+        button.classList.add('active');
+        document.getElementById(`${tabId}-tab`).classList.add('active');
+        
+        // Actualizar el tamaño de las gráficas cuando se cambia de pestaña
+        window.dispatchEvent(new Event('resize'));
+    });
+});
+
+// Colores para las gráficas
+const chartColors = [
+    'rgba(84, 68, 239, 0.8)',
+    'rgba(133, 142, 255, 0.8)',
+    'rgba(242, 205, 0, 0.8)',
+    'rgba(66, 0, 124, 0.8)',
+    'rgba(175, 149, 113, 0.8)',
+    'rgba(210, 227, 248, 0.8)',
+    'rgba(255, 99, 132, 0.8)',
+    'rgba(54, 162, 235, 0.8)',
+    'rgba(255, 206, 86, 0.8)',
+    'rgba(75, 192, 192, 0.8)',
+    'rgba(153, 102, 255, 0.8)',
+    'rgba(255, 159, 64, 0.8)'
+];
+
+const chartBorderColors = [
+    'rgba(84, 68, 239, 1)',
+    'rgba(133, 142, 255, 1)',
+    'rgba(242, 205, 0, 1)',
+    'rgba(66, 0, 124, 1)',
+    'rgba(175, 149, 113, 1)',
+    'rgba(210, 227, 248, 1)',
+    'rgba(255, 99, 132, 1)',
+    'rgba(54, 162, 235, 1)',
+    'rgba(255, 206, 86, 1)',
+    'rgba(75, 192, 192, 1)',
+    'rgba(153, 102, 255, 1)',
+    'rgba(255, 159, 64, 1)'
+];
+    </script>
+    <script>
+    // Script 2: Inicialización de gráficas
+    // Gráfica de Matrícula
+const enrollmentCtx = document.getElementById('enrollmentChart').getContext('2d');
+const enrollmentChart = new Chart(enrollmentCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Administración', 'Enfermería', 'Medicina', 'Psicología', 'Ingeniería', 'Educación', 'Teología', 'Contaduría', 'Comunicación', 'Nutrición'],
+        datasets: [{
+            label: 'Alumnos de primer ingreso 2023',
+            data: [120, 95, 80, 110, 75, 60, 50, 70, 55, 65],
+            backgroundColor: chartColors,
+            borderColor: chartBorderColors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Distribución por Programa Académico'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Gráfica de Demografía
+const demographicCtx = document.getElementById('demographicChart').getContext('2d');
+const demographicChart = new Chart(demographicCtx, {
+    type: 'pie',
+    data: {
+        labels: ['Masculino', 'Femenino'],
+        datasets: [{
+            label: 'Distribución por género',
+            data: [45, 55],
+            backgroundColor: [chartColors[0], chartColors[2]],
+            borderColor: [chartBorderColors[0], chartBorderColors[2]],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Distribución por Género (Primer Semestre)'
+            }
+        }
+    }
+});
+
+// Gráfica de Países
+const countriesCtx = document.getElementById('countriesChart').getContext('2d');
+const countriesChart = new Chart(countriesCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['México', 'Colombia', 'Perú', 'Argentina', 'Estados Unidos', 'Brasil', 'Chile', 'Venezuela', 'España', 'Otros'],
+        datasets: [{
+            label: 'Estudiantes por país',
+            data: [65, 12, 8, 5, 4, 3, 2, 2, 1, 3],
+            backgroundColor: chartColors,
+            borderColor: chartBorderColors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: 'Distribución por País de Origen (Primer Semestre)'
+            }
+        }
+    }
+});
+
+// Gráfica Académica
+const academicCtx = document.getElementById('academicChart').getContext('2d');
+const academicChart = new Chart(academicCtx, {
+    type: 'line',
+    data: {
+        labels: ['Administración', 'Enfermería', 'Medicina', 'Psicología', 'Ingeniería', 'Educación', 'Teología', 'Contaduría', 'Comunicación', 'Nutrición'],
+        datasets: [{
+            label: 'Tasa de retención (%)',
+            data: [92, 88, 95, 90, 87, 91, 89, 86, 84, 92],
+            backgroundColor: 'rgba(84, 68, 239, 0.2)',
+            borderColor: 'rgba(84, 68, 239, 1)',
+            borderWidth: 2,
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Tasa de Retención por Programa (2023)'
+            }
+        },
+        scales: {
+            y: {
+                min: 70,
+                max: 100
+            }
+        }
+    }
+});
+
+// Función para crear gráficas de línea simple para los indicadores
+function createIndicatorChart(canvasId, data, color) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    return new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                data: data,
+                backgroundColor: `rgba(${color}, 0.2)`,
+                borderColor: `rgba(${color}, 1)`,
+                borderWidth: 2,
+                tension: 0.4,
+                fill: true,
+                pointRadius: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    enabled: true
+                }
+            },
+            scales: {
+                x: {
+                    display: false
+                },
+                y: {
+                    display: false
+                }
+            }
+        }
+    });
+}
+
+// Crear las gráficas de indicadores
+createIndicatorChart('retentionChart', [85, 86, 85, 87, 86, 88, 87, 88, 86, 87, 88, 87.5], '84, 68, 239');
+createIndicatorChart('graduationChart', [76, 77, 76, 78, 77, 78, 77.5, 78, 77, 78.5, 78, 78.2], '133, 142, 255');
+createIndicatorChart('satisfactionChart', [88, 89, 90, 91, 90, 91, 92, 91, 92, 91, 92, 92.1], '242, 205, 0');
+createIndicatorChart('teacherChart', [4.5, 4.5, 4.6, 4.5, 4.6, 4.6, 4.7, 4.6, 4.7, 4.6, 4.7, 4.7], '66, 0, 124');
+createIndicatorChart('researchChart', [30, 32, 34, 35, 38, 39, 40, 41, 42, 43, 44, 45], '175, 149, 113');
+createIndicatorChart('classroomChart', [84, 85, 85, 86, 85, 84, 83, 82, 83, 84, 84, 83.4], '210, 227, 248');
+    </script>
+    <script>
+    // Script 3: Manejadores de eventos para filtros
+    // Filtros para la gráfica de matrícula
+document.getElementById('enrollment-level-filter').addEventListener('change', function() {
+    // Simulación de datos filtrados
+    const level = this.value;
+    let newData;
+    
+    if (level === 'undergraduate') {
+        newData = [110, 85, 70, 100, 65, 50, 40, 60, 45, 55];
+    } else if (level === 'graduate') {
+        newData = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+    } else {
+        newData = [120, 95, 80, 110, 75, 60, 50, 70, 55, 65];
+    }
+    
+    enrollmentChart.data.datasets[0].data = newData;
+    enrollmentChart.update();
+});
+
+document.getElementById('enrollment-mode-filter').addEventListener('change', function() {
+    // Simulación de datos filtrados
+    const mode = this.value;
+    let newData;
+    
+    if (mode === 'presential') {
+        newData = [100, 80, 70, 90, 65, 50, 40, 60, 45, 55];
+    } else if (mode === 'online') {
+        newData = [20, 15, 10, 20, 10, 10, 10, 10, 10, 10];
+    } else {
+        newData = [120, 95, 80, 110, 75, 60, 50, 70, 55, 65];
+    }
+    
+    enrollmentChart.data.datasets[0].data = newData;
+    enrollmentChart.update();
+});
+
+// Filtros para la gráfica de demografía
+document.getElementById('demographic-semester-filter').addEventListener('change', function() {
+    const semester = this.value;
+    const type = document.getElementById('demographic-type-filter').value;
+    updateDemographicChart(semester, type);
+});
+
+document.getElementById('demographic-type-filter').addEventListener('change', function() {
+    const semester = document.getElementById('demographic-semester-filter').value;
+    const type = this.value;
+    updateDemographicChart(semester, type);
+});
+
+function updateDemographicChart(semester, type) {
+    let newLabels, newData, chartType, title;
+    
+    if (type === 'gender') {
+        newLabels = ['Masculino', 'Femenino'];
+        newData = (semester === '1') ? [45, 55] : [43, 57];
+        chartType = 'pie';
+        title = `Distribución por Género (${semester === '1' ? 'Primer' : 'Segundo'} Semestre)`;
+    } else if (type === 'age') {
+        newLabels = ['17-20', '21-25', '26-30', '31-40', '41+'];
+        newData = (semester === '1') ? [35, 40, 15, 7, 3] : [32, 42, 16, 8, 2];
+        chartType = 'doughnut';
+        title = `Distribución por Edad (${semester === '1' ? 'Primer' : 'Segundo'} Semestre)`;
+    } else if (type === 'state') {
+        newLabels = ['Nuevo León', 'CDMX', 'Jalisco', 'Chiapas', 'Otros'];
+        newData = (semester === '1') ? [40, 15, 10, 8, 27] : [38, 16, 11, 9, 26];
+        chartType = 'bar';
+        title = `Distribución por Estado (${semester === '1' ? 'Primer' : 'Segundo'} Semestre)`;
+    }
+    
+    // Actualizar datos
+    demographicChart.data.labels = newLabels;
+    demographicChart.data.datasets[0].data = newData;
+    demographicChart.data.datasets[0].label = `Distribución por ${type === 'gender' ? 'género' : type === 'age' ? 'edad' : 'estado'}`;
+    
+    // Actualizar tipo de gráfica y título
+    demographicChart.config.type = chartType;
+    demographicChart.options.plugins.title.text = title;
+    
+    demographicChart.update();
+}
+
+// Filtros para la gráfica de países
+document.getElementById('countries-semester-filter').addEventListener('change', function() {
+    const semester = this.value;
+    const view = document.getElementById('countries-view-filter').value;
+    updateCountriesChart(semester, view);
+});
+
+document.getElementById('countries-view-filter').addEventListener('change', function() {
+    const semester = document.getElementById('countries-semester-filter').value;
+    const view = this.value;
+    updateCountriesChart(semester, view);
+});
+
+function updateCountriesChart(semester, view) {
+    let newLabels, newData;
+    
+    if (view === 'top10') {
+        if (semester === '1') {
+            newLabels = ['México', 'Colombia', 'Perú', 'Argentina', 'Estados Unidos', 'Brasil', 'Chile', 'Venezuela', 'España', 'Ecuador'];
+            newData = [65, 12, 8, 5, 4, 3, 2, 2, 1, 1];
+        } else {
+            newLabels = ['México', 'Colombia', 'Perú', 'Argentina', 'Brasil', 'Estados Unidos', 'Chile', 'Venezuela', 'Ecuador', 'España'];
+            newData = [63, 13, 9, 6, 4, 3, 2, 2, 1, 1];
+        }
+    } else {
+        if (semester === '1') {
+            newLabels = ['México', 'Colombia', 'Perú', 'Argentina', 'Estados Unidos', 'Brasil', 'Chile', 'Venezuela', 'España', 'Otros'];
+            newData = [65, 12, 8, 5, 4, 3, 2, 2, 1, 3];
+        } else {
+            newLabels = ['México', 'Colombia', 'Perú', 'Argentina', 'Brasil', 'Estados Unidos', 'Chile', 'Venezuela', 'Otros'];
+            newData = [63, 13, 9, 6, 4, 3, 2, 2, 3];
+        }
+    }
+    
+    countriesChart.data.labels = newLabels;
+    countriesChart.data.datasets[0].data = newData;
+    countriesChart.options.plugins.title.text = `Distribución por País de Origen (${semester === '1' ? 'Primer' : 'Segundo'} Semestre)`;
+    countriesChart.update();
+}
+
+// Filtros para la gráfica académica
+document.getElementById('academic-indicator-filter').addEventListener('change', function() {
+    const indicator = this.value;
+    const year = document.getElementById('academic-year-filter').value;
+    updateAcademicChart(indicator, year);
+});
+
+document.getElementById('academic-year-filter').addEventListener('change', function() {
+    const indicator = document.getElementById('academic-indicator-filter').value;
+    const year = this.value;
+    updateAcademicChart(indicator, year);
+});
+
+function updateAcademicChart(indicator, year) {
+    let newData, label, title, min, max;
+    
+    if (indicator === 'retention') {
+        if (year === '2023') {
+            newData = [92, 88, 95, 90, 87, 91, 89, 86, 84, 92];
+        } else if (year === '2022') {
+            newData = [90, 87, 94, 89, 86, 90, 88, 85, 83, 91];
+        } else {
+            newData = [89, 86, 93, 88, 85, 89, 87, 84, 82, 90];
+        }
+        label = 'Tasa de retención (%)';
+        title = `Tasa de Retención por Programa (${year})`;
+        min = 70;
+        max = 100;
+    } else if (indicator === 'graduation') {
+        if (year === '2023') {
+            newData = [82, 76, 90, 85, 78, 80, 79, 75, 74, 81];
+        } else if (year === '2022') {
+            newData = [80, 75, 89, 84, 77, 79, 78, 74, 73, 80];
+        } else {
+            newData = [79, 74, 88, 83, 76, 78, 77, 73, 72, 79];
+        }
+        label = 'Tasa de graduación (%)';
+        title = `Tasa de Graduación por Programa (${year})`;
+        min = 70;
+        max = 100;
+    } else {
+        if (year === '2023') {
+            newData = [91, 93, 90, 92, 88, 89, 87, 88, 90, 94];
+        } else if (year === '2022') {
+            newData = [90, 92, 89, 91, 87, 88, 86, 87, 89, 93];
+        } else {
+            newData = [89, 91, 88, 90, 86, 87, 85, 86, 88, 92];
+        }
+        label = 'Satisfacción estudiantil (%)';
+        title = `Satisfacción Estudiantil por Programa (${year})`;
+        min = 70;
+        max = 100;
+    }
+    
+    academicChart.data.datasets[0].data = newData;
+    academicChart.data.datasets[0].label = label;
+    academicChart.options.plugins.title.text = title;
+    academicChart.options.scales.y.min = min;
+    academicChart.options.scales.y.max = max;
+    academicChart.update();
+}
+
+// Filtros para indicadores
+document.getElementById('indicator-year-filter').addEventListener('change', function() {
+    const year = this.value;
+    const type = document.getElementById('indicator-type-filter').value;
+    updateIndicators(year, type);
+});
+
+document.getElementById('indicator-type-filter').addEventListener('change', function() {
+    const year = document.getElementById('indicator-year-filter').value;
+    const type = this.value;
+    updateIndicators(year, type);
+});
+
+function updateIndicators(year, type) {
+    // Actualizar valores de indicadores según el año seleccionado
+    const indicatorValues = {
+        '2021': {
+            'retention': { value: '85.2%', change: '+1.7%', data: [83, 83.5, 84, 84.2, 84.5, 84.8, 84.9, 85, 85.1, 85.2, 85.2, 85.2] },
+            'graduation': { value: '75.8%', change: '+1.2%', data: [74, 74.3, 74.6, 74.9, 75, 75.2, 75.3, 75.5, 75.6, 75.7, 75.8, 75.8] },
+            'satisfaction': { value: '89.5%', change: '+2.1%', data: [86, 86.5, 87, 87.5, 88, 88.2, 88.6, 88.9, 89.2, 89.4, 89.5, 89.5] },
+            'teacher': { value: '4.4/5.0', change: '+0.1', data: [4.3, 4.3, 4.3, 4.3, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4] },
+            'research': { value: '32', change: '+8', data: [24, 25, 26, 27, 28, 29, 30, 30, 31, 31, 32, 32] },
+            'classroom': { value: '85.7%', change: '+1.3%', data: [84, 84.2, 84.5, 84.8, 85, 85.2, 85.3, 85.4, 85.5, 85.6, 85.7, 85.7] }
+        },
+        '2022': {
+            'retention': { value: '86.4%', change: '+1.2%', data: [85.2, 85.4, 85.6, 85.8, 86, 86.1, 86.2, 86.3, 86.3, 86.4, 86.4, 86.4] },
+            'graduation': { value: '77.1%', change: '+1.3%', data: [75.8, 76, 76.2, 76.4, 76.6, 76.7, 76.8, 76.9, 77, 77, 77.1, 77.1] },
+            'satisfaction': { value: '90.8%', change: '+1.3%', data: [89.5, 89.7, 89.9, 90, 90.2, 90.3, 90.4, 90.5, 90.6, 90.7, 90.8, 90.8] },
+            'teacher': { value: '4.6/5.0', change: '+0.2', data: [4.4, 4.4, 4.5, 4.5, 4.5, 4.5, 4.5, 4.6, 4.6, 4.6, 4.6, 4.6] },
+            'research': { value: '38', change: '+6', data: [32, 33, 34, 35, 35, 36, 36, 37, 37, 38, 38, 38] },
+            'classroom': { value: '84.5%', change: '-1.2%', data: [85.7, 85.5, 85.3, 85.1, 85, 84.8, 84.7, 84.6, 84.5, 84.5, 84.5, 84.5] }
+        },
+        '2023': {
+            'retention': { value: '87.5%', change: '+1.1%', data: [86.4, 86.5, 86.7, 86.9, 87, 87.1, 87.2, 87.3, 87.4, 87.4, 87.5, 87.5] },
+            'graduation': { value: '78.2%', change: '+1.1%', data: [77.1, 77.2, 77.4, 77.5, 77.7, 77.8, 77.9, 78, 78.1, 78.1, 78.2, 78.2] },
+            'satisfaction': { value: '92.1%', change: '+1.3%', data: [90.8, 91, 91.2, 91.3, 91.5, 91.6, 91.7, 91.8, 91.9, 92, 92.1, 92.1] },
+            'teacher': { value: '4.7/5.0', change: '+0.1', data: [4.6, 4.6, 4.6, 4.6, 4.6, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7] },
+            'research': { value: '45', change: '+7', data: [38, 39, 40, 41, 42, 42, 43, 43, 44, 44, 45, 45] },
+            'classroom': { value: '83.4%', change: '-1.1%', data: [84.5, 84.3, 84.1, 84, 83.8, 83.7, 83.6, 83.5, 83.5, 83.4, 83.4, 83.4] }
+        }
+    };
+
+    // Obtener todas las tarjetas de indicadores
+    const indicatorCards = document.querySelectorAll('.indicator-card');
+    
+    // Actualizar cada indicador según el año y tipo seleccionado
+    indicatorCards.forEach(card => {
+        const indicatorTitle = card.querySelector('h3').textContent.toLowerCase();
+        let indicatorType = '';
+        
+        // Determinar el tipo de indicador
+        if (indicatorTitle.includes('retención')) indicatorType = 'retention';
+        else if (indicatorTitle.includes('graduación')) indicatorType = 'graduation';
+        else if (indicatorTitle.includes('satisfacción')) indicatorType = 'satisfaction';
+        else if (indicatorTitle.includes('docente')) indicatorType = 'teacher';
+        else if (indicatorTitle.includes('investigativa')) indicatorType = 'research';
+        else if (indicatorTitle.includes('aulas')) indicatorType = 'classroom';
+        
+        // Mostrar u ocultar la tarjeta según el tipo seleccionado
+        if (type === 'all' || 
+            (type === 'academic' && (indicatorType === 'retention' || indicatorType === 'graduation' || indicatorType === 'satisfaction')) ||
+            (type === 'financial' && indicatorType === 'classroom') ||
+            (type === 'research' && indicatorType === 'research') ||
+            (type === 'infrastructure' && indicatorType === 'classroom')) {
+            
+            card.style.display = 'flex';
+            
+            // Actualizar valores
+            const valueElement = card.querySelector('.value');
+            const changeElement = card.querySelector('.change');
+            const chartCanvas = card.querySelector('canvas');
+            
+            if (indicatorValues[year] && indicatorValues[year][indicatorType]) {
+                const data = indicatorValues[year][indicatorType];
+                
+                // Actualizar valor y cambio
+                valueElement.textContent = data.value;
+                changeElement.textContent = data.change;
+                changeElement.className = 'change ' + (data.change.includes('+') ? 'positive' : 'negative');
+                
+                // Actualizar gráfico si existe
+                if (chartCanvas && chartCanvas.chart) {
+                    chartCanvas.chart.data.datasets[0].data = data.data;
+                    chartCanvas.chart.update();
+                }
+            }
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+function createIndicatorChartWithRef(canvasId, data, color) {
+    const ctx = document.getElementById(canvasId);
+    if (!ctx) return null;
+    
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                data: data,
+                backgroundColor: `rgba(${color}, 0.2)`,
+                borderColor: `rgba(${color}, 1)`,
+                borderWidth: 2,
+                tension: 0.4,
+                fill: true,
+                pointRadius: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2.5, // Ajustar la relación de aspecto para que quepa mejor
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    enabled: true,
+                    displayColors: false,
+                    callbacks: {
+                        title: function() {
+                            return '';
+                        },
+                        label: function(context) {
+                            return context.parsed.y;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    display: false,
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    display: false,
+                    grid: {
+                        display: false
+                    },
+                    min: Math.min(...data) * 0.95, // Ajusta el rango vertical para mostrar bien la tendencia
+                    max: Math.max(...data) * 1.05
+                }
+            },
+            elements: {
+                line: {
+                    tension: 0.4 // Hace la línea más suave
+                }
+            },
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 5,
+                    bottom: 5
+                }
+            }
+        }
+    });
+    
+    // Guardar referencia del gráfico en el canvas
+    ctx.chart = chart;
+    
+    return chart;
+}
+
+// Reemplazar las llamadas a createIndicatorChart con createIndicatorChartWithRef
+const retentionChart = createIndicatorChartWithRef('retentionChart', [85, 86, 85, 87, 86, 88, 87, 88, 86, 87, 88, 87.5], '84, 68, 239');
+const graduationChart = createIndicatorChartWithRef('graduationChart', [76, 77, 76, 78, 77, 78, 77.5, 78, 77, 78.5, 78, 78.2], '133, 142, 255');
+const satisfactionChart = createIndicatorChartWithRef('satisfactionChart', [88, 89, 90, 91, 90, 91, 92, 91, 92, 91, 92, 92.1], '242, 205, 0');
+const teacherChart = createIndicatorChartWithRef('teacherChart', [4.5, 4.5, 4.6, 4.5, 4.6, 4.6, 4.7, 4.6, 4.7, 4.6, 4.7, 4.7], '66, 0, 124');
+const researchChart = createIndicatorChartWithRef('researchChart', [30, 32, 34, 35, 38, 39, 40, 41, 42, 43, 44, 45], '175, 149, 113');
+const classroomChart = createIndicatorChartWithRef('classroomChart', [84, 85, 85, 86, 85, 84, 83, 82, 83, 84, 84, 83.4], '210, 227, 248');
+
+// Ajustar gráficos cuando cambia el tamaño de la ventana
+window.addEventListener('resize', function() {
+    // Redimensionar todos los gráficos de indicadores
+    const charts = [
+        retentionChart, 
+        graduationChart, 
+        satisfactionChart, 
+        teacherChart, 
+        researchChart, 
+        classroomChart
+    ];
+    
+    charts.forEach(chart => {
+        if (chart) {
+            chart.resize();
+            chart.update();
+        }
+    });
+});
+    </script>
+    
+    <script>
+        let lastScrollPosition = 0;
+        const header = document.querySelector('header');
+        const mainContent = document.querySelector('.main-content');
+        const scrollThreshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > lastScrollPosition && currentScroll > scrollThreshold) {
+                header.classList.add('hidden');
+                mainContent.classList.add('header-hidden');
+            } else if (currentScroll < lastScrollPosition) {
+                header.classList.remove('hidden');
+                mainContent.classList.remove('header-hidden');
+            }
+            
+            lastScrollPosition = currentScroll;
+        });
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
