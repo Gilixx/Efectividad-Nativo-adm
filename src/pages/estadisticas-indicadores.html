@@ -87,6 +87,11 @@
                                         <option value="undergraduate">Pregrado</option>
                                         <option value="graduate">Posgrado</option>
                                     </select>
+                                    <select id="enrollment-semester-filter">
+                                        <option value="all">Todos los semestres</option>
+                                        <option value="first">Primer semestre</option>
+                                        <option value="second">Segundo semestre</option>
+                                    </select>
                                     <select id="enrollment-mode-filter">
                                         <option value="all">Todas las modalidades</option>
                                         <option value="presential">Presencial</option>
@@ -355,523 +360,620 @@
         </div>
     </footer>
 
-    <script>
-    // Script 1: Configuración y colores
-    // Configurar las pestañas (tabs)
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabPanes = document.querySelectorAll('.tab-pane');
+   <script>
+    // PARTE 1: CONFIGURACIÓN Y DATOS INICIALES
 
-tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const tabId = button.getAttribute('data-tab');
-        
-        // Desactivar todas las pestañas
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabPanes.forEach(pane => pane.classList.remove('active'));
-        
-        // Activar la pestaña seleccionada
-        button.classList.add('active');
-        document.getElementById(`${tabId}-tab`).classList.add('active');
-        
-        // Actualizar el tamaño de las gráficas cuando se cambia de pestaña
-        window.dispatchEvent(new Event('resize'));
-    });
-});
+// Configuración global para todas las gráficas
+Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#5a5c69';
+Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+Chart.defaults.plugins.tooltip.padding = 10;
+Chart.defaults.plugins.tooltip.cornerRadius = 6;
+Chart.defaults.plugins.tooltip.titleFont = { size: 14, weight: 'bold' };
+Chart.defaults.plugins.tooltip.bodyFont = { size: 13 };
+Chart.defaults.plugins.tooltip.displayColors = true;
+Chart.defaults.plugins.tooltip.boxPadding = 6;
 
-// Colores para las gráficas
+// Colores consistentes para las gráficas
 const chartColors = [
-    'rgba(84, 68, 239, 0.8)',
-    'rgba(133, 142, 255, 0.8)',
-    'rgba(242, 205, 0, 0.8)',
-    'rgba(66, 0, 124, 0.8)',
-    'rgba(175, 149, 113, 0.8)',
-    'rgba(210, 227, 248, 0.8)',
-    'rgba(255, 99, 132, 0.8)',
-    'rgba(54, 162, 235, 0.8)',
-    'rgba(255, 206, 86, 0.8)',
-    'rgba(75, 192, 192, 0.8)',
-    'rgba(153, 102, 255, 0.8)',
-    'rgba(255, 159, 64, 0.8)'
+    'rgba(84, 68, 239, 0.8)',   // primary - azul principal
+    'rgba(133, 142, 255, 0.8)',  // secondary - azul secundario
+    'rgba(242, 205, 0, 0.8)',    // accent - amarillo
+    'rgba(66, 0, 124, 0.8)',     // dark-accent - morado oscuro
+    'rgba(175, 149, 113, 0.8)',  // neutral-accent - marrón
+    'rgba(210, 227, 248, 0.8)',  // light-accent - azul claro
+    'rgba(255, 99, 132, 0.8)',   // rojo
+    'rgba(54, 162, 235, 0.8)',   // azul
+    'rgba(255, 206, 86, 0.8)',   // amarillo
+    'rgba(75, 192, 192, 0.8)',   // turquesa
+    'rgba(153, 102, 255, 0.8)',  // púrpura
+    'rgba(255, 159, 64, 0.8)'    // naranja
 ];
 
 const chartBorderColors = [
-    'rgba(84, 68, 239, 1)',
-    'rgba(133, 142, 255, 1)',
-    'rgba(242, 205, 0, 1)',
-    'rgba(66, 0, 124, 1)',
-    'rgba(175, 149, 113, 1)',
-    'rgba(210, 227, 248, 1)',
-    'rgba(255, 99, 132, 1)',
-    'rgba(54, 162, 235, 1)',
-    'rgba(255, 206, 86, 1)',
-    'rgba(75, 192, 192, 1)',
-    'rgba(153, 102, 255, 1)',
-    'rgba(255, 159, 64, 1)'
+    'rgba(84, 68, 239, 1)',     // primary
+    'rgba(133, 142, 255, 1)',    // secondary
+    'rgba(242, 205, 0, 1)',      // accent
+    'rgba(66, 0, 124, 1)',       // dark-accent
+    'rgba(175, 149, 113, 1)',    // neutral-accent
+    'rgba(210, 227, 248, 1)',    // light-accent
+    'rgba(255, 99, 132, 1)',     // rojo
+    'rgba(54, 162, 235, 1)',     // azul
+    'rgba(255, 206, 86, 1)',     // amarillo
+    'rgba(75, 192, 192, 1)',     // turquesa
+    'rgba(153, 102, 255, 1)',    // púrpura
+    'rgba(255, 159, 64, 1)'      // naranja
 ];
-    </script>
-    <script>
-    // Script 2: Inicialización de gráficas
-    // Gráfica de Matrícula
-const enrollmentCtx = document.getElementById('enrollmentChart').getContext('2d');
-const enrollmentChart = new Chart(enrollmentCtx, {
-    type: 'bar',
-    data: {
-        labels: ['Administración', 'Enfermería', 'Medicina', 'Psicología', 'Ingeniería', 'Educación', 'Teología', 'Contaduría', 'Comunicación', 'Nutrición'],
-        datasets: [{
-            label: 'Alumnos de primer ingreso 2023',
-            data: [120, 95, 80, 110, 75, 60, 50, 70, 55, 65],
-            backgroundColor: chartColors,
-            borderColor: chartBorderColors,
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Distribución por Programa Académico'
-            }
+
+// Etiquetas para los meses, usado en varias gráficas
+const monthLabels = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+// Etiquetas para programas académicos
+const academicPrograms = [
+    'Administración', 
+    'Enfermería', 
+    'Medicina', 
+    'Psicología', 
+    'Ingeniería', 
+    'Educación', 
+    'Teología', 
+    'Contaduría', 
+    'Comunicación', 
+    'Nutrición'
+];
+
+// Datos de matrícula
+// Estos datos representan estudiantes de primer ingreso por programa académico
+const enrollmentData = {
+    // Todos los niveles
+    all: {
+        // Todos los semestres
+        all: {
+            all: [120, 95, 80, 110, 75, 60, 50, 70, 55, 65], // Todas las modalidades
+            presential: [100, 80, 70, 90, 65, 50, 40, 60, 45, 55], // Presencial
+            online: [20, 15, 10, 20, 10, 10, 10, 10, 10, 10] // En línea
         },
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+        // Primer semestre
+        first: {
+            all: [75, 55, 50, 70, 45, 35, 30, 40, 30, 40], // Todas las modalidades
+            presential: [60, 45, 45, 55, 40, 30, 25, 35, 25, 35], // Presencial
+            online: [15, 10, 5, 15, 5, 5, 5, 5, 5, 5] // En línea
+        },
+        // Segundo semestre
+        second: {
+            all: [45, 40, 30, 40, 30, 25, 20, 30, 25, 25], // Todas las modalidades
+            presential: [40, 35, 25, 35, 25, 20, 15, 25, 20, 20], // Presencial
+            online: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5] // En línea
+        }
+    },
+    // Pregrado
+    undergraduate: {
+        // Todos los semestres
+        all: {
+            all: [110, 85, 70, 100, 65, 50, 40, 60, 45, 55], // Todas las modalidades
+            presential: [95, 75, 60, 85, 60, 45, 35, 50, 40, 50], // Presencial
+            online: [15, 10, 10, 15, 5, 5, 5, 10, 5, 5] // En línea
+        },
+        // Primer semestre
+        first: {
+            all: [70, 50, 45, 65, 40, 30, 25, 35, 25, 35], // Todas las modalidades
+            presential: [60, 45, 40, 55, 35, 25, 20, 30, 20, 30], // Presencial
+            online: [10, 5, 5, 10, 5, 5, 5, 5, 5, 5] // En línea
+        },
+        // Segundo semestre
+        second: {
+            all: [40, 35, 25, 35, 25, 20, 15, 25, 20, 20], // Todas las modalidades
+            presential: [35, 30, 20, 30, 25, 20, 15, 20, 20, 20], // Presencial
+            online: [5, 5, 5, 5, 0, 0, 0, 5, 0, 0] // En línea
+        }
+    },
+    // Posgrado
+    graduate: {
+        // Todos los semestres
+        all: {
+            all: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], // Todas las modalidades
+            presential: [5, 5, 10, 5, 5, 5, 5, 10, 5, 5], // Presencial
+            online: [5, 5, 0, 5, 5, 5, 5, 0, 5, 5] // En línea
+        },
+        // Primer semestre
+        first: {
+            all: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5], // Todas las modalidades
+            presential: [3, 3, 5, 3, 3, 3, 3, 5, 3, 3], // Presencial
+            online: [2, 2, 0, 2, 2, 2, 2, 0, 2, 2] // En línea
+        },
+        // Segundo semestre
+        second: {
+            all: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5], // Todas las modalidades
+            presential: [2, 2, 5, 2, 2, 2, 2, 5, 2, 2], // Presencial
+            online: [3, 3, 0, 3, 3, 3, 3, 0, 3, 3] // En línea
         }
     }
-});
+};
 
-// Gráfica de Demografía
-const demographicCtx = document.getElementById('demographicChart').getContext('2d');
-const demographicChart = new Chart(demographicCtx, {
-    type: 'pie',
-    data: {
-        labels: ['Masculino', 'Femenino'],
-        datasets: [{
-            label: 'Distribución por género',
-            data: [45, 55],
-            backgroundColor: [chartColors[0], chartColors[2]],
-            borderColor: [chartBorderColors[0], chartBorderColors[2]],
-            borderWidth: 1
-        }]
+// Datos demográficos por semestre
+const demographicData = {
+    '1': { // Primer semestre
+        gender: {
+            labels: ['Masculino', 'Femenino'],
+            data: [45, 55]
+        },
+        age: {
+            labels: ['17-20', '21-25', '26-30', '31-40', '41+'],
+            data: [35, 40, 15, 7, 3]
+        },
+        state: {
+            labels: ['Nuevo León', 'CDMX', 'Jalisco', 'Chiapas', 'Otros'],
+            data: [40, 15, 10, 8, 27]
+        }
     },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                position: 'top',
+    '2': { // Segundo semestre
+        gender: {
+            labels: ['Masculino', 'Femenino'],
+            data: [43, 57]
+        },
+        age: {
+            labels: ['17-20', '21-25', '26-30', '31-40', '41+'],
+            data: [32, 42, 16, 8, 2]
+        },
+        state: {
+            labels: ['Nuevo León', 'CDMX', 'Jalisco', 'Chiapas', 'Otros'],
+            data: [38, 16, 11, 9, 26]
+        }
+    }
+};
+
+// Datos de países de origen por semestre
+const countriesData = {
+    '1': { // Primer semestre
+        all: {
+            labels: ['México', 'Colombia', 'Perú', 'Argentina', 'Estados Unidos', 'Brasil', 'Chile', 'Venezuela', 'España', 'Otros'],
+            data: [65, 12, 8, 5, 4, 3, 2, 2, 1, 3]
+        },
+        top10: {
+            labels: ['México', 'Colombia', 'Perú', 'Argentina', 'Estados Unidos', 'Brasil', 'Chile', 'Venezuela', 'España', 'Ecuador'],
+            data: [65, 12, 8, 5, 4, 3, 2, 2, 1, 1]
+        }
+    },
+    '2': { // Segundo semestre
+        all: {
+            labels: ['México', 'Colombia', 'Perú', 'Argentina', 'Brasil', 'Estados Unidos', 'Chile', 'Venezuela', 'Otros'],
+            data: [63, 13, 9, 6, 4, 3, 2, 2, 3]
+        },
+        top10: {
+            labels: ['México', 'Colombia', 'Perú', 'Argentina', 'Brasil', 'Estados Unidos', 'Chile', 'Venezuela', 'Ecuador', 'España'],
+            data: [63, 13, 9, 6, 4, 3, 2, 2, 1, 1]
+        }
+    }
+};
+
+// Datos académicos por año e indicador
+const academicData = {
+    '2021': {
+        retention: [89, 86, 93, 88, 85, 89, 87, 84, 82, 90],
+        graduation: [79, 74, 88, 83, 76, 78, 77, 73, 72, 79],
+        satisfaction: [89, 91, 88, 90, 86, 87, 85, 86, 88, 92]
+    },
+    '2022': {
+        retention: [90, 87, 94, 89, 86, 90, 88, 85, 83, 91],
+        graduation: [80, 75, 89, 84, 77, 79, 78, 74, 73, 80],
+        satisfaction: [90, 92, 89, 91, 87, 88, 86, 87, 89, 93]
+    },
+    '2023': {
+        retention: [92, 88, 95, 90, 87, 91, 89, 86, 84, 92],
+        graduation: [82, 76, 90, 85, 78, 80, 79, 75, 74, 81],
+        satisfaction: [91, 93, 90, 92, 88, 89, 87, 88, 90, 94]
+    }
+};
+
+// Indicadores académicos por año (para mostrar tendencias)
+const academicIndicators = {
+    '2021': {
+        retention: 85.2,
+        graduation: 75.8,
+        satisfaction: 89.5
+    },
+    '2022': {
+        retention: 86.4,
+        graduation: 77.1,
+        satisfaction: 90.8
+    },
+    '2023': {
+        retention: 87.5,
+        graduation: 78.2,
+        satisfaction: 92.1
+    }
+};
+
+// Configuración por defecto para las gráficas
+const defaultChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+        legend: {
+            position: 'top',
+            labels: {
+                padding: 10,
+                boxWidth: 15,
+                font: {
+                    size: 12
+                }
+            }
+        },
+        title: {
+            display: true,
+            font: {
+                size: 16,
+                weight: 'bold'
             },
+            padding: {
+                top: 10,
+                bottom: 20
+            }
+        }
+    },
+    scales: {
+        x: {
+            grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+            }
+        },
+        y: {
+            grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+            },
+            beginAtZero: true
+        }
+    },
+    animation: {
+        duration: 1000,
+        easing: 'easeOutQuart'
+    }
+};
+   </script>
+
+   <script>
+    // PARTE 2: FUNCIONES PARA INICIALIZAR Y ACTUALIZAR GRÁFICAS
+
+/**
+ * Inicializa la gráfica de matrícula.
+ * @returns {Chart} Instancia de la gráfica de matrícula
+ */
+function initEnrollmentChart() {
+    const enrollmentCtx = document.getElementById('enrollmentChart').getContext('2d');
+    if (!enrollmentCtx) return null;
+    
+    const options = {
+        ...defaultChartOptions,
+        plugins: {
+            ...defaultChartOptions.plugins,
             title: {
-                display: true,
+                ...defaultChartOptions.plugins.title,
+                text: 'Distribución por Programa Académico (2023)'
+            }
+        }
+    };
+    
+    const enrollmentChart = new Chart(enrollmentCtx, {
+        type: 'bar',
+        data: {
+            labels: academicPrograms,
+            datasets: [{
+                label: 'Alumnos de primer ingreso 2023',
+                data: enrollmentData.all.all.all,
+                backgroundColor: chartColors,
+                borderColor: chartBorderColors,
+                borderWidth: 1
+            }]
+        },
+        options: options
+    });
+    
+    return enrollmentChart;
+}
+
+/**
+ * Actualiza la gráfica de matrícula según los filtros seleccionados.
+ * @param {Chart} chart - Instancia de la gráfica de matrícula
+ * @param {string} level - Nivel académico ('all', 'undergraduate', 'graduate')
+ * @param {string} semester - Semestre ('all', 'first', 'second')
+ * @param {string} mode - Modalidad ('all', 'presential', 'online')
+ */
+function updateEnrollmentChart(chart, level, semester, mode) {
+    if (!chart) return;
+    
+    // Obtener los datos según los filtros seleccionados
+    const newData = enrollmentData[level][semester][mode];
+    
+    // Actualizar título según filtros
+    let titlePrefix = '';
+    if (level === 'undergraduate') {
+        titlePrefix += 'Pregrado: ';
+    } else if (level === 'graduate') {
+        titlePrefix += 'Posgrado: ';
+    }
+    
+    if (semester === 'first') {
+        titlePrefix += 'Primer Semestre - ';
+    } else if (semester === 'second') {
+        titlePrefix += 'Segundo Semestre - ';
+    }
+    
+    if (mode === 'presential') {
+        titlePrefix += 'Modalidad Presencial';
+    } else if (mode === 'online') {
+        titlePrefix += 'Modalidad En Línea';
+    } else if (titlePrefix) {
+        titlePrefix += 'Todas las Modalidades';
+    }
+    
+    const chartTitle = titlePrefix 
+        ? `${titlePrefix} (2023)`
+        : 'Distribución por Programa Académico (2023)';
+    
+    // Actualizar datos y título del gráfico
+    chart.data.datasets[0].data = newData;
+    chart.options.plugins.title.text = chartTitle;
+    chart.update();
+}
+
+/**
+ * Inicializa la gráfica demográfica.
+ * @returns {Chart} Instancia de la gráfica demográfica
+ */
+function initDemographicChart() {
+    const demographicCtx = document.getElementById('demographicChart').getContext('2d');
+    if (!demographicCtx) return null;
+    
+    const options = {
+        ...defaultChartOptions,
+        plugins: {
+            ...defaultChartOptions.plugins,
+            title: {
+                ...defaultChartOptions.plugins.title,
                 text: 'Distribución por Género (Primer Semestre)'
             }
         }
-    }
-});
-
-// Gráfica de Países
-const countriesCtx = document.getElementById('countriesChart').getContext('2d');
-const countriesChart = new Chart(countriesCtx, {
-    type: 'doughnut',
-    data: {
-        labels: ['México', 'Colombia', 'Perú', 'Argentina', 'Estados Unidos', 'Brasil', 'Chile', 'Venezuela', 'España', 'Otros'],
-        datasets: [{
-            label: 'Estudiantes por país',
-            data: [65, 12, 8, 5, 4, 3, 2, 2, 1, 3],
-            backgroundColor: chartColors,
-            borderColor: chartBorderColors,
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                position: 'right',
-            },
-            title: {
-                display: true,
-                text: 'Distribución por País de Origen (Primer Semestre)'
-            }
-        }
-    }
-});
-
-// Gráfica Académica
-const academicCtx = document.getElementById('academicChart').getContext('2d');
-const academicChart = new Chart(academicCtx, {
-    type: 'line',
-    data: {
-        labels: ['Administración', 'Enfermería', 'Medicina', 'Psicología', 'Ingeniería', 'Educación', 'Teología', 'Contaduría', 'Comunicación', 'Nutrición'],
-        datasets: [{
-            label: 'Tasa de retención (%)',
-            data: [92, 88, 95, 90, 87, 91, 89, 86, 84, 92],
-            backgroundColor: 'rgba(84, 68, 239, 0.2)',
-            borderColor: 'rgba(84, 68, 239, 1)',
-            borderWidth: 2,
-            tension: 0.4,
-            fill: true
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Tasa de Retención por Programa (2023)'
-            }
-        },
-        scales: {
-            y: {
-                min: 70,
-                max: 100
-            }
-        }
-    }
-});
-
-// Función para crear gráficas de línea simple para los indicadores
-function createIndicatorChart(canvasId, data, color) {
-    const ctx = document.getElementById(canvasId).getContext('2d');
-    return new Chart(ctx, {
-        type: 'line',
+    };
+    
+    const demographicChart = new Chart(demographicCtx, {
+        type: 'pie',
         data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            labels: demographicData['1'].gender.labels,
             datasets: [{
-                data: data,
-                backgroundColor: `rgba(${color}, 0.2)`,
-                borderColor: `rgba(${color}, 1)`,
-                borderWidth: 2,
-                tension: 0.4,
-                fill: true,
-                pointRadius: 0
+                label: 'Distribución por género',
+                data: demographicData['1'].gender.data,
+                backgroundColor: [chartColors[0], chartColors[2]],
+                borderColor: [chartBorderColors[0], chartBorderColors[2]],
+                borderWidth: 1
             }]
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    enabled: true
-                }
-            },
-            scales: {
-                x: {
-                    display: false
-                },
-                y: {
-                    display: false
-                }
-            }
-        }
+        options: options
     });
+    
+    return demographicChart;
 }
 
-// Crear las gráficas de indicadores
-createIndicatorChart('retentionChart', [85, 86, 85, 87, 86, 88, 87, 88, 86, 87, 88, 87.5], '84, 68, 239');
-createIndicatorChart('graduationChart', [76, 77, 76, 78, 77, 78, 77.5, 78, 77, 78.5, 78, 78.2], '133, 142, 255');
-createIndicatorChart('satisfactionChart', [88, 89, 90, 91, 90, 91, 92, 91, 92, 91, 92, 92.1], '242, 205, 0');
-createIndicatorChart('teacherChart', [4.5, 4.5, 4.6, 4.5, 4.6, 4.6, 4.7, 4.6, 4.7, 4.6, 4.7, 4.7], '66, 0, 124');
-createIndicatorChart('researchChart', [30, 32, 34, 35, 38, 39, 40, 41, 42, 43, 44, 45], '175, 149, 113');
-createIndicatorChart('classroomChart', [84, 85, 85, 86, 85, 84, 83, 82, 83, 84, 84, 83.4], '210, 227, 248');
-    </script>
-    <script>
-    // Script 3: Manejadores de eventos para filtros
-    // Filtros para la gráfica de matrícula
-document.getElementById('enrollment-level-filter').addEventListener('change', function() {
-    // Simulación de datos filtrados
-    const level = this.value;
-    let newData;
+/**
+ * Actualiza la gráfica demográfica según los filtros seleccionados.
+ * @param {Chart} chart - Instancia de la gráfica demográfica
+ * @param {string} semester - Semestre ('1', '2')
+ * @param {string} type - Tipo de datos demográficos ('gender', 'age', 'state')
+ */
+function updateDemographicChart(chart, semester, type) {
+    if (!chart || !demographicData[semester] || !demographicData[semester][type]) return;
     
-    if (level === 'undergraduate') {
-        newData = [110, 85, 70, 100, 65, 50, 40, 60, 45, 55];
-    } else if (level === 'graduate') {
-        newData = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
-    } else {
-        newData = [120, 95, 80, 110, 75, 60, 50, 70, 55, 65];
-    }
+    let chartType, title;
     
-    enrollmentChart.data.datasets[0].data = newData;
-    enrollmentChart.update();
-});
-
-document.getElementById('enrollment-mode-filter').addEventListener('change', function() {
-    // Simulación de datos filtrados
-    const mode = this.value;
-    let newData;
-    
-    if (mode === 'presential') {
-        newData = [100, 80, 70, 90, 65, 50, 40, 60, 45, 55];
-    } else if (mode === 'online') {
-        newData = [20, 15, 10, 20, 10, 10, 10, 10, 10, 10];
-    } else {
-        newData = [120, 95, 80, 110, 75, 60, 50, 70, 55, 65];
-    }
-    
-    enrollmentChart.data.datasets[0].data = newData;
-    enrollmentChart.update();
-});
-
-// Filtros para la gráfica de demografía
-document.getElementById('demographic-semester-filter').addEventListener('change', function() {
-    const semester = this.value;
-    const type = document.getElementById('demographic-type-filter').value;
-    updateDemographicChart(semester, type);
-});
-
-document.getElementById('demographic-type-filter').addEventListener('change', function() {
-    const semester = document.getElementById('demographic-semester-filter').value;
-    const type = this.value;
-    updateDemographicChart(semester, type);
-});
-
-function updateDemographicChart(semester, type) {
-    let newLabels, newData, chartType, title;
-    
+    // Determinar el tipo de gráfica y título según el tipo de datos
     if (type === 'gender') {
-        newLabels = ['Masculino', 'Femenino'];
-        newData = (semester === '1') ? [45, 55] : [43, 57];
         chartType = 'pie';
         title = `Distribución por Género (${semester === '1' ? 'Primer' : 'Segundo'} Semestre)`;
     } else if (type === 'age') {
-        newLabels = ['17-20', '21-25', '26-30', '31-40', '41+'];
-        newData = (semester === '1') ? [35, 40, 15, 7, 3] : [32, 42, 16, 8, 2];
         chartType = 'doughnut';
         title = `Distribución por Edad (${semester === '1' ? 'Primer' : 'Segundo'} Semestre)`;
     } else if (type === 'state') {
-        newLabels = ['Nuevo León', 'CDMX', 'Jalisco', 'Chiapas', 'Otros'];
-        newData = (semester === '1') ? [40, 15, 10, 8, 27] : [38, 16, 11, 9, 26];
         chartType = 'bar';
         title = `Distribución por Estado (${semester === '1' ? 'Primer' : 'Segundo'} Semestre)`;
     }
     
+    // Cambiar tipo de gráfica si es necesario
+    chart.config.type = chartType;
+    
     // Actualizar datos
-    demographicChart.data.labels = newLabels;
-    demographicChart.data.datasets[0].data = newData;
-    demographicChart.data.datasets[0].label = `Distribución por ${type === 'gender' ? 'género' : type === 'age' ? 'edad' : 'estado'}`;
+    chart.data.labels = demographicData[semester][type].labels;
+    chart.data.datasets[0].data = demographicData[semester][type].data;
+    chart.data.datasets[0].label = `Distribución por ${type === 'gender' ? 'género' : type === 'age' ? 'edad' : 'estado'}`;
     
-    // Actualizar tipo de gráfica y título
-    demographicChart.config.type = chartType;
-    demographicChart.options.plugins.title.text = title;
-    
-    demographicChart.update();
-}
-
-// Filtros para la gráfica de países
-document.getElementById('countries-semester-filter').addEventListener('change', function() {
-    const semester = this.value;
-    const view = document.getElementById('countries-view-filter').value;
-    updateCountriesChart(semester, view);
-});
-
-document.getElementById('countries-view-filter').addEventListener('change', function() {
-    const semester = document.getElementById('countries-semester-filter').value;
-    const view = this.value;
-    updateCountriesChart(semester, view);
-});
-
-function updateCountriesChart(semester, view) {
-    let newLabels, newData;
-    
-    if (view === 'top10') {
-        if (semester === '1') {
-            newLabels = ['México', 'Colombia', 'Perú', 'Argentina', 'Estados Unidos', 'Brasil', 'Chile', 'Venezuela', 'España', 'Ecuador'];
-            newData = [65, 12, 8, 5, 4, 3, 2, 2, 1, 1];
-        } else {
-            newLabels = ['México', 'Colombia', 'Perú', 'Argentina', 'Brasil', 'Estados Unidos', 'Chile', 'Venezuela', 'Ecuador', 'España'];
-            newData = [63, 13, 9, 6, 4, 3, 2, 2, 1, 1];
-        }
-    } else {
-        if (semester === '1') {
-            newLabels = ['México', 'Colombia', 'Perú', 'Argentina', 'Estados Unidos', 'Brasil', 'Chile', 'Venezuela', 'España', 'Otros'];
-            newData = [65, 12, 8, 5, 4, 3, 2, 2, 1, 3];
-        } else {
-            newLabels = ['México', 'Colombia', 'Perú', 'Argentina', 'Brasil', 'Estados Unidos', 'Chile', 'Venezuela', 'Otros'];
-            newData = [63, 13, 9, 6, 4, 3, 2, 2, 3];
-        }
+    // Ajustes según el tipo
+    if (type === 'gender') {
+        chart.data.datasets[0].backgroundColor = [chartColors[0], chartColors[2]];
+        chart.data.datasets[0].borderColor = [chartBorderColors[0], chartBorderColors[2]];
+    } else if (type === 'age') {
+        chart.data.datasets[0].backgroundColor = chartColors.slice(0, 5);
+        chart.data.datasets[0].borderColor = chartBorderColors.slice(0, 5);
+    } else if (type === 'state') {
+        chart.data.datasets[0].backgroundColor = chartColors.slice(0, 5);
+        chart.data.datasets[0].borderColor = chartBorderColors.slice(0, 5);
     }
     
-    countriesChart.data.labels = newLabels;
-    countriesChart.data.datasets[0].data = newData;
-    countriesChart.options.plugins.title.text = `Distribución por País de Origen (${semester === '1' ? 'Primer' : 'Segundo'} Semestre)`;
-    countriesChart.update();
-}
-
-// Filtros para la gráfica académica
-document.getElementById('academic-indicator-filter').addEventListener('change', function() {
-    const indicator = this.value;
-    const year = document.getElementById('academic-year-filter').value;
-    updateAcademicChart(indicator, year);
-});
-
-document.getElementById('academic-year-filter').addEventListener('change', function() {
-    const indicator = document.getElementById('academic-indicator-filter').value;
-    const year = this.value;
-    updateAcademicChart(indicator, year);
-});
-
-function updateAcademicChart(indicator, year) {
-    let newData, label, title, min, max;
+    // Actualizar título
+    chart.options.plugins.title.text = title;
     
-    if (indicator === 'retention') {
-        if (year === '2023') {
-            newData = [92, 88, 95, 90, 87, 91, 89, 86, 84, 92];
-        } else if (year === '2022') {
-            newData = [90, 87, 94, 89, 86, 90, 88, 85, 83, 91];
-        } else {
-            newData = [89, 86, 93, 88, 85, 89, 87, 84, 82, 90];
-        }
-        label = 'Tasa de retención (%)';
-        title = `Tasa de Retención por Programa (${year})`;
-        min = 70;
-        max = 100;
-    } else if (indicator === 'graduation') {
-        if (year === '2023') {
-            newData = [82, 76, 90, 85, 78, 80, 79, 75, 74, 81];
-        } else if (year === '2022') {
-            newData = [80, 75, 89, 84, 77, 79, 78, 74, 73, 80];
-        } else {
-            newData = [79, 74, 88, 83, 76, 78, 77, 73, 72, 79];
-        }
-        label = 'Tasa de graduación (%)';
-        title = `Tasa de Graduación por Programa (${year})`;
-        min = 70;
-        max = 100;
+    // Actualizar la leyenda según el tipo
+    if (type === 'gender' || type === 'age') {
+        chart.options.plugins.legend.position = 'right';
     } else {
-        if (year === '2023') {
-            newData = [91, 93, 90, 92, 88, 89, 87, 88, 90, 94];
-        } else if (year === '2022') {
-            newData = [90, 92, 89, 91, 87, 88, 86, 87, 89, 93];
-        } else {
-            newData = [89, 91, 88, 90, 86, 87, 85, 86, 88, 92];
-        }
-        label = 'Satisfacción estudiantil (%)';
-        title = `Satisfacción Estudiantil por Programa (${year})`;
-        min = 70;
-        max = 100;
+        chart.options.plugins.legend.position = 'top';
     }
     
-    academicChart.data.datasets[0].data = newData;
-    academicChart.data.datasets[0].label = label;
-    academicChart.options.plugins.title.text = title;
-    academicChart.options.scales.y.min = min;
-    academicChart.options.scales.y.max = max;
-    academicChart.update();
+    chart.update();
 }
 
-// Filtros para indicadores
-document.getElementById('indicator-year-filter').addEventListener('change', function() {
-    const year = this.value;
-    const type = document.getElementById('indicator-type-filter').value;
-    updateIndicators(year, type);
-});
-
-document.getElementById('indicator-type-filter').addEventListener('change', function() {
-    const year = document.getElementById('indicator-year-filter').value;
-    const type = this.value;
-    updateIndicators(year, type);
-});
-
-function updateIndicators(year, type) {
-    // Actualizar valores de indicadores según el año seleccionado
-    const indicatorValues = {
-        '2021': {
-            'retention': { value: '85.2%', change: '+1.7%', data: [83, 83.5, 84, 84.2, 84.5, 84.8, 84.9, 85, 85.1, 85.2, 85.2, 85.2] },
-            'graduation': { value: '75.8%', change: '+1.2%', data: [74, 74.3, 74.6, 74.9, 75, 75.2, 75.3, 75.5, 75.6, 75.7, 75.8, 75.8] },
-            'satisfaction': { value: '89.5%', change: '+2.1%', data: [86, 86.5, 87, 87.5, 88, 88.2, 88.6, 88.9, 89.2, 89.4, 89.5, 89.5] },
-            'teacher': { value: '4.4/5.0', change: '+0.1', data: [4.3, 4.3, 4.3, 4.3, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4] },
-            'research': { value: '32', change: '+8', data: [24, 25, 26, 27, 28, 29, 30, 30, 31, 31, 32, 32] },
-            'classroom': { value: '85.7%', change: '+1.3%', data: [84, 84.2, 84.5, 84.8, 85, 85.2, 85.3, 85.4, 85.5, 85.6, 85.7, 85.7] }
-        },
-        '2022': {
-            'retention': { value: '86.4%', change: '+1.2%', data: [85.2, 85.4, 85.6, 85.8, 86, 86.1, 86.2, 86.3, 86.3, 86.4, 86.4, 86.4] },
-            'graduation': { value: '77.1%', change: '+1.3%', data: [75.8, 76, 76.2, 76.4, 76.6, 76.7, 76.8, 76.9, 77, 77, 77.1, 77.1] },
-            'satisfaction': { value: '90.8%', change: '+1.3%', data: [89.5, 89.7, 89.9, 90, 90.2, 90.3, 90.4, 90.5, 90.6, 90.7, 90.8, 90.8] },
-            'teacher': { value: '4.6/5.0', change: '+0.2', data: [4.4, 4.4, 4.5, 4.5, 4.5, 4.5, 4.5, 4.6, 4.6, 4.6, 4.6, 4.6] },
-            'research': { value: '38', change: '+6', data: [32, 33, 34, 35, 35, 36, 36, 37, 37, 38, 38, 38] },
-            'classroom': { value: '84.5%', change: '-1.2%', data: [85.7, 85.5, 85.3, 85.1, 85, 84.8, 84.7, 84.6, 84.5, 84.5, 84.5, 84.5] }
-        },
-        '2023': {
-            'retention': { value: '87.5%', change: '+1.1%', data: [86.4, 86.5, 86.7, 86.9, 87, 87.1, 87.2, 87.3, 87.4, 87.4, 87.5, 87.5] },
-            'graduation': { value: '78.2%', change: '+1.1%', data: [77.1, 77.2, 77.4, 77.5, 77.7, 77.8, 77.9, 78, 78.1, 78.1, 78.2, 78.2] },
-            'satisfaction': { value: '92.1%', change: '+1.3%', data: [90.8, 91, 91.2, 91.3, 91.5, 91.6, 91.7, 91.8, 91.9, 92, 92.1, 92.1] },
-            'teacher': { value: '4.7/5.0', change: '+0.1', data: [4.6, 4.6, 4.6, 4.6, 4.6, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7] },
-            'research': { value: '45', change: '+7', data: [38, 39, 40, 41, 42, 42, 43, 43, 44, 44, 45, 45] },
-            'classroom': { value: '83.4%', change: '-1.1%', data: [84.5, 84.3, 84.1, 84, 83.8, 83.7, 83.6, 83.5, 83.5, 83.4, 83.4, 83.4] }
+/**
+ * Inicializa la gráfica de países.
+ * @returns {Chart} Instancia de la gráfica de países
+ */
+function initCountriesChart() {
+    const countriesCtx = document.getElementById('countriesChart').getContext('2d');
+    if (!countriesCtx) return null;
+    
+    const options = {
+        ...defaultChartOptions,
+        plugins: {
+            ...defaultChartOptions.plugins,
+            title: {
+                ...defaultChartOptions.plugins.title,
+                text: 'Distribución por País de Origen (Primer Semestre)'
+            },
+            legend: {
+                ...defaultChartOptions.plugins.legend,
+                position: 'right'
+            }
         }
     };
-
-    // Obtener todas las tarjetas de indicadores
-    const indicatorCards = document.querySelectorAll('.indicator-card');
     
-    // Actualizar cada indicador según el año y tipo seleccionado
-    indicatorCards.forEach(card => {
-        const indicatorTitle = card.querySelector('h3').textContent.toLowerCase();
-        let indicatorType = '';
-        
-        // Determinar el tipo de indicador
-        if (indicatorTitle.includes('retención')) indicatorType = 'retention';
-        else if (indicatorTitle.includes('graduación')) indicatorType = 'graduation';
-        else if (indicatorTitle.includes('satisfacción')) indicatorType = 'satisfaction';
-        else if (indicatorTitle.includes('docente')) indicatorType = 'teacher';
-        else if (indicatorTitle.includes('investigativa')) indicatorType = 'research';
-        else if (indicatorTitle.includes('aulas')) indicatorType = 'classroom';
-        
-        // Mostrar u ocultar la tarjeta según el tipo seleccionado
-        if (type === 'all' || 
-            (type === 'academic' && (indicatorType === 'retention' || indicatorType === 'graduation' || indicatorType === 'satisfaction')) ||
-            (type === 'financial' && indicatorType === 'classroom') ||
-            (type === 'research' && indicatorType === 'research') ||
-            (type === 'infrastructure' && indicatorType === 'classroom')) {
-            
-            card.style.display = 'flex';
-            
-            // Actualizar valores
-            const valueElement = card.querySelector('.value');
-            const changeElement = card.querySelector('.change');
-            const chartCanvas = card.querySelector('canvas');
-            
-            if (indicatorValues[year] && indicatorValues[year][indicatorType]) {
-                const data = indicatorValues[year][indicatorType];
-                
-                // Actualizar valor y cambio
-                valueElement.textContent = data.value;
-                changeElement.textContent = data.change;
-                changeElement.className = 'change ' + (data.change.includes('+') ? 'positive' : 'negative');
-                
-                // Actualizar gráfico si existe
-                if (chartCanvas && chartCanvas.chart) {
-                    chartCanvas.chart.data.datasets[0].data = data.data;
-                    chartCanvas.chart.update();
-                }
-            }
-        } else {
-            card.style.display = 'none';
-        }
+    const countriesChart = new Chart(countriesCtx, {
+        type: 'doughnut',
+        data: {
+            labels: countriesData['1'].all.labels,
+            datasets: [{
+                label: 'Estudiantes por país',
+                data: countriesData['1'].all.data,
+                backgroundColor: chartColors,
+                borderColor: chartBorderColors,
+                borderWidth: 1
+            }]
+        },
+        options: options
     });
+    
+    return countriesChart;
 }
 
-function createIndicatorChartWithRef(canvasId, data, color) {
+/**
+ * Actualiza la gráfica de países según los filtros seleccionados.
+ * @param {Chart} chart - Instancia de la gráfica de países
+ * @param {string} semester - Semestre ('1', '2')
+ * @param {string} view - Vista ('all', 'top10')
+ */
+function updateCountriesChart(chart, semester, view) {
+    if (!chart || !countriesData[semester] || !countriesData[semester][view]) return;
+    
+    // Actualizar datos
+    chart.data.labels = countriesData[semester][view].labels;
+    chart.data.datasets[0].data = countriesData[semester][view].data;
+    
+    // Actualizar título
+    chart.options.plugins.title.text = `Distribución por País de Origen (${semester === '1' ? 'Primer' : 'Segundo'} Semestre)`;
+    
+    chart.update();
+}
+
+/**
+ * Inicializa la gráfica académica.
+ * @returns {Chart} Instancia de la gráfica académica
+ */
+function initAcademicChart() {
+    const academicCtx = document.getElementById('academicChart').getContext('2d');
+    if (!academicCtx) return null;
+    
+    const options = {
+        ...defaultChartOptions,
+        plugins: {
+            ...defaultChartOptions.plugins,
+            title: {
+                ...defaultChartOptions.plugins.title,
+                text: 'Tasa de Retención por Programa (2023)'
+            }
+        },
+        scales: {
+            ...defaultChartOptions.scales,
+            y: {
+                ...defaultChartOptions.scales.y,
+                min: 70,
+                max: 100
+            }
+        }
+    };
+    
+    const academicChart = new Chart(academicCtx, {
+        type: 'line',
+        data: {
+            labels: academicPrograms,
+            datasets: [{
+                label: 'Tasa de retención (%)',
+                data: academicData['2023'].retention,
+                backgroundColor: 'rgba(84, 68, 239, 0.2)',
+                borderColor: 'rgba(84, 68, 239, 1)',
+                borderWidth: 2,
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: options
+    });
+    
+    return academicChart;
+}
+
+/**
+ * Actualiza la gráfica académica según los filtros seleccionados.
+ * @param {Chart} chart - Instancia de la gráfica académica
+ * @param {string} indicator - Indicador ('retention', 'graduation', 'satisfaction')
+ * @param {string} year - Año ('2021', '2022', '2023')
+ */
+function updateAcademicChart(chart, indicator, year) {
+    if (!chart || !academicData[year] || !academicData[year][indicator]) return;
+    
+    let label, title, min = 70, max = 100;
+    
+    // Configurar label y título según el indicador
+    if (indicator === 'retention') {
+        label = 'Tasa de retención (%)';
+        title = `Tasa de Retención por Programa (${year})`;
+    } else if (indicator === 'graduation') {
+        label = 'Tasa de graduación (%)';
+        title = `Tasa de Graduación por Programa (${year})`;
+    } else { // satisfaction
+        label = 'Satisfacción estudiantil (%)';
+        title = `Satisfacción Estudiantil por Programa (${year})`;
+    }
+    
+    // Actualizar datos
+    chart.data.datasets[0].data = academicData[year][indicator];
+    chart.data.datasets[0].label = label;
+    
+    // Actualizar título
+    chart.options.plugins.title.text = title;
+    
+    // Actualizar escala Y
+    chart.options.scales.y.min = min;
+    chart.options.scales.y.max = max;
+    
+    chart.update();
+}
+
+/**
+ * Crea una gráfica de línea simple para los indicadores.
+ * @param {string} canvasId - ID del elemento canvas
+ * @param {Array} data - Datos para la gráfica
+ * @param {string} color - Color RGB (formato: "R, G, B")
+ * @returns {Chart|null} Instancia de la gráfica o null si no se puede crear
+ */
+function createIndicatorChart(canvasId, data, color) {
     const ctx = document.getElementById(canvasId);
     if (!ctx) return null;
+    
+    // Destruir gráfica existente si hay una
+    if (ctx.chart) {
+        ctx.chart.destroy();
+    }
     
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            labels: monthLabels,
             datasets: [{
                 data: data,
                 backgroundColor: `rgba(${color}, 0.2)`,
@@ -885,7 +987,7 @@ function createIndicatorChartWithRef(canvasId, data, color) {
         options: {
             responsive: true,
             maintainAspectRatio: true,
-            aspectRatio: 2.5, // Ajustar la relación de aspecto para que quepa mejor
+            aspectRatio: 2.5,
             plugins: {
                 legend: {
                     display: false
@@ -915,13 +1017,13 @@ function createIndicatorChartWithRef(canvasId, data, color) {
                     grid: {
                         display: false
                     },
-                    min: Math.min(...data) * 0.95, // Ajusta el rango vertical para mostrar bien la tendencia
+                    min: Math.min(...data) * 0.95,
                     max: Math.max(...data) * 1.05
                 }
             },
             elements: {
                 line: {
-                    tension: 0.4 // Hace la línea más suave
+                    tension: 0.4
                 }
             },
             layout: {
@@ -935,40 +1037,733 @@ function createIndicatorChartWithRef(canvasId, data, color) {
         }
     });
     
-    // Guardar referencia del gráfico en el canvas
+    // Guardar referencia de la gráfica en el canvas
     ctx.chart = chart;
     
     return chart;
 }
 
-// Reemplazar las llamadas a createIndicatorChart con createIndicatorChartWithRef
-const retentionChart = createIndicatorChartWithRef('retentionChart', [85, 86, 85, 87, 86, 88, 87, 88, 86, 87, 88, 87.5], '84, 68, 239');
-const graduationChart = createIndicatorChartWithRef('graduationChart', [76, 77, 76, 78, 77, 78, 77.5, 78, 77, 78.5, 78, 78.2], '133, 142, 255');
-const satisfactionChart = createIndicatorChartWithRef('satisfactionChart', [88, 89, 90, 91, 90, 91, 92, 91, 92, 91, 92, 92.1], '242, 205, 0');
-const teacherChart = createIndicatorChartWithRef('teacherChart', [4.5, 4.5, 4.6, 4.5, 4.6, 4.6, 4.7, 4.6, 4.7, 4.6, 4.7, 4.7], '66, 0, 124');
-const researchChart = createIndicatorChartWithRef('researchChart', [30, 32, 34, 35, 38, 39, 40, 41, 42, 43, 44, 45], '175, 149, 113');
-const classroomChart = createIndicatorChartWithRef('classroomChart', [84, 85, 85, 86, 85, 84, 83, 82, 83, 84, 84, 83.4], '210, 227, 248');
-
-// Ajustar gráficos cuando cambia el tamaño de la ventana
-window.addEventListener('resize', function() {
-    // Redimensionar todos los gráficos de indicadores
-    const charts = [
-        retentionChart, 
-        graduationChart, 
-        satisfactionChart, 
-        teacherChart, 
-        researchChart, 
-        classroomChart
-    ];
+/**
+ * Inicializa todas las gráficas de indicadores.
+ * @param {string} year - Año para los indicadores ('2021', '2022', '2023')
+ */
+function initIndicatorCharts(year) {
+    // Datos simulados de tendencia mensual para cada indicador
+    const indicators = {
+        retention: {
+            2021: {
+                data: [83, 83.5, 84, 84.2, 84.5, 84.8, 84.9, 85, 85.1, 85.2, 85.2, 85.2],
+                color: '84, 68, 239'
+            },
+            2022: {
+                data: [85.2, 85.4, 85.6, 85.8, 86, 86.1, 86.2, 86.3, 86.3, 86.4, 86.4, 86.4],
+                color: '84, 68, 239'
+            },
+            2023: {
+                data: [86.4, 86.5, 86.7, 86.9, 87, 87.1, 87.2, 87.3, 87.4, 87.4, 87.5, 87.5],
+                color: '84, 68, 239'
+            }
+        },
+        graduation: {
+            2021: {
+                data: [74, 74.3, 74.6, 74.9, 75, 75.2, 75.3, 75.5, 75.6, 75.7, 75.8, 75.8],
+                color: '133, 142, 255'
+            },
+            2022: {
+                data: [75.8, 76, 76.2, 76.4, 76.6, 76.7, 76.8, 76.9, 77, 77, 77.1, 77.1],
+                color: '133, 142, 255'
+            },
+            2023: {
+                data: [77.1, 77.2, 77.4, 77.5, 77.7, 77.8, 77.9, 78, 78.1, 78.1, 78.2, 78.2],
+                color: '133, 142, 255'
+            }
+        },
+        satisfaction: {
+            2021: {
+                data: [86, 86.5, 87, 87.5, 88, 88.2, 88.6, 88.9, 89.2, 89.4, 89.5, 89.5],
+                color: '242, 205, 0'
+            },
+            2022: {
+                data: [89.5, 89.7, 89.9, 90, 90.2, 90.3, 90.4, 90.5, 90.6, 90.7, 90.8, 90.8],
+                color: '242, 205, 0'
+            },
+            2023: {
+                data: [90.8, 91, 91.2, 91.3, 91.5, 91.6, 91.7, 91.8, 91.9, 92, 92.1, 92.1],
+                color: '242, 205, 0'
+            }
+        },
+        research: {
+            2021: {
+                data: [24, 25, 26, 27, 28, 29, 30, 30, 31, 31, 32, 32],
+                color: '175, 149, 113'
+            },
+            2022: {
+                data: [32, 33, 34, 35, 35, 36, 36, 37, 37, 38, 38, 38],
+                color: '175, 149, 113'
+            },
+            2023: {
+                data: [38, 39, 40, 41, 42, 42, 43, 43, 44, 44, 45, 45],
+                color: '175, 149, 113'
+            }
+        },
+        classroom: {
+            2021: {
+                data: [84, 84.2, 84.5, 84.8, 85, 85.2, 85.3, 85.4, 85.5, 85.6, 85.7, 85.7],
+                color: '210, 227, 248'
+            },
+            2022: {
+                data: [85.7, 85.5, 85.3, 85.1, 85, 84.8, 84.7, 84.6, 84.5, 84.5, 84.5, 84.5],
+                color: '210, 227, 248'
+            },
+            2023: {
+                data: [84.5, 84.3, 84.1, 84, 83.8, 83.7, 83.6, 83.5, 83.5, 83.4, 83.4, 83.4],
+                color: '210, 227, 248'
+            }
+        },
+        teacher: {
+            2021: {
+                data: [4.3, 4.3, 4.3, 4.3, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4],
+                color: '66, 0, 124'
+            },
+            2022: {
+                data: [4.4, 4.4, 4.5, 4.5, 4.5, 4.5, 4.5, 4.6, 4.6, 4.6, 4.6, 4.6],
+                color: '66, 0, 124'
+            },
+            2023: {
+                data: [4.6, 4.6, 4.6, 4.6, 4.6, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7],
+                color: '66, 0, 124'
+            }
+        }
+    };
     
-    charts.forEach(chart => {
-        if (chart) {
-            chart.resize();
-            chart.update();
+    // Crear gráficas para cada indicador
+    for (const indicator in indicators) {
+        if (indicators.hasOwnProperty(indicator) && indicators[indicator][year]) {
+            createIndicatorChart(
+                `${indicator}Chart`,
+                indicators[indicator][year].data,
+                indicators[indicator][year].color
+            );
+        }
+    }
+}
+
+/**
+ * Actualiza los valores y gráficas de todos los indicadores según el año seleccionado.
+ * @param {string} year - Año seleccionado ('2021', '2022', '2023')
+ * @param {string} type - Tipo de indicador ('all', 'academic', 'research', 'infrastructure', 'financial')
+ */
+ function updateIndicators(year, type) {
+    // Mapeo de indicadores con sus valores según el año
+    const indicatorValues = {
+        '2021': {
+            'retention': { value: '85.2%', change: '+1.7%', data: [83, 83.5, 84, 84.2, 84.5, 84.8, 84.9, 85, 85.1, 85.2, 85.2, 85.2] },
+            'graduation': { value: '75.8%', change: '+1.2%', data: [74, 74.3, 74.6, 74.9, 75, 75.2, 75.3, 75.5, 75.6, 75.7, 75.8, 75.8] },
+            'satisfaction': { value: '89.5%', change: '+2.1%', data: [86, 86.5, 87, 87.5, 88, 88.2, 88.6, 88.9, 89.2, 89.4, 89.5, 89.5] },
+            'teacher': { value: '4.4/5.0', change: '+0.1', data: [4.3, 4.3, 4.3, 4.3, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4] },
+            'research': { value: '32', change: '+8', data: [24, 25, 26, 27, 28, 29, 30, 30, 31, 31, 32, 32] },
+            'classroom': { value: '85.7%', change: '+1.3%', data: [84, 84.2, 84.5, 84.8, 85, 85.2, 85.3, 85.4, 85.5, 85.6, 85.7, 85.7] }
+        },
+        '2022': {
+            'retention': { value: '86.4%', change: '+1.2%', data: [85.2, 85.4, 85.6, 85.8, 86, 86.1, 86.2, 86.3, 86.3, 86.4, 86.4, 86.4] },
+            'graduation': { value: '77.1%', change: '+1.3%', data: [75.8, 76, 76.2, 76.4, 76.6, 76.7, 76.8, 76.9, 77, 77, 77.1, 77.1] },
+            'satisfaction': { value: '90.8%', change: '+1.3%', data: [89.5, 89.7, 89.9, 90, 90.2, 90.3, 90.4, 90.5, 90.6, 90.7, 90.8, 90.8] },
+            'teacher': { value: '4.6/5.0', change: '+0.2', data: [4.4, 4.4, 4.5, 4.5, 4.5, 4.5, 4.5, 4.6, 4.6, 4.6, 4.6, 4.6] },
+            'research': { value: '38', change: '+6', data: [32, 33, 34, 35, 35, 36, 36, 37, 37, 38, 38, 38] },
+            'classroom': { value: '84.5%', change: '-1.2%', data: [85.7, 85.5, 85.3, 85.1, 85, 84.8, 84.7, 84.6, 84.5, 84.5, 84.5, 84.5] }
+        },
+        '2023': {
+            'retention': { value: '87.5%', change: '+1.1%', data: [86.4, 86.5, 86.7, 86.9, 87, 87.1, 87.2, 87.3, 87.4, 87.4, 87.5, 87.5] },
+            'graduation': { value: '78.2%', change: '+1.1%', data: [77.1, 77.2, 77.4, 77.5, 77.7, 77.8, 77.9, 78, 78.1, 78.1, 78.2, 78.2] },
+            'satisfaction': { value: '92.1%', change: '+1.3%', data: [90.8, 91, 91.2, 91.3, 91.5, 91.6, 91.7, 91.8, 91.9, 92, 92.1, 92.1] },
+            'teacher': { value: '4.7/5.0', change: '+0.1', data: [4.6, 4.6, 4.6, 4.6, 4.6, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7] },
+            'research': { value: '45', change: '+7', data: [38, 39, 40, 41, 42, 42, 43, 43, 44, 44, 45, 45] },
+            'classroom': { value: '83.4%', change: '-1.1%', data: [84.5, 84.3, 84.1, 84, 83.8, 83.7, 83.6, 83.5, 83.5, 83.4, 83.4, 83.4] }
+        }
+    };
+
+    // Tipo de indicador por categoría
+    const indicatorTypes = {
+        'academic': ['retention', 'graduation', 'satisfaction'],
+        'research': ['research'],
+        'infrastructure': ['classroom'],
+        'financial': ['teacher']
+    };
+
+    // Obtener todas las tarjetas de indicadores
+    const indicatorCards = document.querySelectorAll('.indicator-card');
+    
+    // PRIMERO: Eliminar TODOS los mensajes de error existentes
+    const existingMessages = document.querySelectorAll('.no-indicators');
+    existingMessages.forEach(message => message.remove());
+    
+    // Actualizar cada indicador según el año y tipo seleccionado
+    indicatorCards.forEach(card => {
+        const indicatorTitle = card.querySelector('h3').textContent.toLowerCase();
+        let indicatorType = '';
+        
+        // Determinar el tipo de indicador
+        if (indicatorTitle.includes('retención')) indicatorType = 'retention';
+        else if (indicatorTitle.includes('graduación')) indicatorType = 'graduation';
+        else if (indicatorTitle.includes('satisfacción')) indicatorType = 'satisfaction';
+        else if (indicatorTitle.includes('docente')) indicatorType = 'teacher';
+        else if (indicatorTitle.includes('investigativa')) indicatorType = 'research';
+        else if (indicatorTitle.includes('aulas') || indicatorTitle.includes('ocupación')) indicatorType = 'classroom';
+        
+        // Mostrar u ocultar la tarjeta según el tipo seleccionado
+        let shouldShow = false;
+        
+        if (type === 'all') {
+            shouldShow = true;
+        } else if (type === 'infrastructure' && indicatorType === 'classroom') {
+            // Caso especial para infraestructura, asegurando que 'classroom' (ocupación de aulas) se muestre
+            shouldShow = true;
+        } else {
+            shouldShow = indicatorTypes[type] && indicatorTypes[type].includes(indicatorType);
+        }
+        
+        if (shouldShow) {
+            card.style.display = 'flex';
+            
+            // Actualizar valores
+            const valueElement = card.querySelector('.value');
+            const changeElement = card.querySelector('.change');
+            const chartCanvas = card.querySelector('canvas');
+            
+            if (indicatorValues[year] && indicatorValues[year][indicatorType]) {
+                const data = indicatorValues[year][indicatorType];
+                
+                // Actualizar valor y cambio
+                if (valueElement) valueElement.textContent = data.value;
+                if (changeElement) {
+                    changeElement.textContent = data.change;
+                    changeElement.className = 'change ' + (data.change.includes('+') ? 'positive' : 'negative');
+                }
+                
+                // Actualizar gráfico si existe
+                if (chartCanvas && chartCanvas.id) {
+                    const color = indicatorType === 'retention' ? '84, 68, 239' :
+                                  indicatorType === 'graduation' ? '133, 142, 255' :
+                                  indicatorType === 'satisfaction' ? '242, 205, 0' :
+                                  indicatorType === 'teacher' ? '66, 0, 124' :
+                                  indicatorType === 'research' ? '175, 149, 113' :
+                                  '210, 227, 248';
+                    
+                    createIndicatorChart(chartCanvas.id, data.data, color);
+                }
+            }
+        } else {
+            card.style.display = 'none';
         }
     });
+    
+    // Verificar si hay indicadores visibles después del filtrado
+    const visibleCards = Array.from(document.querySelectorAll('.indicator-card')).filter(card => 
+        card.style.display === 'flex'
+    );
+    const indicatorsGrid = document.querySelector('.indicators-grid');
+    
+    // Si no hay tarjetas visibles, mostrar un mensaje
+    if (visibleCards.length === 0 && indicatorsGrid) {
+        // Asegurarnos de que no exista un mensaje previo
+        if (!document.querySelector('.no-indicators')) {
+            const noDataMessage = document.createElement('div');
+            noDataMessage.className = 'no-indicators';
+            noDataMessage.innerHTML = `
+                <i class="fas fa-info-circle"></i>
+                <p>No hay indicadores disponibles para la categoría "${type}" en el año ${year}.</p>
+            `;
+            indicatorsGrid.appendChild(noDataMessage);
+        }
+    }
+}
+   </script>
+
+   <script>
+    // PARTE 3: CONFIGURACIÓN DEL UI, EVENTOS E INICIALIZACIÓN
+
+/**
+ * Configura las pestañas (tabs) de la sección de estadísticas.
+ * Maneja la alternancia entre las diferentes pestañas.
+ */
+function setupTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.getAttribute('data-tab');
+            
+            // Desactivar todas las pestañas
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            
+            // Activar la pestaña seleccionada
+            button.classList.add('active');
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+            
+            // Actualizar el tamaño de las gráficas cuando se cambia de pestaña
+            window.dispatchEvent(new Event('resize'));
+        });
+    });
+}
+
+/**
+ * Configura los filtros para la gráfica de matrícula.
+ * @param {Chart} enrollmentChart - Instancia de la gráfica de matrícula
+ */
+function setupEnrollmentFilters(enrollmentChart) {
+    const levelFilter = document.getElementById('enrollment-level-filter');
+    const semesterFilter = document.getElementById('enrollment-semester-filter');
+    const modeFilter = document.getElementById('enrollment-mode-filter');
+    
+    if (levelFilter && semesterFilter && modeFilter) {
+        // Event listener para cada filtro
+        [levelFilter, semesterFilter, modeFilter].forEach(filter => {
+            filter.addEventListener('change', () => {
+                updateEnrollmentChart(
+                    enrollmentChart,
+                    levelFilter.value,
+                    semesterFilter.value,
+                    modeFilter.value
+                );
+            });
+        });
+    }
+}
+
+/**
+ * Configura los filtros para la gráfica demográfica.
+ * @param {Chart} demographicChart - Instancia de la gráfica demográfica
+ */
+function setupDemographicFilters(demographicChart) {
+    const semesterFilter = document.getElementById('demographic-semester-filter');
+    const typeFilter = document.getElementById('demographic-type-filter');
+    
+    if (semesterFilter && typeFilter) {
+        // Event listener para cada filtro
+        [semesterFilter, typeFilter].forEach(filter => {
+            filter.addEventListener('change', () => {
+                updateDemographicChart(
+                    demographicChart,
+                    semesterFilter.value,
+                    typeFilter.value
+                );
+            });
+        });
+    }
+}
+
+/**
+ * Configura los filtros para la gráfica de países.
+ * @param {Chart} countriesChart - Instancia de la gráfica de países
+ */
+function setupCountriesFilters(countriesChart) {
+    const semesterFilter = document.getElementById('countries-semester-filter');
+    const viewFilter = document.getElementById('countries-view-filter');
+    
+    if (semesterFilter && viewFilter) {
+        // Event listener para cada filtro
+        [semesterFilter, viewFilter].forEach(filter => {
+            filter.addEventListener('change', () => {
+                updateCountriesChart(
+                    countriesChart,
+                    semesterFilter.value,
+                    viewFilter.value
+                );
+            });
+        });
+    }
+}
+
+/**
+ * Configura los filtros para la gráfica académica.
+ * @param {Chart} academicChart - Instancia de la gráfica académica
+ */
+function setupAcademicFilters(academicChart) {
+    const indicatorFilter = document.getElementById('academic-indicator-filter');
+    const yearFilter = document.getElementById('academic-year-filter');
+    
+    if (indicatorFilter && yearFilter) {
+        // Event listener para cada filtro
+        [indicatorFilter, yearFilter].forEach(filter => {
+            filter.addEventListener('change', () => {
+                updateAcademicChart(
+                    academicChart,
+                    indicatorFilter.value,
+                    yearFilter.value
+                );
+            });
+        });
+    }
+}
+
+/**
+ * Configura los filtros para los indicadores.
+ */
+function setupIndicatorFilters() {
+    const yearFilter = document.getElementById('indicator-year-filter');
+    const typeFilter = document.getElementById('indicator-type-filter');
+    
+    if (yearFilter && typeFilter) {
+        // Event listener para el filtro de año
+        yearFilter.addEventListener('change', function() {
+            updateIndicators(this.value, typeFilter.value);
+        });
+        
+        // Event listener para el filtro de tipo
+        typeFilter.addEventListener('change', function() {
+            updateIndicators(yearFilter.value, this.value);
+        });
+        
+        // Inicializar con valores por defecto
+        updateIndicators(yearFilter.value, typeFilter.value);
+    }
+}
+
+/**
+ * Ajusta el tamaño de las gráficas cuando cambia el tamaño de la ventana.
+ * Esto asegura que las gráficas se redimensionen correctamente.
+ */
+function setupResizeListener() {
+    window.addEventListener('resize', function() {
+        const chartCanvases = document.querySelectorAll('canvas');
+        chartCanvases.forEach(canvas => {
+            if (canvas.chart) {
+                canvas.chart.resize();
+                canvas.chart.update('none'); // Modo 'none' para una actualización más rápida
+            }
+        });
+    });
+}
+
+/**
+ * Añade animaciones de entrada para elementos de la página.
+ * Crea un efecto visual atractivo al cargar la página.
+ */
+function setupAnimations() {
+    // Añadir clases de animación a elementos
+    const animateElements = [
+        { selector: '.chart-container', delay: 100 },
+        { selector: '.indicator-card', delay: 100, staggered: true },
+        { selector: '.section-title', delay: 50 },
+        { selector: '.content-section', delay: 150 }
+    ];
+    
+    animateElements.forEach(item => {
+        const elements = document.querySelectorAll(item.selector);
+        
+        elements.forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `opacity 0.5s ease, transform 0.5s ease`;
+            
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, item.staggered ? (item.delay * index) : item.delay);
+        });
+    });
+}
+
+/**
+ * Inicializa todas las gráficas y configuraciones de la página de estadísticas.
+ * Esta es la función principal que debe llamarse cuando el DOM esté listo.
+ */
+function initStatistics() {
+    // Configurar pestañas
+    setupTabs();
+    
+    // Inicializar gráficas principales
+    const enrollmentChart = initEnrollmentChart();
+    const demographicChart = initDemographicChart();
+    const countriesChart = initCountriesChart();
+    const academicChart = initAcademicChart();
+    
+    // Configurar filtros para las gráficas
+    setupEnrollmentFilters(enrollmentChart);
+    setupDemographicFilters(demographicChart);
+    setupCountriesFilters(countriesChart);
+    setupAcademicFilters(academicChart);
+    
+    // Inicializar gráficas de indicadores (usando el año actual por defecto)
+    const defaultYear = document.getElementById('indicator-year-filter') ? 
+                       document.getElementById('indicator-year-filter').value : '2023';
+    initIndicatorCharts(defaultYear);
+    
+    // Configurar filtros para indicadores
+    setupIndicatorFilters();
+    
+    // Configurar listener para redimensionamiento
+    setupResizeListener();
+    
+    // Añadir animaciones
+    setupAnimations();
+    
+    // Opcional: Agregar más interactividad a las tarjetas de indicadores
+    setupIndicatorCardInteractions();
+}
+
+/**
+ * Añade interacciones adicionales a las tarjetas de indicadores.
+ * Esto incluye efectos hover y funcionalidad de clic para mostrar más detalles.
+ */
+function setupIndicatorCardInteractions() {
+    const indicatorCards = document.querySelectorAll('.indicator-card');
+    
+    indicatorCards.forEach(card => {
+        // Efecto hover mejorado
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+            this.style.boxShadow = '0 12px 20px rgba(0, 0, 0, 0.1)';
+            
+            // Animar el icono
+            const icon = this.querySelector('.indicator-icon');
+            if (icon) {
+                icon.style.transform = 'scale(1.1)';
+                icon.style.transition = 'transform 0.3s ease';
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+            
+            // Restaurar el icono
+            const icon = this.querySelector('.indicator-icon');
+            if (icon) {
+                icon.style.transform = '';
+            }
+        });
+        
+        // Opcional: Añadir funcionalidad para mostrar detalles al hacer clic
+        card.addEventListener('click', function() {
+            // Aquí podrías añadir código para mostrar un modal con más detalles
+            // sobre el indicador específico
+            
+            // Por ejemplo:
+            // const indicatorId = this.getAttribute('data-id');
+            // const yearSelected = document.getElementById('indicator-year-filter').value;
+            // showIndicatorDetails(indicatorId, yearSelected);
+        });
+    });
+}
+
+/**
+ * Añade soporte para dispositivos táctiles.
+ * Mejora la experiencia en dispositivos móviles y tabletas.
+ */
+function setupTouchSupport() {
+    if ('ontouchstart' in window) {
+        // Añadir clase especial para dispositivos táctiles
+        document.body.classList.add('touch-device');
+        
+        // Configurar evento touch para tarjetas
+        const cards = document.querySelectorAll('.indicator-card');
+        cards.forEach(card => {
+            card.addEventListener('touchstart', function() {
+                this.classList.add('touched');
+            });
+            
+            card.addEventListener('touchend', function() {
+                this.classList.remove('touched');
+                // Aquí podrías añadir código para manejar el toque
+            });
+        });
+    }
+}
+
+/**
+ * Función para exportar datos de gráficas a CSV.
+ * Permite a los usuarios descargar los datos para su propio análisis.
+ * @param {string} chartId - ID de la gráfica cuyos datos se quieren exportar
+ */
+function exportChartDataToCsv(chartId) {
+    const chart = document.getElementById(chartId).chart;
+    if (!chart) return;
+    
+    const labels = chart.data.labels;
+    const datasets = chart.data.datasets;
+    
+    // Crear encabezados
+    let csvContent = "data:text/csv;charset=utf-8,Categoría";
+    datasets.forEach(dataset => {
+        csvContent += "," + (dataset.label || "Serie");
+    });
+    csvContent += "\r\n";
+    
+    // Agregar datos
+    labels.forEach((label, i) => {
+        csvContent += label;
+        datasets.forEach(dataset => {
+            csvContent += "," + dataset.data[i];
+        });
+        csvContent += "\r\n";
+    });
+    
+    // Crear enlace de descarga
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `datos_${chartId}_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    
+    // Iniciar descarga
+    link.click();
+    
+    // Limpiar
+    document.body.removeChild(link);
+}
+
+/**
+ * Función para mostrar mensajes de carga o error.
+ * @param {string} elementId - ID del elemento donde mostrar el mensaje
+ * @param {string} message - Mensaje a mostrar
+ * @param {string} type - Tipo de mensaje ('loading', 'error', 'success')
+ */
+function showMessage(elementId, message, type = 'loading') {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    // Crear contenedor de mensaje si no existe
+    let messageContainer = element.querySelector('.message-container');
+    if (!messageContainer) {
+        messageContainer = document.createElement('div');
+        messageContainer.className = 'message-container';
+        element.appendChild(messageContainer);
+    }
+    
+    // Configurar clase y contenido según el tipo
+    messageContainer.className = `message-container ${type}`;
+    
+    if (type === 'loading') {
+        messageContainer.innerHTML = `
+            <div class="spinner"></div>
+            <p>${message}</p>
+        `;
+    } else {
+        messageContainer.innerHTML = `
+            <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i>
+            <p>${message}</p>
+        `;
+        
+        // Auto-ocultar mensajes que no son de carga
+        setTimeout(() => {
+            messageContainer.style.opacity = '0';
+            setTimeout(() => {
+                if (messageContainer.parentNode) {
+                    messageContainer.parentNode.removeChild(messageContainer);
+                }
+            }, 500);
+        }, 3000);
+    }
+}
+
+// Listener para cuando el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar todo el sistema de estadísticas
+    initStatistics();
+    
+    // Configurar soporte para dispositivos táctiles
+    setupTouchSupport();
+    
+    // Opcional: Añadir botones de exportación a CSV
+    document.querySelectorAll('.export-csv-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const chartId = this.getAttribute('data-chart');
+            if (chartId) {
+                exportChartDataToCsv(chartId);
+            }
+        });
+    });
 });
-    </script>
+
+// Estilos adicionales (opcional, pueden moverse a un archivo CSS)
+const additionalStyles = `
+.message-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 5;
+    transition: opacity 0.5s ease;
+}
+
+.message-container.loading .spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.message-container.error {
+    background-color: rgba(255, 235, 238, 0.9);
+    color: #d32f2f;
+}
+
+.message-container.success {
+    background-color: rgba(232, 245, 233, 0.9);
+    color: #388e3c;
+}
+
+.message-container i {
+    font-size: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.touch-device .indicator-card {
+    transition: background-color 0.3s ease;
+}
+
+.touch-device .indicator-card.touched {
+    background-color: rgba(210, 227, 248, 0.2);
+}
+
+.export-csv-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--light-accent);
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.export-csv-btn:hover {
+    opacity: 1;
+}
+
+.chart-container {
+    position: relative;
+}
+`;
+
+// Añadir estilos al documento
+const styleElement = document.createElement('style');
+styleElement.textContent = additionalStyles;
+document.head.appendChild(styleElement);
+   </script>
     
     <script>
         let lastScrollPosition = 0;
