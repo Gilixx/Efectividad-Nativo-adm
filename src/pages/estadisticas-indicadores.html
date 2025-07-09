@@ -166,6 +166,85 @@
             </div>
         </section>
 
+        <!-- Sección: Slider de Estadísticas de Matrícula -->
+<section class="enrollment-slider-section">
+    <h2 class="section-title">Evolución de la Matrícula por Años</h2>
+    
+    <div class="enrollment-slider-container">
+        <div class="enrollment-slider-wrapper" id="enrollmentSliderWrapper">
+            <!-- Slide 2024 -->
+            <div class="enrollment-slide">
+                <div class="year-badge">2024</div>
+                <h3>Matrícula 2024</h3>
+                <div class="enrollment-chart-container">
+                    <canvas id="enrollmentChart2024"></canvas>
+                </div>
+                <!-- Elemento creativo: Mini tendencia -->
+                <div class="trend-indicator">
+                    <div class="trend-item">
+                        <i class="fas fa-arrow-up trend-icon positive"></i>
+                        <span class="trend-text">+4.1% vs 2023</span>
+                    </div>
+                    <div class="trend-sparkline" id="sparkline2024"></div>
+                </div>
+            </div>
+
+            <!-- Slide 2023 -->
+            <div class="enrollment-slide">
+                <div class="year-badge">2023</div>
+                <h3>Matrícula 2023</h3>
+                <div class="enrollment-chart-container">
+                    <canvas id="enrollmentChart2023"></canvas>
+                </div>
+                <!-- Elemento creativo: Mini tendencia -->
+                <div class="trend-indicator">
+                    <div class="trend-item">
+                        <i class="fas fa-arrow-up trend-icon positive"></i>
+                        <span class="trend-text">+3.6% vs 2022</span>
+                    </div>
+                    <div class="trend-sparkline" id="sparkline2023"></div>
+                </div>
+            </div>
+
+            <!-- Slide 2022 -->
+            <div class="enrollment-slide">
+                <div class="year-badge">2022</div>
+                <h3>Matrícula 2022</h3>
+                <div class="enrollment-chart-container">
+                    <canvas id="enrollmentChart2022"></canvas>
+                </div>
+                <!-- Elemento creativo: Mini tendencia -->
+                <div class="trend-indicator">
+                    <div class="trend-item">
+                        <i class="fas fa-chart-line trend-icon base"></i>
+                        <span class="trend-text">Año base</span>
+                    </div>
+                    <div class="trend-sparkline" id="sparkline2022"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controles del slider -->
+    <div class="slider-controls">
+        <button class="slider-btn" id="prevBtn" onclick="changeSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="slider-indicators">
+            <div class="slider-dot active" onclick="currentSlide(1)"></div>
+            <div class="slider-dot" onclick="currentSlide(2)"></div>
+            <div class="slider-dot" onclick="currentSlide(3)"></div>
+        </div>
+        
+        <button class="slider-btn" id="nextBtn" onclick="changeSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+
+<script src="/src/js/Estadistica-años.js"></script>
+
         <!-- Dashboard con iframe de Looker Studio -->
         <section class="content-section">
             <h2 class="section-title">Dashboard Interactivo</h2>
