@@ -608,49 +608,160 @@ header.hidden {
     font-size: 0.95rem;
 }
 
-/* Stats Section */
+
+/* Sección de Estadísticas de Acreditación */
 .stats-box {
-    flex-direction: column;
-    text-align: center;
+    background:white;
+    padding: 50px 30px;
+    margin: 60px 0;
 }
 
 .stats-box h2 {
+    color: var(--primary-color);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.stats-box h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-    width: 100%;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .stat-card {
-    background-color: var(--light-accent);
-    padding: 30px 20px;
+    background: white;
     border-radius: 15px;
-    transition: transform var(--transition-speed);
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
 }
 
 .stat-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(84, 68, 239, 0.2);
+}
+
+.stat-card:hover::before {
+    transform: scaleX(1);
 }
 
 .stat-card i {
-    font-size: 40px;
+    font-size: 3rem;
     color: var(--primary-color);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover i {
+    color: var(--secondary-color);
+    transform: scale(1.1);
 }
 
 .stat-card h3 {
-    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
     color: var(--dark-accent);
-    margin-bottom: 10px;
+    margin: 15px 0;
+    line-height: 1;
 }
 
 .stat-card p {
+    font-size: 1rem;
     color: var(--text-color);
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Animación al aparecer */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-box {
+        padding: 40px 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .stat-card {
+        padding: 25px 20px;
+    }
+    
+    .stat-card i {
+        font-size: 2.5rem;
+    }
+    
+    .stat-card h3 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .stats-box h2 {
+        font-size: 1.5rem;
+    }
 }
 
 /* Process Steps */
