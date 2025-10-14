@@ -29,11 +29,11 @@
             <nav class="nav-menu">
                 <ul>
                    <li><a href="/index.html"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
-                        <li><a href="/src/pages/acreditaciones.html"><i class="fas fa-award"></i> <span>Acreditaciones</span></a></li>
-                        <li><a href="/src/pages/estadisticas-indicadores.html" class="active"><i class="fas fa-chart-bar"></i> <span>Estadísticas</span></a></li>
-                        <li><a href="/src/pages/junta-gobierno.html"><i class="fas fa-university"></i> <span>Junta de Gobierno</span></a></li>
-                        <li><a href="/src/pages/pide.html"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
-                        <li><a href="/src/pages/equipo.html"><i class="fas fa-users"></i> <span>Equipo</span></a></li>
+                   <li><a href="/src/pages/acreditaciones.html"><i class="fas fa-award"></i> <span>Acreditaciones</span></a></li>
+                   <li><a href="/src/pages/estadisticas-indicadores.html" class="active"><i class="fas fa-chart-bar"></i> <span>Estadísticas</span></a></li>
+                   <li><a href="/src/pages/junta-gobierno.html"><i class="fas fa-university"></i> <span>Junta de Gobierno</span></a></li>
+                   <li><a href="/src/pages/pide.html"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
+                   <li><a href="/src/pages/equipo.html"><i class="fas fa-users"></i> <span>Equipo</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -166,100 +166,257 @@
             </div>
         </section>
 
-        <!-- Sección: Slider de Estadísticas de Matrícula -->
-<section class="enrollment-slider-section">
-    <h2 class="section-title">Evolución de la Matrícula por Años</h2>
-    
-    <div class="enrollment-slider-container">
-        <div class="enrollment-slider-wrapper" id="enrollmentSliderWrapper">
-            <!-- Slide 2024 -->
-            <div class="enrollment-slide">
-                <div class="year-badge">2024</div>
-                <h3>Matrícula 2024</h3>
-                <div class="enrollment-chart-container">
-                    <canvas id="enrollmentChart2024"></canvas>
-                </div>
-                <!-- Elemento creativo: Mini tendencia -->
-                <div class="trend-indicator">
-                    <div class="trend-item">
-                        <i class="fas fa-arrow-up trend-icon positive"></i>
-                        <span class="trend-text">+4.1% vs 2023</span>
+        <!-- SECCIÓN SEPARADA: Panel de Control Institucional -->
+        <section class="dashboard-section">
+            <h2 class="section-title">Indicadores y Panel Estadístico</h2>
+            <p class="section-subtitle">Los indicadores en la institucion son elementos concretos y especificos, cuantitativo o cuantitativo que permiten conocer el desempeño de un objetivo </p>
+            <div class="dashboard-layout">
+                <!-- Columna de Indicadores -->
+                <div class="indicators-column">
+                    <!-- Indicador 1 -->
+                    <div class="stat-indicator">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total de Estudiantes</h3>
+                                <div class="stat-value">3,245</div>
+                            </div>
+                        </div>
+                        <div class="stat-detail">
+                            <span class="stat-trend positive">
+                                <i class="fas fa-arrow-up"></i> +4.2%
+                            </span>
+                            <span>vs año anterior</span>
+                        </div>
                     </div>
-                    <div class="trend-sparkline" id="sparkline2024"></div>
-                </div>
-            </div>
 
-            <!-- Slide 2023 -->
-            <div class="enrollment-slide">
-                <div class="year-badge">2023</div>
-                <h3>Matrícula 2023</h3>
-                <div class="enrollment-chart-container">
-                    <canvas id="enrollmentChart2023"></canvas>
-                </div>
-                <!-- Elemento creativo: Mini tendencia -->
-                <div class="trend-indicator">
-                    <div class="trend-item">
-                        <i class="fas fa-arrow-up trend-icon positive"></i>
-                        <span class="trend-text">+3.6% vs 2022</span>
+                    <!-- Indicador 2 -->
+                    <div class="stat-indicator">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Programas Acreditados</h3>
+                                <div class="stat-value">28</div>
+                            </div>
+                        </div>
+                        <div class="stat-detail">
+                            <span class="stat-trend positive">
+                                <i class="fas fa-arrow-up"></i> +3
+                            </span>
+                            <span>nuevas acreditaciones</span>
+                        </div>
                     </div>
-                    <div class="trend-sparkline" id="sparkline2023"></div>
-                </div>
-            </div>
 
-            <!-- Slide 2022 -->
-            <div class="enrollment-slide">
-                <div class="year-badge">2022</div>
-                <h3>Matrícula 2022</h3>
-                <div class="enrollment-chart-container">
-                    <canvas id="enrollmentChart2022"></canvas>
-                </div>
-                <!-- Elemento creativo: Mini tendencia -->
-                <div class="trend-indicator">
-                    <div class="trend-item">
-                        <i class="fas fa-chart-line trend-icon base"></i>
-                        <span class="trend-text">Año base</span>
+                    <!-- Indicador 3 -->
+                    <div class="stat-indicator">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Tasa de Retención</h3>
+                                <div class="stat-value">89.5%</div>
+                            </div>
+                        </div>
+                        <div class="stat-detail">
+                            <span class="stat-trend positive">
+                                <i class="fas fa-arrow-up"></i> +2.3%
+                            </span>
+                            <span>mejora continua</span>
+                        </div>
                     </div>
-                    <div class="trend-sparkline" id="sparkline2022"></div>
+
+                    <!-- Indicador 4 -->
+                    <div class="stat-indicator">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Países Representados</h3>
+                                <div class="stat-value">42</div>
+                            </div>
+                        </div>
+                        <div class="stat-detail">
+                            <span class="stat-trend neutral">
+                                <i class="fas fa-equals"></i> Estable
+                            </span>
+                            <span>diversidad global</span>
+                        </div>
+                    </div>
+
+                    <!-- Indicador 5 -->
+                    <div class="stat-indicator">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Índice de Satisfacción</h3>
+                                <div class="stat-value">4.6/5</div>
+                            </div>
+                        </div>
+                        <div class="stat-detail">
+                            <span class="stat-trend positive">
+                                <i class="fas fa-arrow-up"></i> +0.3
+                            </span>
+                            <span>según encuestas</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Controles del slider -->
-    <div class="slider-controls">
-        <button class="slider-btn" id="prevBtn" onclick="changeSlide(-1)">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        
-        <div class="slider-indicators">
-            <div class="slider-dot active" onclick="currentSlide(1)"></div>
-            <div class="slider-dot" onclick="currentSlide(2)"></div>
-            <div class="slider-dot" onclick="currentSlide(3)"></div>
-        </div>
-        
-        <button class="slider-btn" id="nextBtn" onclick="changeSlide(1)">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
-</section>
+                <!-- Columna del Dashboard -->
+                <div class="dashboard-column">
+                    <div class="dashboard-preview" onclick="openDashboardModal()">
+                        <div class="dashboard-content">
+                            <span class="dashboard-badge">
+                                <i class="fas fa-chart-line"></i> Dashboard Completo
+                            </span>
+                            <h3 class="dashboard-title">Analytics en Tiempo Real</h3>
+                            <p class="dashboard-description">
+                                Explora datos detallados, tendencias históricas y proyecciones futuras de nuestra institución con nuestro dashboard interactivo completo.
+                            </p>
+                            
+                            <div class="dashboard-stats">
+                                <div class="mini-stat">
+                                    <span class="mini-stat-value">12</span>
+                                    <div class="mini-stat-label">Facultades</div>
+                                </div>
+                                <div class="mini-stat">
+                                    <span class="mini-stat-value">156</span>
+                                    <div class="mini-stat-label">Programas</div>
+                                </div>
+                                <div class="mini-stat">
+                                    <span class="mini-stat-value">98%</span>
+                                    <div class="mini-stat-label">Empleabilidad</div>
+                                </div>
+                                <div class="mini-stat">
+                                    <span class="mini-stat-value">250+</span>
+                                    <div class="mini-stat-label">Docentes</div>
+                                </div>
+                            </div>
 
-<script src="/src/js/Estadistica-años.js"></script>
-
-        <!-- Dashboard con iframe de Looker Studio -->
-        <section class="content-section">
-            <h2 class="section-title">Dashboard Interactivo</h2>
-            <div class="dashboard-container">
-                <iframe 
-                    width="100%" 
-                    height="600" 
-                    src="https://lookerstudio.google.com/embed/reporting/bdfbeb0f-2e15-4bbe-951d-50593ed4b1d0/page/ZGi9D" 
-                    frameborder="0" 
-                    style="border:0" 
-                    allowfullscreen 
-                    sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-                </iframe>
+                            <a href="#" class="dashboard-cta" onclick="event.preventDefault();">
+                                Ver Dashboard Completo
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- SECCIÓN SEPARADA: Matrícula Histórica -->
+        <section class="enrollment-slider-section">
+            <div class="section-header-wrapper">
+                <div class="section-icon-wrapper">
+                    <i class="fas fa-chart-area"></i>
+                </div>
+                <div>
+                    <h2 class="section-title">Evolución de la Matrícula por Años</h2>
+                    <p class="section-subtitle">Análisis histórico del crecimiento estudiantil institucional</p>
+                </div>
+            </div>
+            
+            <div class="enrollment-slider-container">
+                <div class="enrollment-slider-wrapper" id="enrollmentSliderWrapper">
+                    <!-- Slide 2024 -->
+                    <div class="enrollment-slide">
+                        <div class="year-badge">2024</div>
+                        <h3>Matrícula 2024</h3>
+                        <div class="enrollment-chart-container">
+                            <canvas id="enrollmentChart2024"></canvas>
+                        </div>
+                        <div class="trend-indicator">
+                            <div class="trend-item">
+                                <i class="fas fa-arrow-up trend-icon positive"></i>
+                                <span class="trend-text">+4.1% vs 2023</span>
+                            </div>
+                            <div class="trend-sparkline" id="sparkline2024"></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2023 -->
+                    <div class="enrollment-slide">
+                        <div class="year-badge">2023</div>
+                        <h3>Matrícula 2023</h3>
+                        <div class="enrollment-chart-container">
+                            <canvas id="enrollmentChart2023"></canvas>
+                        </div>
+                        <div class="trend-indicator">
+                            <div class="trend-item">
+                                <i class="fas fa-arrow-up trend-icon positive"></i>
+                                <span class="trend-text">+3.6% vs 2022</span>
+                            </div>
+                            <div class="trend-sparkline" id="sparkline2023"></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2022 -->
+                    <div class="enrollment-slide">
+                        <div class="year-badge">2022</div>
+                        <h3>Matrícula 2022</h3>
+                        <div class="enrollment-chart-container">
+                            <canvas id="enrollmentChart2022"></canvas>
+                        </div>
+                        <div class="trend-indicator">
+                            <div class="trend-item">
+                                <i class="fas fa-chart-line trend-icon base"></i>
+                                <span class="trend-text">Año base</span>
+                            </div>
+                            <div class="trend-sparkline" id="sparkline2022"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles del slider -->
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="slider-indicators">
+                    <div class="slider-dot active" onclick="currentSlide(1)"></div>
+                    <div class="slider-dot" onclick="currentSlide(2)"></div>
+                    <div class="slider-dot" onclick="currentSlide(3)"></div>
+                </div>
+                
+                <button class="slider-btn" id="nextBtn" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Modal del Dashboard -->
+        <div class="dashboard-modal" id="dashboardModal">
+            <div class="dashboard-modal-content">
+                <div class="dashboard-modal-header">
+                    <h2>
+                        <i class="fas fa-chart-bar"></i>
+                        Dashboard Institucional Completo
+                    </h2>
+                    <button class="close-modal" onclick="closeDashboardModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="dashboard-modal-body">
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src="https://lookerstudio.google.com/embed/reporting/bdfbeb0f-2e15-4bbe-951d-50593ed4b1d0/page/ZGi9D" 
+                        frameborder="0" 
+                        style="border:0" 
+                        allowfullscreen 
+                        sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+                    </iframe>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -282,7 +439,7 @@
                 <h4>Contacto</h4>
                 <ul class="contact-info">
                     <li><i class="fas fa-phone"></i> (123) 456-7890</li>
-                    <li><i class="fas fa-envelope"></i> efectividad@universidad.edu</li>
+                    <li><a href="mailto:efectividad@universidad.edu"><i class="fas fa-envelope"></i> efectividad@universidad.edu</a></li>
                     <li><i class="fas fa-map-marker-alt"></i> Campus Universitario</li>
                 </ul>
             </div>
@@ -294,8 +451,10 @@
 
     <!-- JavaScript -->
     <script src="/src/js/estadisticas.js"></script>
+    <script src="/src/js/Estadistica-años.js"></script>
     
     <script>
+        // Script para el header responsive
         let lastScrollPosition = 0;
         const header = document.querySelector('header');
         const mainContent = document.querySelector('.main-content');
@@ -318,6 +477,31 @@
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('expanded');
         }
+
+        // Funciones para el modal del dashboard
+        function openDashboardModal() {
+            document.getElementById('dashboardModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDashboardModal() {
+            document.getElementById('dashboardModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDashboardModal();
+            }
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        document.getElementById('dashboardModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeDashboardModal();
+            }
+        });
     </script>
 </body>
 </html>

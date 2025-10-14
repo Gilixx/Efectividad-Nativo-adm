@@ -879,3 +879,989 @@ header.hidden {
         font-size: 0.8rem;
     }
 }
+/* ============================================
+   ESTILOS PARA SECCIONES SEPARADAS
+   ============================================ */
+
+/* Subtítulos de sección */
+.section-subtitle {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-top: -15px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+/* ============================================
+   SECCIÓN: PANEL DE CONTROL INSTITUCIONAL
+   ============================================ */
+
+.dashboard-section {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.dashboard-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 15px 15px 0 0;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Columna de Indicadores */
+.indicators-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stat-indicator {
+    background: linear-gradient(135deg, #f8f9fc 0%, #e9ecef 100%);
+    border-radius: 12px;
+    padding: 25px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stat-indicator:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border-left-width: 6px;
+}
+
+.stat-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-info h3 {
+    color: var(--dark-accent);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.stat-detail {
+    color: var(--text-color);
+    font-size: 0.85rem;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.stat-trend.positive {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.stat-trend.neutral {
+    background: rgba(84, 68, 239, 0.1);
+    color: var(--primary-color);
+}
+
+.stat-trend.negative {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+.stat-trend i {
+    font-size: 0.7rem;
+}
+
+/* Columna del Dashboard */
+.dashboard-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-preview {
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dashboard-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/public/assets/demos/black_image.jpg') center/cover;
+    opacity: 0.15;
+    transition: opacity 0.3s ease;
+}
+
+.dashboard-preview:hover::before {
+    opacity: 0.25;
+}
+
+.dashboard-preview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-content {
+    position: relative;
+    z-index: 2;
+}
+
+.dashboard-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.dashboard-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.mini-stat {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.mini-stat:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.mini-stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    display: block;
+    line-height: 1;
+}
+
+.mini-stat-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 6px;
+    display: block;
+}
+
+.dashboard-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--primary-color);
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-cta:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    color: var(--dark-accent);
+}
+
+.dashboard-cta i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-cta:hover i {
+    transform: translateX(5px);
+}
+
+/* ============================================
+   SECCIÓN: MATRÍCULA HISTÓRICA
+   ============================================ */
+
+.enrollment-slider-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
+    padding: 50px 30px;
+    margin-bottom: 60px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.enrollment-slider-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    border-radius: 15px 15px 0 0;
+}
+
+.section-header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.section-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 12px rgba(84, 68, 239, 0.3);
+}
+
+.enrollment-slider-section .section-title {
+    margin-bottom: 5px;
+}
+
+.enrollment-slider-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.enrollment-slider-wrapper {
+    display: flex;
+    gap: 30px;
+    padding: 20px 0;
+    transition: transform 0.5s ease;
+    width: 300%;
+}
+
+.enrollment-slide {
+    width: 33.333%;
+    padding: 30px;
+    box-sizing: border-box;
+    background: white;
+    margin: 0 10px;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--light-accent);
+    transition: all 0.3s ease;
+}
+
+.enrollment-slide:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.enrollment-slide h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.enrollment-chart-container {
+    height: 300px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.year-badge {
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--dark-accent);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(242, 205, 0, 0.3);
+}
+
+.trend-indicator {
+    background: linear-gradient(135deg, var(--light-accent), rgba(255, 255, 255, 0.8));
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 4px solid var(--primary-color);
+    margin-top: 15px;
+}
+
+.trend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trend-icon {
+    font-size: 1.1rem;
+    padding: 6px;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trend-icon.positive {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.trend-icon.base {
+    background: rgba(84, 68, 239, 0.1);
+    color: var(--primary-color);
+}
+
+.trend-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.trend-sparkline {
+    width: 80px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sparkline-bar {
+    position: absolute;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(to top, var(--primary-color), var(--secondary-color));
+    border-radius: 3px 3px 0 0;
+    animation: sparklineGrow 0.8s ease-out;
+}
+
+@keyframes sparklineGrow {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Controles del slider */
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.slider-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(84, 68, 239, 0.3);
+}
+
+.slider-btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(84, 68, 239, 0.4);
+}
+
+.slider-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.slider-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.slider-dot.active {
+    background: var(--primary-color);
+    transform: scale(1.3);
+    border-color: var(--light-accent);
+}
+
+.slider-dot:hover {
+    background: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+/* ============================================
+   MODAL DEL DASHBOARD
+   ============================================ */
+
+.dashboard-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.dashboard-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.dashboard-modal-content {
+    background: white;
+    border-radius: 15px;
+    width: 95%;
+    height: 90%;
+    max-width: 1400px;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.dashboard-modal-header {
+    background: linear-gradient(135deg, var(--dark-accent), var(--primary-color));
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dashboard-modal-header i {
+    font-size: 1.3rem;
+}
+
+.close-modal {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.dashboard-modal-body {
+    height: calc(100% - 80px);
+    overflow: hidden;
+}
+
+.dashboard-modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ============================================
+   ANIMACIONES ADICIONALES
+   ============================================ */
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.stat-indicator:hover .stat-icon {
+    animation: pulse 2s infinite;
+}
+
+/* Efecto de brillo en el dashboard preview */
+.dashboard-preview::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 992px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-preview {
+        min-height: 450px;
+    }
+
+    .dashboard-column {
+        order: -1;
+    }
+
+    .enrollment-slider-section {
+        padding: 40px 25px;
+    }
+
+    .section-header-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-section {
+        padding: 25px 20px;
+    }
+
+    .enrollment-slider-section {
+        padding: 35px 20px;
+    }
+
+    .dashboard-layout {
+        gap: 20px;
+    }
+
+    .stat-indicator {
+        padding: 20px;
+    }
+
+    .stat-value {
+        font-size: 1.6rem;
+    }
+
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .dashboard-title {
+        font-size: 1.5rem;
+    }
+
+    .dashboard-description {
+        font-size: 0.95rem;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .mini-stat {
+        padding: 12px;
+    }
+
+    .mini-stat-value {
+        font-size: 1.5rem;
+    }
+
+    .dashboard-preview {
+        padding: 25px;
+        min-height: 400px;
+    }
+
+    .enrollment-slide {
+        padding: 20px;
+    }
+
+    .enrollment-chart-container {
+        height: 250px;
+    }
+
+    .slider-controls {
+        gap: 15px;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .trend-indicator {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .trend-sparkline {
+        width: 60px;
+        height: 25px;
+    }
+
+    .section-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .dashboard-modal {
+        padding: 10px;
+    }
+
+    .dashboard-modal-content {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .dashboard-modal-header {
+        padding: 15px 20px;
+    }
+
+    .dashboard-modal-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .close-modal {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-section {
+        padding: 20px 15px;
+    }
+
+    .enrollment-slider-section {
+        padding: 30px 15px;
+    }
+
+    .stat-indicator {
+        padding: 15px;
+    }
+
+    .stat-header {
+        gap: 12px;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .stat-info h3 {
+        font-size: 0.85rem;
+    }
+
+    .stat-value {
+        font-size: 1.4rem;
+    }
+
+    .stat-detail {
+        font-size: 0.8rem;
+    }
+
+    .stat-trend {
+        padding: 2px 6px;
+        font-size: 0.7rem;
+    }
+
+    .dashboard-preview {
+        padding: 20px;
+        min-height: 350px;
+    }
+
+    .dashboard-badge {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    .dashboard-title {
+        font-size: 1.3rem;
+    }
+
+    .dashboard-description {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-cta {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .enrollment-slider-section {
+        padding: 25px 15px;
+    }
+
+    .enrollment-slide {
+        padding: 15px;
+    }
+
+    .enrollment-chart-container {
+        height: 200px;
+    }
+
+    .trend-indicator {
+        padding: 12px;
+    }
+
+    .trend-text {
+        font-size: 0.8rem;
+    }
+
+    .section-header-wrapper {
+        gap: 15px;
+    }
+
+    .section-icon-wrapper {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .dashboard-modal-content {
+        border-radius: 0;
+    }
+
+    .dashboard-modal-header {
+        padding: 12px 15px;
+    }
+
+    .dashboard-modal-header h2 {
+        font-size: 1rem;
+        gap: 8px;
+    }
+
+    .dashboard-modal-header i {
+        font-size: 1rem;
+    }
+
+    .close-modal {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   ACCESIBILIDAD
+   ============================================ */
+
+.dashboard-cta:focus,
+.close-modal:focus,
+.slider-btn:focus,
+.slider-dot:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.stat-indicator:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .dashboard-modal {
+        display: none !important;
+    }
+
+    .dashboard-preview {
+        page-break-inside: avoid;
+    }
+
+    .stat-indicator,
+    .enrollment-slide {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .slider-controls {
+        display: none;
+    }
+
+    .enrollment-slider-section::before,
+    .dashboard-section::before {
+        display: none;
+    }
+}

@@ -23,12 +23,12 @@
                 </div>
                 <nav class="nav-menu">
                     <ul>
-                        <li><a href="/index.html"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
-                        <li><a href="/src/pages/acreditaciones.html"><i class="fas fa-award"></i> <span>Acreditaciones</span></a></li>
-                        <li><a href="/src/pages/estadisticas-indicadores.html" class="active"><i class="fas fa-chart-bar"></i> <span>Estadísticas</span></a></li>
-                        <li><a href="/src/pages/junta-gobierno.html"><i class="fas fa-university"></i> <span>Junta de Gobierno</span></a></li>
-                        <li><a href="/src/pages/pide.html"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
-                        <li><a href="/src/pages/equipo.html"><i class="fas fa-users"></i> <span>Equipo</span></a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
+                        <li><a href="src/pages/acreditaciones.html"><i class="fas fa-award"></i> <span>Acreditaciones</span></a></li>
+                        <li><a href="src/pages/estadisticas-indicadores.html" class="active"><i class="fas fa-chart-bar"></i> <span>Estadísticas</span></a></li>
+                        <li><a href="src/pages/junta-gobierno.html"><i class="fas fa-university"></i> <span>Junta de Gobierno</span></a></li>
+                        <li><a href="src/pages/pide.html"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
+                        <li><a href="src/pages/equipo.html"><i class="fas fa-users"></i> <span>Equipo</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -40,7 +40,7 @@
             <div class="department-image">
                 <div class="image-placeholder">
                     <!-- Aquí se carga la imagen -->
-                    <img src="/public/assets/images/Foto rectoría.jpg" alt="Imagen del Departamento">
+                    <img src="public/assets/images/Foto rectoría.jpg" alt="Imagen del Departamento">
                 </div>
             </div>
             <div class="title-box">
@@ -296,7 +296,7 @@ profesionales con un sentido de misión cristiana."</p>
         <div class="home-featured-news">
             <div class="featured-news-card">
                 <div class="featured-image">
-                    <img src="/public/assets/images/1_DlA7sqNE2M5YeGdjH-bUPg.jpg" alt="Noticia destacada">
+                    <img src="public/assets/images/1_DlA7sqNE2M5YeGdjH-bUPg.jpg" alt="Noticia destacada">
                 </div>
                 <div class="featured-content">
                     <span class="news-category">Destacado</span>
@@ -314,7 +314,7 @@ profesionales con un sentido de misión cristiana."</p>
             <!-- Noticia 1 -->
             <div class="news-card">
                 <div class="news-image">
-                    <img src="/public/assets/images/img-zbRvm7c0CBLoYHxW.jpg"" alt="Noticia 1">
+                    <img src="public/assets/images/img-zbRvm7c0CBLoYHxW.jpg"" alt="Noticia 1">
                 </div>
                 <div class="news-content">
                     <span class="news-category">Académico</span>
@@ -329,7 +329,7 @@ profesionales con un sentido de misión cristiana."</p>
             <!-- Noticia 2 -->
             <div class="news-card">
                 <div class="news-image">
-                    <img src="/public/assets/images/1_QvQBd4XhRKFNDFg6xEQhBA.jpg"" alt="Noticia 2">
+                    <img src="public/assets/images/1_QvQBd4XhRKFNDFg6xEQhBA.jpg"" alt="Noticia 2">
                 </div>
                 <div class="news-content">
                     <span class="news-category">Eventos</span>
@@ -344,7 +344,7 @@ profesionales con un sentido de misión cristiana."</p>
             <!-- Noticia 3 -->
             <div class="news-card">
                 <div class="news-image">
-                    <img src="/public/assets/images/1_owCcYqdWCEst3vX5BiLwKQ.jpg"" alt="Noticia 3">
+                    <img src="public/assets/images/1_owCcYqdWCEst3vX5BiLwKQ.jpg"" alt="Noticia 3">
                 </div>
                 <div class="news-content">
                     <span class="news-category">Anuncios</span>
@@ -368,9 +368,9 @@ profesionales con un sentido de misión cristiana."</p>
             <div class="footer-section">
                 <h4>Enlaces Rápidos</h4>
                 <ul>
-                    <li><a href="/index.html">Inicio</a></li>
-                    <li><a href="/src/pages/equipo.html">Equipo</a></li>
-                    <li><a href="/src/pages/acreditaciones.html">Acreditaciones</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="src/pages/equipo.html">Equipo</a></li>
+                    <li><a href="src/pages/acreditaciones.html">Acreditaciones</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -430,11 +430,6 @@ profesionales con un sentido de misión cristiana."</p>
         
         // Activar primer indicador
         updateSlider();
-        
-        // Auto deslizamiento cada 5 segundos
-        setInterval(() => {
-            moveSlider(1);
-        }, 5000);
         
         // Ajustar en cambio de tamaño de ventana
         window.addEventListener('resize', () => {
