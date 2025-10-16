@@ -75,31 +75,28 @@
                 </div>
                 
                 <div class="tab-content">
-                    <!-- Tab 1: Matrícula -->
-                    <div class="tab-pane active" id="enrollment-tab">
-                        <div class="chart-container">
-                            <div class="chart-header">
-                                <h3>Total de estudiantes por facultad</h3>
-                                <div class="chart-filters">
-                                    <select id="enrollment-semester-filter">
-                                        <option value="1">1er Semestre</option>
-                                        <option value="2">2do Semestre</option>
-                                    </select>
-                                    <select id="enrollment-level-filter">
-                                        <option value="all">Todos los niveles</option>
-                                        <option value="PREGRADO">Pregrado</option>
-                                        <option value="POSGRADO">Posgrado</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="chart-wrapper">
-                                <canvas id="enrollmentChart"></canvas>
-                            </div>
-                            <div class="chart-legend">
-                                <p>Total de estudiantes distribuidos por facultad</p>
+                                <!-- Tab 1: Matrícula - ACTUALIZADO PARA PRIMER SEMESTRE 2025 -->
+                <div class="tab-pane active" id="enrollment-tab">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Total de estudiantes por facultad - 1er Semestre 2025</h3>
+                            <div class="chart-filters">
+                                <!-- Eliminado el selector de semestre ya que solo tenemos datos del 1er semestre 2025 -->
+                                <select id="enrollment-level-filter">
+                                    <option value="all">Todos los niveles</option>
+                                    <option value="PREGRADO">Pregrado</option>
+                                    <option value="POSGRADO">Posgrado</option>
+                                </select>
                             </div>
                         </div>
+                        <div class="chart-wrapper">
+                            <canvas id="enrollmentChart"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <p>Total de estudiantes distribuidos por facultad - Primer Semestre 2025</p>
+                        </div>
                     </div>
+                </div>
                     
                     <!-- Tab 2: Demografía -->
                     <div class="tab-pane" id="demographic-tab">
