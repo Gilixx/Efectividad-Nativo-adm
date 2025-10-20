@@ -17,21 +17,22 @@
                 <img src="https://cdn.um.click/logos-um/logo/" alt="Logo Universidad">
             </div> 
         </a>
-            <div class="sidebar" id="sidebar">
-                <div class="sidebar-toggle" onclick="toggleSidebar()">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <nav class="nav-menu">
-                    <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
+            <!-- Sidebar/Nav -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Abrir menú de navegación">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
                         <li><a href="acreditaciones.html"><i class="fas fa-award"></i> <span>Acreditaciones</span></a></li>
                         <li><a href="estadisticas-indicadores.html"><i class="fas fa-chart-bar"></i> <span>Estadísticas</span></a></li>
                         <li><a href="junta-gobierno.html"><i class="fas fa-university"></i> <span>Junta de Gobierno</span></a></li>
                         <li><a href="pide.html"><i class="fas fa-file-alt"></i> <span>PIDE</span></a></li>
                         <li><a href="equipo.html"><i class="fas fa-users"></i> <span>Equipo</span></a></li>
-                    </ul>
-                </nav>
-            </div>
+                </ul>
+            </nav>
+        </div>
     </header>
     <!-- Main Content -->
     <main class="main-content">
@@ -83,21 +84,69 @@ Asimismo, la Dirección coordina la elaboración y seguimiento de los procesos d
             </div>
         </div>
         
-        <!-- Valores en formato de lista pequeña -->
-        <div class="values-summary">
-            <h3>Nuestros Valores</h3>
-            <div class="values-pills">
-                <span class="value-pill">Servicio</span>
-                <span class="value-pill">Trabajo en equipo</span>
-                <span class="value-pill">Confianza</span>
-                <span class="value-pill">Calidad</span>
-                <span class="value-pill">Efectividad</span>
-                <span class="value-pill">Innovación</span>
+       <section class="content-section values-section">
+    <div class="box values-summary">
+        <h3>Nuestros Valores Institucionales</h3>
+        <div class="values-pills">
+
+            <div class="value-item">
+                <div class="value-pill">Compromiso con la calidad</div>
+                <div class="value-tooltip">
+                    Buscamos la mejora continua en los procesos institucionales, promoviendo estándares de excelencia que garanticen el cumplimiento de los objetivos estratégicos la universidad.
+                </div>
             </div>
-            <a href="https://www.um.edu.mx/corporativo/" class="view-all-btn">
-                Conocer Mas <i class="fas fa-arrow-right"></i>
-            </a>
+            <div class="value-item">
+                <div class="value-pill">Transparencia</div>
+                <div class="value-tooltip">
+                    Actuamos con claridad, honestidad y responsabilidad en la gestión y comunicación de la información, fortaleciendo la confianza institucional y la rendición de cuentas.
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-pill">Servicio</div>
+                <div class="value-tooltip">
+                    Fomentamos una actitud de apoyo y colaboración, brindando acompañamiento estratégico a las diferentes áreas académicas y administrativas para impulsar su desarrollo y efectividad.
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-pill">Integridad</div>
+                <div class="value-tooltip">
+                    Ejercemos nuestras funciones con ética, respeto y coherencia entre lo que decimos y hacemos, contribuyendo a una cultura institucional basada en los principios bíblicos.
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-pill">Innovación</div>
+                <div class="value-tooltip">
+                    Promovemos la búsqueda constante de nuevas ideas, herramientas y metodologías que fortalezcan los procesos de evaluación y gestión, impulsando soluciones creativas y sostenibles.
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-pill">Colaboración</div>
+                <div class="value-tooltip">
+                    Trabajamos en equipo, fomentando la participación, el diálogo y la sinergia entre los departamentos de la universidad, fortaleciendo el propósito compartido.
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-pill">Efectividad</div>
+                <div class="value-tooltip">
+                    Orientamos nuestras acciones hacia el logro de resultados concretos y medibles, contribuyan al cumplimiento de la misión universitaria y al desarrollo institucional sostenible.
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-pill">Responsabilidad</div>
+                <div class="value-tooltip">
+                    Asumimos con compromiso la misión de garantizar procesos confiables, pertinentes y oportunos que respalden la toma de decisiones informadas en beneficio de la institución.
+                </div>
+            </div>
+
         </div>
+    </div>
+</section>
     </div>
 </section>
 
@@ -396,29 +445,31 @@ profesionales con un sentido de misión cristiana."</p>
     </footer>
 
 <script>
-    let lastScrollPosition = 0;
-    const header = document.querySelector('header');
-    const mainContent = document.querySelector('.main-content');
-    const scrollThreshold = 50;
+        let lastScrollPosition = 0;
+        const header = document.querySelector('header');
+        const mainContent = document.querySelector('.main-content');
+        const scrollThreshold = 50;
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        
-        if (currentScroll > lastScrollPosition && currentScroll > scrollThreshold) {
-            header.classList.add('hidden');
-            mainContent.classList.add('header-hidden');
-        } else if (currentScroll < lastScrollPosition) {
-            header.classList.remove('hidden');
-            mainContent.classList.remove('header-hidden');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > lastScrollPosition && currentScroll > scrollThreshold) {
+                header.classList.add('hidden');
+                mainContent.classList.add('header-hidden');
+            } else if (currentScroll < lastScrollPosition) {
+                header.classList.remove('hidden');
+                mainContent.classList.remove('header-hidden');
+            }
+            
+            lastScrollPosition = currentScroll;
+        });
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('expanded');
         }
-        
-        lastScrollPosition = currentScroll;
-    });
+    </script>
 
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('expanded');
-    }
-    
+<script>
     // Funcionalidad del Slider de Servicios
     let currentSlide = 0;
     const slidesToShow = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
