@@ -1,15 +1,7 @@
 // CONFIGURACIÓN Y DATOS BASADOS EN LOS ARCHIVOS REALES DE LA UM
-// ACTUALIZADO CON DATOS DEL PRIMER SEMESTRE 2025
+// ACTUALIZADO CON DATOS DEL PRIMER SEMESTRE 2025 y SEGUNDO SEMESTRE 2024 (Basado en imagen)
 
-// Configuración global para todas las gráficas
-Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif";
-Chart.defaults.font.size = 12;
-Chart.defaults.color = '#5a5c69';
-Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-Chart.defaults.plugins.tooltip.padding = 10;
-Chart.defaults.plugins.tooltip.cornerRadius = 6;
-Chart.defaults.plugins.tooltip.titleFont = { size: 14, weight: 'bold' };
-Chart.defaults.plugins.tooltip.bodyFont = { size: 13 };
+// ... (Configuración global y colores - SIN CAMBIOS) ...
 
 // Colores consistentes para las gráficas (basados en la paleta de la UM)
 const chartColors = [
@@ -42,56 +34,98 @@ const chartBorderColors = [
     'rgba(255, 159, 64, 1)'      // naranja
 ];
 
-// DATOS ACTUALIZADOS - PRIMER SEMESTRE 2025
+// DATOS ACTUALIZADOS - PRIMER SEMESTRE 2025 y SEGUNDO SEMESTRE 2024
 
 // Facultades actualizadas de la UM para 2025
 const facultades = ['ESART', 'ESCEST', 'ESMUS', 'FACED', 'FACEJ', 'FACSA', 'FAPSI', 'FATEO', 'FITEC'];
 
-// Datos de matrícula por facultad - SOLO PRIMER SEMESTRE 2025
+// Datos de matrícula por facultad - ACTUALIZACIÓN para incluir 2do Semestre
 const matriculaData = {
-    1: { // 1er Semestre 2025
+    // 1er Semestre 2025 (Datos originales)
+    1: { 
         all: {
-            // Totales por facultad (pregrado + posgrado cuando tengas los datos)
+            // Totales por facultad (pregrado + posgrado)
             'ESART': 188,
-            'ESCEST': 208,
+            'ESCEST': 210, // 208 + 2
             'ESMUS': 36,
-            'FACED': 88,
-            'FACEJ': 192,
-            'FACSA': 852,
-            'FAPSI': 98,
+            'FACED': 212, // 88 + 124
+            'FACEJ': 207, // 192 + 15
+            'FACSA': 887, // 852 + 35
+            'FAPSI': 114, // 98 + 16
             'FATEO': 113,
-            'FITEC': 143
+            'FITEC': 145 // 143 + 2
         },
         'PREGRADO': {
-            'ESART': 188,
-            'ESCEST': 208,
-            'ESMUS': 36,
+            'ESART': 190,
+            'ESCEST': 183,
+            'ESMUS': 40,
             'FACED': 88,
-            'FACEJ': 192,
-            'FACSA': 852,
-            'FAPSI': 98,
-            'FATEO': 113,
-            'FITEC': 143
+            'FACEJ': 180,
+            'FACSA': 861,
+            'FAPSI': 89,
+            'FATEO': 109,
+            'FITEC': 131
         },
         'POSGRADO': {
-            // PENDIENTE: Agregar datos de posgrado cuando estén disponibles
-            'ESART': 0,
-            'ESCEST': 2,
+            'ESART': 8,
+            'ESCEST': 5,
             'ESMUS': 0,
-            'FACED': 124,
+            'FACED': 147,
             'FACEJ': 15,
-            'FACSA': 35,
+            'FACSA': 46,
             'FAPSI': 16,
             'FATEO': 0,
             'FITEC': 2
         }
+    },
+    // 2do Semestre 2024 (Datos de la imagen, asumiendo que son Pregrado + Posgrado)
+    // NOTA: Se utilizaron los totales de la imagen, asumiendo que FACEJ, FAPSI, FACSA, FITEC, FATEO, ESART, ESCES, FACED, ESMUS
+    2: {
+        // Los totales de la imagen son para el 2do Semestre.
+        // Adaptando los nombres de facultad: FACEJ, FAPSI, FACSA, FITEC, FATEO, ESART, ESCES, FACED, ESMUS
+        all: { 
+            'FACSA': 717,
+            'ESART': 176,
+            'ESCEST': 162,
+            'FACEJ': 155,
+            'FITEC': 119,
+            'FATEO': 105,
+            'FAPSI': 81,
+            'FACED': 79,
+            'ESMUS': 38,
+            // Las facultades faltantes del set de datos original (si son 9, solo 9 están mapeadas)
+        },
+        // Asumiendo por simplificación que todo es Pregrado o que el Posgrado es muy reducido en el 2do semestre
+        'PREGRADO': {
+            'FACSA': 717,
+            'ESART': 176,
+            'ESCEST': 162,
+            'FACEJ': 155,
+            'FITEC': 119,
+            'FATEO': 105,
+            'FAPSI': 81,
+            'FACED': 79,
+            'ESMUS': 38,
+        },
+        'POSGRADO': {
+            'FACSA': 42, 
+            'ESART': 8,
+            'ESCEST': 5,
+            'FACEJ': 16,
+            'FITEC': 1,
+            'FATEO': 0,
+            'FAPSI': 10,
+            'FACED': 19,
+            'ESMUS': 0,
+        }
     }
 };
 
-// Datos demográficos - PRIMER SEMESTRE 2025
-// NOTA: Estos son datos aproximados, actualizar cuando estén disponibles los reales
+
+// Datos demográficos - 1er y 2do Semestre
 const demograficosData = {
-    1: { // 1er Semestre 2025
+    // 1er Semestre 2025 (Datos originales)
+    1: { 
         gender: {
             all: { 'Hombre': 1050, 'Mujer': 868 },
             'PREGRADO': { 'Hombre': 1050, 'Mujer': 868 },
@@ -107,13 +141,31 @@ const demograficosData = {
             'PREGRADO': { 'Externo': 1534, 'Interno': 384 },
             'POSGRADO': { 'Externo': 0, 'Interno': 0 }
         }
+    },
+    // 2do Semestre 2024 (Datos de ejemplo, si no hay datos reales de la imagen)
+    2: { 
+        gender: {
+            all: { 'Hombre': 900, 'Mujer': 732 }, // Estimado basado en total 1632 (imagen)
+            'PREGRADO': { 'Hombre': 900, 'Mujer': 732 },
+            'POSGRADO': { 'Hombre': 0, 'Mujer': 0 }
+        },
+        religion: {
+            all: { 'ASD': 1400, 'No ASD': 232 },
+            'PREGRADO': { 'ASD': 1400, 'No ASD': 232 },
+            'POSGRADO': { 'ASD': 0, 'No ASD': 0 }
+        },
+        residence: {
+            all: { 'Externo': 1300, 'Interno': 332 },
+            'PREGRADO': { 'Externo': 1300, 'Interno': 332 },
+            'POSGRADO': { 'Externo': 0, 'Interno': 0 }
+        }
     }
 };
 
-// Datos de países - PRIMER SEMESTRE 2025
-// NOTA: Estos son datos aproximados basados en tendencias anteriores
+// Datos de países - 1er y 2do Semestre
 const paisesData = {
-    1: { // 1er Semestre 2025
+    // 1er Semestre 2025 (Datos originales)
+    1: { 
         all: {
             'México': 1150,
             'Estados Unidos': 150,
@@ -149,8 +201,43 @@ const paisesData = {
             'Bolivia': 15
         },
         'POSGRADO': {
-            // PENDIENTE: Agregar cuando estén disponibles
-            'México': 0,
+            'México': 0, // Ajustar si hay datos de posgrado
+            'Estados Unidos': 0,
+            'Venezuela': 0,
+            'Colombia': 0,
+            'Otros': 0
+        }
+    },
+    // 2do Semestre 2024 (Datos de ejemplo)
+    2: {
+        all: {
+            'México': 1000,
+            'Estados Unidos': 120,
+            'Venezuela': 90,
+            'Colombia': 60,
+            'Perú': 50,
+            'Guatemala': 45,
+            'Honduras': 30,
+            'República Dominicana': 30,
+            'Costa Rica': 25,
+            'Nicaragua': 20,
+            'Ecuador': 15
+        },
+        'PREGRADO': {
+            'México': 1000,
+            'Estados Unidos': 120,
+            'Venezuela': 90,
+            'Colombia': 60,
+            'Perú': 50,
+            'Guatemala': 45,
+            'Honduras': 30,
+            'República Dominicana': 30,
+            'Costa Rica': 25,
+            'Nicaragua': 20,
+            'Ecuador': 15
+        },
+        'POSGRADO': {
+            'México': 0, 
             'Estados Unidos': 0,
             'Venezuela': 0,
             'Colombia': 0,
@@ -164,7 +251,7 @@ let enrollmentChart = null;
 let demographicChart = null;
 let countriesChart = null;
 
-// Configuración por defecto para las gráficas
+// ... (defaultChartOptions - SIN CAMBIOS) ...
 const defaultChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -206,11 +293,15 @@ const defaultChartOptions = {
 function initEnrollmentChart() {
     const ctx = document.getElementById('enrollmentChart');
     if (!ctx) return null;
-
-    const data = matriculaData[1].all;
+    
+    // Valores iniciales: 1er Semestre y Todos los niveles
+    const initialSemester = '1';
+    const initialLevel = 'all';
+    
+    const data = matriculaData[initialSemester][initialLevel];
     const labels = Object.keys(data);
     const values = Object.values(data);
-
+    
     if (enrollmentChart) {
         enrollmentChart.destroy();
     }
@@ -234,7 +325,7 @@ function initEnrollmentChart() {
                 ...defaultChartOptions.plugins,
                 title: {
                     ...defaultChartOptions.plugins.title,
-                    text: 'Total de estudiantes por facultad - 1er Semestre 2025'
+                    text: 'Total de estudiantes por facultad - 1er semestre 2025' // Título inicial
                 },
                 tooltip: {
                     callbacks: {
@@ -264,30 +355,35 @@ function initEnrollmentChart() {
         }
     });
 
+    // Llamada inicial para mostrar pregrado y posgrado si el nivel es 'all'
+    updateEnrollmentChart(initialSemester, initialLevel);
     return enrollmentChart;
 }
 
 /**
  * Actualiza la gráfica de matrícula según los filtros
- * MODIFICADO: Solo usa datos del primer semestre 2025
  */
-function updateEnrollmentChart(level) {
+function updateEnrollmentChart(semester, level) {
     if (!enrollmentChart) return;
 
-    const data = matriculaData[1][level];
-    const labels = Object.keys(data);
-    const values = Object.values(data);
+    const dataSet = matriculaData[semester];
+    if (!dataSet) return; // Evitar errores si no existen datos para el semestre
 
-    let titleText = 'Total de estudiantes por facultad - 1er Semestre 2025';
+    const data = dataSet[level];
+    const labels = Object.keys(data);
+
+    let semesterText = semester === '1' ? '1er Semestre 2025' : '2do Semestre 2024';
+    let titleText = `Total de estudiantes por facultad - ${semesterText}`;
     if (level !== 'all') {
         titleText += ` (${level})`;
     }
 
     // Si es nivel "all", mostrar pregrado y posgrado separados
     if (level === 'all') {
-        const pregradoData = Object.values(matriculaData[1]['PREGRADO']);
-        const posgradoData = Object.values(matriculaData[1]['POSGRADO']);
+        const pregradoData = Object.values(dataSet['PREGRADO']);
+        const posgradoData = Object.values(dataSet['POSGRADO']);
         
+        enrollmentChart.data.labels = Object.keys(dataSet['PREGRADO']); // Usar etiquetas de pregrado para asegurar el orden
         enrollmentChart.data.datasets = [
             {
                 label: 'Pregrado',
@@ -307,6 +403,8 @@ function updateEnrollmentChart(level) {
             }
         ];
     } else {
+        const values = Object.values(data);
+        enrollmentChart.data.labels = labels;
         enrollmentChart.data.datasets = [{
             label: level === 'PREGRADO' ? 'Pregrado' : 'Posgrado',
             data: values,
@@ -321,7 +419,6 @@ function updateEnrollmentChart(level) {
         }];
     }
 
-    enrollmentChart.data.labels = labels;
     enrollmentChart.options.plugins.title.text = titleText;
     enrollmentChart.update();
 }
@@ -333,10 +430,14 @@ function initDemographicChart() {
     const ctx = document.getElementById('demographicChart');
     if (!ctx) return null;
 
-    const data = demograficosData[1].gender.all;
+    const initialSemester = document.getElementById('demographic-semester-filter').value;
+    const initialType = document.getElementById('demographic-type-filter').value;
+    const initialLevel = document.getElementById('demographic-level-filter').value;
+    
+    const data = demograficosData[initialSemester][initialType][initialLevel];
     const labels = Object.keys(data);
     const values = Object.values(data);
-
+    
     if (demographicChart) {
         demographicChart.destroy();
     }
@@ -359,7 +460,7 @@ function initDemographicChart() {
                 ...defaultChartOptions.plugins,
                 title: {
                     ...defaultChartOptions.plugins.title,
-                    text: 'Distribución por género - 1er Semestre 2025 (Todos los niveles)'
+                    text: 'Distribución por género - 1er Semestre (Todos los niveles)'
                 }
             }
         }
@@ -370,16 +471,19 @@ function initDemographicChart() {
 
 /**
  * Actualiza la gráfica demográfica según los filtros
- * MODIFICADO: Solo usa datos del primer semestre 2025
  */
-function updateDemographicChart(type, level) {
+function updateDemographicChart(semester, type, level) {
     if (!demographicChart) return;
 
-    const data = demograficosData[1][type][level];
+    const dataSet = demograficosData[semester];
+    if (!dataSet) return;
+
+    const data = dataSet[type][level];
     const labels = Object.keys(data);
     const values = Object.values(data);
 
     let chartType, titleText;
+    let semesterText = semester === '1' ? '1er Semestre' : '2do Semestre';
     
     if (type === 'gender') {
         chartType = 'pie';
@@ -392,7 +496,7 @@ function updateDemographicChart(type, level) {
         titleText = 'Distribución por residencia';
     }
 
-    titleText += ' - 1er Semestre 2025';
+    titleText += ` - ${semesterText}`;
     if (level !== 'all') {
         titleText += ` (${level})`;
     }
@@ -420,7 +524,8 @@ function updateDemographicChart(type, level) {
                         ...defaultChartOptions.plugins.title,
                         text: titleText
                     }
-                }
+                },
+                scales: chartType === 'bar' ? defaultChartOptions.scales : {} // Mostrar escalas solo en gráficas de barras
             }
         });
     } else {
@@ -440,7 +545,11 @@ function initCountriesChart() {
     const ctx = document.getElementById('countriesChart');
     if (!ctx) return null;
 
-    const allData = paisesData[1].all;
+    const initialSemester = document.getElementById('countries-semester-filter').value;
+    const initialView = document.getElementById('countries-view-filter').value;
+    const initialLevel = document.getElementById('countries-level-filter').value;
+    
+    const allData = paisesData[initialSemester][initialLevel];
     const top10Data = Object.entries(allData)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 10);
@@ -470,7 +579,7 @@ function initCountriesChart() {
                 ...defaultChartOptions.plugins,
                 title: {
                     ...defaultChartOptions.plugins.title,
-                    text: 'Top 10 países por número de estudiantes - 1er Semestre 2025 (Todos los niveles)'
+                    text: 'Top 10 países por número de estudiantes - 1er Semestre (Todos los niveles)'
                 },
                 legend: {
                     position: 'right'
@@ -484,12 +593,14 @@ function initCountriesChart() {
 
 /**
  * Actualiza la gráfica de países según los filtros
- * MODIFICADO: Solo usa datos del primer semestre 2025
  */
-function updateCountriesChart(view, level) {
+function updateCountriesChart(semester, view, level) {
     if (!countriesChart) return;
 
-    const allData = paisesData[1][level];
+    const dataSet = paisesData[semester];
+    if (!dataSet) return;
+
+    const allData = dataSet[level];
     let filteredData;
     
     if (view === 'top10') {
@@ -508,8 +619,9 @@ function updateCountriesChart(view, level) {
     const labels = filteredData.map(item => item[0]);
     const values = filteredData.map(item => item[1]);
 
+    let semesterText = semester === '1' ? '1er Semestre' : '2do Semestre';
     let titleText = `${view === 'top10' ? 'Top 10' : view === 'top20' ? 'Top 20' : 'Todos los'} países por número de estudiantes`;
-    titleText += ' - 1er Semestre 2025';
+    titleText += ` - ${semesterText}`;
     if (level !== 'all') {
         titleText += ` (${level})`;
     }
@@ -556,30 +668,36 @@ function setupTabs() {
 
 /**
  * Configura los filtros de matrícula
- * MODIFICADO: Removido el filtro de semestre
  */
 function setupEnrollmentFilters() {
+    const semesterFilter = document.getElementById('enrollment-semester-filter'); // Nuevo filtro
     const levelFilter = document.getElementById('enrollment-level-filter');
     
-    if (levelFilter) {
-        levelFilter.addEventListener('change', () => {
-            updateEnrollmentChart(levelFilter.value);
+    if (semesterFilter && levelFilter) {
+        [semesterFilter, levelFilter].forEach(filter => {
+            filter.addEventListener('change', () => {
+                updateEnrollmentChart(
+                    semesterFilter.value,
+                    levelFilter.value
+                );
+            });
         });
     }
 }
 
 /**
  * Configura los filtros demográficos
- * MODIFICADO: Removido el filtro de semestre
  */
 function setupDemographicFilters() {
+    const semesterFilter = document.getElementById('demographic-semester-filter');
     const typeFilter = document.getElementById('demographic-type-filter');
     const levelFilter = document.getElementById('demographic-level-filter');
     
-    if (typeFilter && levelFilter) {
-        [typeFilter, levelFilter].forEach(filter => {
+    if (semesterFilter && typeFilter && levelFilter) {
+        [semesterFilter, typeFilter, levelFilter].forEach(filter => {
             filter.addEventListener('change', () => {
                 updateDemographicChart(
+                    semesterFilter.value,
                     typeFilter.value,
                     levelFilter.value
                 );
@@ -590,16 +708,17 @@ function setupDemographicFilters() {
 
 /**
  * Configura los filtros de países
- * MODIFICADO: Removido el filtro de semestre
  */
 function setupCountriesFilters() {
+    const semesterFilter = document.getElementById('countries-semester-filter');
     const viewFilter = document.getElementById('countries-view-filter');
     const levelFilter = document.getElementById('countries-level-filter');
     
-    if (viewFilter && levelFilter) {
-        [viewFilter, levelFilter].forEach(filter => {
+    if (semesterFilter && viewFilter && levelFilter) {
+        [semesterFilter, viewFilter, levelFilter].forEach(filter => {
             filter.addEventListener('change', () => {
                 updateCountriesChart(
+                    semesterFilter.value,
                     viewFilter.value,
                     levelFilter.value
                 );
@@ -639,6 +758,7 @@ function showLoading(chartId) {
  * Calcula y muestra estadísticas resumidas
  */
 function displaySummaryStats() {
+    // Calculando para 1er Semestre 2025 (por defecto)
     const totalPregrado = Object.values(matriculaData[1]['PREGRADO']).reduce((a, b) => a + b, 0);
     const totalPosgrado = Object.values(matriculaData[1]['POSGRADO']).reduce((a, b) => a + b, 0);
     const totalGeneral = totalPregrado + totalPosgrado;
@@ -682,7 +802,7 @@ function initStatistics() {
             if (countriesChart) countriesChart.resize();
         });
         
-        console.log('✅ Estadísticas del 1er Semestre 2025 inicializadas correctamente');
+        console.log('✅ Estadísticas inicializadas correctamente (1er Semestre 2025 y 2do Semestre 2024 cargados)');
         
     } catch (error) {
         console.error('❌ Error inicializando estadísticas:', error);

@@ -9,11 +9,9 @@
     <link rel="stylesheet" href="public/styles/estadisticas-indicadores.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <!-- Logo -->
     <link rel="icon" href="https://cdn.um.click/logos-um/logo/">
 </head>
 <body>
-    <!-- Header with Logo and Nav -->
     <header>
         <a href="https://www.um.edu.mx/">
             <div class="logo-container">
@@ -21,7 +19,6 @@
             </div> 
         </a>
         
-        <!-- Sidebar/Nav -->
         <div class="sidebar" id="sidebar">
             <div class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Abrir menú de navegación">
                 <i class="fas fa-bars"></i>
@@ -39,9 +36,7 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Page Header Section -->
         <section class="page-header" id="top">
             <div class="title-container">
                 <h1>Estadísticas</h1>
@@ -49,7 +44,6 @@
             </div>
         </section>
 
-        <!-- Sección: Las estadísticas en la UM -->
         <section class="content-section">
             <div class="box">
                 <div class="section-text">
@@ -63,7 +57,6 @@
             </div>
         </section>
 
-        <!-- Sección: Visualizador de estadísticas -->
         <section class="content-section">
             <h2 class="section-title">Visualizador de estadísticas</h2>
             
@@ -75,13 +68,14 @@
                 </div>
                 
                 <div class="tab-content">
-                                <!-- Tab 1: Matrícula - ACTUALIZADO PARA PRIMER SEMESTRE 2025 -->
-                <div class="tab-pane active" id="enrollment-tab">
+                                <div class="tab-pane active" id="enrollment-tab">
                     <div class="chart-container">
                         <div class="chart-header">
-                            <h3>Total de estudiantes por facultad - 1er Semestre 2025</h3>
+                            <h3>Total de estudiantes por facultad</h3>
                             <div class="chart-filters">
-                                <!-- Eliminado el selector de semestre ya que solo tenemos datos del 1er semestre 2025 -->
+                                <select id="enrollment-semester-filter"> <option value="1">1er semestre</option>
+                                    <option value="2">2do semestre</option>
+                                </select>
                                 <select id="enrollment-level-filter">
                                     <option value="all">Todos los niveles</option>
                                     <option value="PREGRADO">Pregrado</option>
@@ -93,12 +87,11 @@
                             <canvas id="enrollmentChart"></canvas>
                         </div>
                         <div class="chart-legend">
-                            <p>Total de estudiantes distribuidos por facultad - Primer Semestre 2025</p>
+                            <p>Total de estudiantes distribuidos por facultad</p>
                         </div>
                     </div>
                 </div>
                     
-                    <!-- Tab 2: Demografía -->
                     <div class="tab-pane" id="demographic-tab">
                         <div class="chart-container">
                             <div class="chart-header">
@@ -129,7 +122,6 @@
                         </div>
                     </div>
                     
-                    <!-- Tab 3: Países -->
                     <div class="tab-pane" id="countries-tab">
                         <div class="chart-container">
                             <div class="chart-header">
@@ -163,15 +155,12 @@
             </div>
         </section>
 
-        <!-- SECCIÓN SEPARADA: Panel de Control Institucional -->
         <section class="dashboard-section">
             <h2 class="section-title">Indicadores y Panel Estadístico</h2>
             <p class="section-subtitle">Los indicadores en la institucion son elementos concretos y especificos, cuantitativo o cuantitativo que permiten conocer el desempeño de un objetivo </p>
             <div class="dashboard-layout">
-                <!-- Columna de Indicadores -->
                 <div class="indicators-column">
-                         <!-- Indicador 1 -->
-            <div class="stat-indicator">
+                         <div class="stat-indicator">
                 <div class="stat-header">
                     <div class="stat-icon">
                         <i class="fas fa-user-graduate"></i>
@@ -189,7 +178,6 @@
                 </div>
             </div>
 
-            <!-- Indicador 2 -->
             <div class="stat-indicator">
                 <div class="stat-header">
                     <div class="stat-icon">
@@ -208,7 +196,6 @@
                 </div>
             </div>
 
-            <!-- Indicador 3 -->
             <div class="stat-indicator">
                 <div class="stat-header">
                     <div class="stat-icon">
@@ -227,7 +214,6 @@
                 </div>
             </div>
 
-            <!-- Indicador 4 -->
             <div class="stat-indicator">
                 <div class="stat-header">
                     <div class="stat-icon">
@@ -245,28 +231,8 @@
                     <span>nuevos misioneros</span>
                 </div>
             </div>
+        </div>
 
-            <!-- Indicador 5 -->
-            <div class="stat-indicator">
-                <div class="stat-header">
-                    <div class="stat-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3>Número de proyectos de investigación que son de aporte para la Iglesia Adventista</h3>
-                        <div class="stat-value">5</div>
-                    </div>
-                </div>
-                <div class="stat-detail">
-                    <span class="stat-trend positive">
-                        <i class="fas fa-arrow-up"></i> +2
-                    </span>
-                    <span>proyectos activos</span>
-                </div>
-                    </div>
-                </div>
-
-                <!-- Columna del Dashboard -->
                 <div class="dashboard-column">
                     <div class="dashboard-preview" onclick="openDashboardModal()">
                         <div class="dashboard-content">
@@ -307,21 +273,19 @@
             </div>
         </section>
 
-        <!-- SECCIÓN SEPARADA: Matrícula Histórica -->
         <section class="enrollment-slider-section">
             <div class="section-header-wrapper">
                 <div class="section-icon-wrapper">
                     <i class="fas fa-chart-area"></i>
                 </div>
                 <div>
-                    <h2 class="section-title">Evolución de la Matrícula por Años</h2>
+                    <h2 class="section-title">Evolución de la matrícula por años</h2>
                     <p class="section-subtitle">Análisis histórico del crecimiento estudiantil institucional</p>
                 </div>
             </div>
             
             <div class="enrollment-slider-container">
                 <div class="enrollment-slider-wrapper" id="enrollmentSliderWrapper">
-                    <!-- Slide 2024 -->
                     <div class="enrollment-slide">
                         <div class="year-badge">2024</div>
                         <h3>Matrícula 2024</h3>
@@ -337,7 +301,6 @@
                         </div>
                     </div>
 
-                    <!-- Slide 2023 -->
                     <div class="enrollment-slide">
                         <div class="year-badge">2023</div>
                         <h3>Matrícula 2023</h3>
@@ -353,7 +316,6 @@
                         </div>
                     </div>
 
-                    <!-- Slide 2022 -->
                     <div class="enrollment-slide">
                         <div class="year-badge">2022</div>
                         <h3>Matrícula 2022</h3>
@@ -371,7 +333,6 @@
                 </div>
             </div>
 
-            <!-- Controles del slider -->
             <div class="slider-controls">
                 <button class="slider-btn" id="prevBtn" onclick="changeSlide(-1)">
                     <i class="fas fa-chevron-left"></i>
@@ -389,7 +350,6 @@
             </div>
         </section>
 
-        <!-- Modal del Dashboard -->
         <div class="dashboard-modal" id="dashboardModal">
             <div class="dashboard-modal-content">
                 <div class="dashboard-modal-header">
@@ -416,7 +376,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -446,7 +405,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script src="src/js/estadisticas.js"></script>
     <script src="src/js/Estadistica-años.js"></script>
     
