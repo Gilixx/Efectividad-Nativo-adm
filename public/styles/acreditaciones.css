@@ -1322,3 +1322,130 @@ header.hidden {
         justify-content: center;
     }
 }
+
+/* ... [Contenido CSS anterior] ... */
+
+/* Nuevo estilo para tablas de recomendaciones */
+.recommendations-section {
+    /* Utiliza el mismo estilo que .content-section */
+    margin-bottom: 60px;
+}
+
+.recommendations-subtitle {
+    color: var(--dark-accent);
+    font-size: 1.5rem;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--light-accent);
+    padding-bottom: 5px;
+}
+
+.recommendations-subtitle i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.table-container {
+    overflow-x: auto; /* Para tablas grandes en móviles */
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.recommendations-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    min-width: 600px; /* Ancho mínimo para la tabla de áreas */
+}
+
+.recommendations-table th, .recommendations-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid var(--light-accent);
+}
+
+.recommendations-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.recommendations-table tbody tr:nth-child(even) {
+    background-color: #f3f6ff; /* Alternating rows for readability */
+}
+
+.recommendations-table tbody tr:hover {
+    background-color: var(--light-accent);
+    transition: background-color 0.2s;
+}
+
+.recommendations-table td {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.total-row td {
+    background-color: var(--dark-accent) !important;
+    color: var(--accent-color);
+    font-weight: bold;
+    border-top: 3px solid var(--accent-color);
+}
+
+/* Estilos específicos para la tabla de distribución por área */
+.area-table th {
+    min-width: 100px;
+}
+
+/* Estilos para el bloque de texto completo en el box */
+.section-text.full-width {
+    flex: 1 1 100%;
+    min-width: 100%;
+}
+
+/* Estilos para la sección de descarga */
+.download-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--light-accent);
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.download-info {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--dark-accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.download-info i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Estilos para el botón de descarga */
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    background-color: #d63031; /* Color rojo característico de PDF */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.btn-download:hover {
+    background-color: #a02222;
+    transform: translateY(-2px);
+}
