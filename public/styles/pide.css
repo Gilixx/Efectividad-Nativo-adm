@@ -456,37 +456,280 @@ header.hidden {
     font-size: 1.1rem;
 }
 
-/* Indicators Grid */
-.indicators-grid {
+/* ========================================
+   SECCIÓN MEJORADA DE INDICADORES
+   ======================================== */
+
+.indicators-enhanced {
+    position: relative;
+}
+
+/* Grid de Indicadores con Preview */
+.indicators-preview-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
 }
 
-.indicator-card {
-    background: var(--light-accent);
-    padding: 15px;
-    border-radius: var(--border-radius-sm);
-    text-align: center;
-    transition: var(--transition-normal);
-}
-
-.indicator-card:hover {
+/* Tarjeta de Indicador con Preview */
+.indicator-preview-card {
     background: white;
-    box-shadow: var(--card-shadow);
-    transform: translateY(-3px);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e8e9ec;
 }
 
-.indicator-card i {
-    font-size: 1.8rem;
+.indicator-preview-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary-color);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.indicator-preview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(84, 68, 239, 0.15);
+    border-color: var(--primary-light);
+}
+
+.indicator-preview-card:hover::before {
+    transform: scaleY(1);
+}
+
+/* Header del Indicador */
+.indicator-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.indicator-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--light-accent), #e8f0ff);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.indicator-icon i {
+    font-size: 22px;
     color: var(--primary-color);
-    margin-bottom: 12px;
 }
 
-.indicator-card h4 {
+.indicator-preview-card:hover .indicator-icon {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+}
+
+.indicator-preview-card:hover .indicator-icon i {
+    color: white;
+    transform: scale(1.1);
+}
+
+.indicator-info {
+    flex: 1;
+}
+
+.indicator-info h4 {
     color: var(--primary-dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.indicator-count {
+    color: #6c757d;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+/* Highlight de Datos */
+.indicator-highlight {
+    background: linear-gradient(135deg, #f8f9fc, #ffffff);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #e8e9ec;
+    position: relative;
+}
+
+.highlight-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
     margin-bottom: 8px;
+}
+
+.highlight-label {
+    color: var(--text-color);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.highlight-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.highlight-trend.positive {
+    background: #d4f4dd;
+    color: #28a745;
+}
+
+.highlight-trend.negative {
+    background: #ffd6d6;
+    color: #dc3545;
+}
+
+.highlight-trend i {
+    font-size: 0.7rem;
+}
+
+/* Ver más */
+.view-more {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid #e8e9ec;
+}
+
+.view-more span {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.indicator-preview-card:hover .view-more span {
+    gap: 10px;
+}
+
+.view-more i {
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.indicator-preview-card:hover .view-more i {
+    transform: translateX(3px);
+}
+
+/* CTA de Indicadores */
+.indicators-cta {
+    text-align: center;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #e8e9ec;
+}
+
+.indicators-cta .btn {
+    font-size: 1rem;
+    padding: 12px 30px;
+    box-shadow: 0 4px 15px rgba(84, 68, 239, 0.2);
+}
+
+.indicators-cta .btn:hover {
+    box-shadow: 0 6px 20px rgba(84, 68, 239, 0.3);
+}
+
+/* Responsive para tablets */
+@media (max-width: 768px) {
+    .indicators-preview-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    .indicator-preview-card {
+        padding: 18px;
+    }
+    
+    .highlight-value {
+        font-size: 1.8rem;
+    }
+    
+    .indicator-icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .indicator-icon i {
+        font-size: 20px;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+    .indicators-preview-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .indicator-preview-card {
+        padding: 15px;
+    }
+    
+    .indicator-header {
+        gap: 12px;
+    }
+    
+    .highlight-value {
+        font-size: 1.6rem;
+    }
+    
+    .highlight-label {
+        font-size: 0.8rem;
+    }
+    
+    .indicators-cta .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Animaciones sutiles */
+@keyframes pulseIndicator {
+    0% {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(84, 68, 239, 0.15);
+    }
+    100% {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+}
+
+.indicator-preview-card:focus {
+    animation: pulseIndicator 2s ease-in-out;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 /* ========================================
