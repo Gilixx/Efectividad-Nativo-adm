@@ -1165,7 +1165,7 @@ header.hidden {
 }
 
 /* ============================================
-   SECCIÓN: MATRÍCULA HISTÓRICA
+   SECCIÓN: MATRÍCULA HISTÓRICA - 2 SLIDES
    ============================================ */
 
 .enrollment-slider-section {
@@ -1228,11 +1228,11 @@ header.hidden {
     gap: 30px;
     padding: 20px 0;
     transition: transform 0.5s ease;
-    width: 300%;
+    width: 200%; /* Cambiado de 300% a 200% para 2 slides */
 }
 
 .enrollment-slide {
-    width: 33.333%;
+    width: 50%; /* Cambiado de 33.333% a 50% para 2 slides */
     padding: 30px;
     box-sizing: border-box;
     background: white;
@@ -1269,10 +1269,10 @@ header.hidden {
     border-radius: 20px;
     font-weight: bold;
     margin-bottom: 15px;
-    font-size: 0.9rem;
-    box-shadow: 0 2px 8px rgba(242, 205, 0, 0.3);
+    font-size: 0.95rem;
 }
 
+/* Indicador de tendencia */
 .trend-indicator {
     background: linear-gradient(135deg, var(--light-accent), rgba(255, 255, 255, 0.8));
     border-radius: 12px;
@@ -1321,16 +1321,17 @@ header.hidden {
     width: 80px;
     height: 30px;
     position: relative;
-    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
 }
 
 .sparkline-bar {
-    position: absolute;
-    bottom: 0;
-    width: 6px;
+    flex: 1;
     background: linear-gradient(to top, var(--primary-color), var(--secondary-color));
     border-radius: 3px 3px 0 0;
     animation: sparklineGrow 0.8s ease-out;
+    min-height: 5px;
 }
 
 @keyframes sparklineGrow {
@@ -1365,20 +1366,17 @@ header.hidden {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(84, 68, 239, 0.3);
 }
 
-.slider-btn:hover {
+.slider-btn:hover:not(:disabled) {
     background: var(--secondary-color);
     transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(84, 68, 239, 0.4);
 }
 
 .slider-btn:disabled {
     background: #ccc;
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
+    opacity: 0.5;
 }
 
 .slider-indicators {
@@ -1393,20 +1391,96 @@ header.hidden {
     background: #ccc;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
 }
 
 .slider-dot.active {
     background: var(--primary-color);
     transform: scale(1.3);
-    border-color: var(--light-accent);
 }
 
 .slider-dot:hover {
     background: var(--secondary-color);
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    .enrollment-slider-section {
+        padding: 30px 20px;
+    }
+
+    .section-header-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .enrollment-slide {
+        padding: 20px;
+    }
+
+    .enrollment-chart-container {
+        height: 250px;
+    }
+
+    .slider-controls {
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .trend-indicator {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .trend-sparkline {
+        width: 60px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .enrollment-slider-section {
+        padding: 20px 15px;
+    }
+
+    .section-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .enrollment-slide {
+        padding: 15px;
+    }
+
+    .enrollment-slide h3 {
+        font-size: 1.5rem;
+    }
+
+    .enrollment-chart-container {
+        height: 200px;
+    }
+
+    .trend-indicator {
+        padding: 12px;
+    }
+
+    .trend-text {
+        font-size: 0.8rem;
+    }
+
+    .year-badge {
+        font-size: 0.85rem;
+        padding: 5px 15px;
+    }
+}
 /* ============================================
    MODAL DEL DASHBOARD
    ============================================ */

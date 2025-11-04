@@ -11,8 +11,7 @@ const EnrollmentSlider = {
             'rgba(255, 99, 132, 0.8)',   // rojo
             'rgba(54, 162, 235, 0.8)',   // azul
             'rgba(255, 206, 86, 0.8)',   // amarillo
-            'rgba(75, 192, 192, 0.8)',   // turquesa
-            'rgba(153, 102, 255, 0.8)'   // púrpura
+            'rgba(75, 192, 192, 0.8)'    // turquesa
         ],
         borderColors: [
             'rgba(84, 68, 239, 1)',
@@ -23,33 +22,29 @@ const EnrollmentSlider = {
             'rgba(255, 99, 132, 1)',
             'rgba(54, 162, 235, 1)',
             'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)'
+            'rgba(75, 192, 192, 1)'
         ],
         programs: [
-            'Administración', 'Enfermería', 'Medicina', 'Psicología', 'Ingeniería', 
-            'Educación', 'Teología', 'Contaduría', 'Comunicación', 'Nutrición'
+            'ESART', 'ESCEST', 'ESMUS', 'FACED', 'FACEJ', 'FACSA', 'FAPSI', 'FATEO', 'FITEC'
         ]
     },
 
     // Datos del slider
     data: {
         enrollment: {
-            2024: [125, 98, 85, 112, 78, 63, 52, 72, 58, 67],
-            2023: [120, 95, 80, 110, 75, 60, 50, 70, 55, 65],
-            2022: [115, 90, 75, 105, 70, 55, 45, 65, 50, 60]
+            2023: [42, 47, 9, 32, 49, 169, 16, 21, 31],
+            2022: [40, 45, 8, 30, 45, 160, 15, 20, 28] // Datos temporales - actualizar cuando estén disponibles
         },
         sparkline: {
-            2024: [70, 75, 82, 88, 95, 105, 125],
-            2023: [65, 70, 78, 85, 92, 102, 120],
-            2022: [60, 65, 72, 78, 85, 95, 115]
+            2023: [35, 38, 40, 42, 44, 47, 49],
+            2022: [32, 35, 37, 39, 41, 43, 45]
         }
     },
 
     // Estado del slider
     state: {
         currentSlideIndex: 0,
-        totalSlides: 3,
+        totalSlides: 2, // Cambiado de 3 a 2
         charts: {}
     },
 
@@ -68,7 +63,7 @@ const EnrollmentSlider = {
 
     // Crear gráficas principales
     createCharts: function() {
-        const years = [2024, 2023, 2022];
+        const years = [2023, 2022]; // Eliminado 2024
         
         years.forEach(year => {
             const canvasId = `enrollmentChart${year}`;
@@ -111,7 +106,7 @@ const EnrollmentSlider = {
                     },
                     title: {
                         display: true,
-                        text: `Distribución por Programa Académico`,
+                        text: `Distribución por Facultad/Escuela`,
                         font: {
                             size: 14,
                             weight: 'bold'
@@ -149,7 +144,7 @@ const EnrollmentSlider = {
 
     // Crear todas las sparklines
     createSparklines: function() {
-        const years = [2024, 2023, 2022];
+        const years = [2023, 2022]; // Eliminado 2024
         years.forEach(year => {
             this.createSparkline(`sparkline${year}`, this.data.sparkline[year]);
         });
@@ -173,25 +168,52 @@ const EnrollmentSlider = {
             
             // Calcular altura proporcional
             const heightPercent = range > 0 ? 
-                20 + ((value - minValue) / range) * 80 : 
-                50;
+                ((value - minValue) / range) * 100 : 50;
             
             bar.style.height = `${heightPercent}%`;
-            bar.style.left = `${index * 12}px`;
-            bar.style.animationDelay = `${index * 0.1}s`;
+            bar.style.backgroundColor = 'var(--primary-color)';
+            bar.style.opacity = 0.6 + (heightPercent / 200);
             
             container.appendChild(bar);
         });
     },
 
-    // Navegación del slider
+    // Actualizar slider
+    updateSlider: function() {
+        const wrapper = document.getElementById('enrollmentSliderWrapper');
+        if (!wrapper) return;
+
+        const offset = -this.state.currentSlideIndex * (100 / this.state.totalSlides);
+        wrapper.style.transform = `translateX(${offset}%)`;
+
+        // Actualizar indicadores
+        this.updateIndicators();
+    },
+
+    // Actualizar indicadores de navegación
+    updateIndicators: function() {
+        const dots = document.querySelectorAll('.slider-dot');
+        dots.forEach((dot, index) => {
+            if (index === this.state.currentSlideIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    },
+
+    // Cambiar slide
     changeSlide: function(direction) {
-        const newIndex = this.state.currentSlideIndex + direction;
-        
-        if (newIndex >= 0 && newIndex < this.state.totalSlides) {
-            this.state.currentSlideIndex = newIndex;
-            this.updateSlider();
+        this.state.currentSlideIndex += direction;
+
+        // Límites del slider
+        if (this.state.currentSlideIndex < 0) {
+            this.state.currentSlideIndex = this.state.totalSlides - 1;
+        } else if (this.state.currentSlideIndex >= this.state.totalSlides) {
+            this.state.currentSlideIndex = 0;
         }
+
+        this.updateSlider();
     },
 
     // Ir a slide específico
@@ -200,55 +222,14 @@ const EnrollmentSlider = {
         this.updateSlider();
     },
 
-    // Actualizar slider
-    updateSlider: function() {
-        const wrapper = document.getElementById('enrollmentSliderWrapper');
-        const dots = document.querySelectorAll('.slider-dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        if (!wrapper) return;
-
-        // Mover el slider
-        const translateX = -this.state.currentSlideIndex * 33.333;
-        wrapper.style.transform = `translateX(${translateX}%)`;
-        wrapper.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-
-        // Actualizar indicadores
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === this.state.currentSlideIndex);
-        });
-
-        // Actualizar botones
-        if (prevBtn) prevBtn.disabled = this.state.currentSlideIndex === 0;
-        if (nextBtn) nextBtn.disabled = this.state.currentSlideIndex === this.state.totalSlides - 1;
-    },
-
     // Vincular eventos
     bindEvents: function() {
-        // Eventos de hover en slides
-        const slides = document.querySelectorAll('.enrollment-slide');
-        slides.forEach(slide => {
-            slide.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px)';
-                this.style.transition = 'transform 0.3s ease';
-            });
-            
-            slide.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Navegación con teclado (solo si el slider está visible)
+        // Navegación por teclado
         document.addEventListener('keydown', (event) => {
-            // Verificar si el slider está visible en la página
-            const sliderSection = document.querySelector('.enrollment-slider-section');
-            if (!sliderSection) return;
-
-            const rect = sliderSection.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            const modalVisible = document.getElementById('dashboardModal') && 
+                               document.getElementById('dashboardModal').classList.contains('active');
             
-            if (isVisible) {
+            if (!modalVisible) {
                 if (event.key === 'ArrowLeft') {
                     event.preventDefault();
                     this.changeSlide(-1);

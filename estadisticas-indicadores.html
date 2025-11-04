@@ -273,82 +273,69 @@
             </div>
         </section>
 
-        <section class="enrollment-slider-section">
-            <div class="section-header-wrapper">
-                <div class="section-icon-wrapper">
-                    <i class="fas fa-chart-area"></i>
+       <!-- SECCIÓN DE MATRÍCULA HISTÓRICA - SOLO 2023 Y 2022 -->
+<section class="enrollment-slider-section">
+    <div class="section-header-wrapper">
+        <div class="section-icon-wrapper">
+            <i class="fas fa-chart-area"></i>
+        </div>
+        <div>
+            <h2 class="section-title">Evolución de la matrícula por años</h2>
+            <p class="section-subtitle">Análisis histórico del crecimiento estudiantil institucional</p>
+        </div>
+    </div>
+    
+    <div class="enrollment-slider-container">
+        <div class="enrollment-slider-wrapper" id="enrollmentSliderWrapper">
+            <!-- Slide 2023 -->
+            <div class="enrollment-slide">
+                <div class="year-badge">2023</div>
+                <h3>Matrícula 2023</h3>
+                <div class="enrollment-chart-container">
+                    <canvas id="enrollmentChart2023"></canvas>
                 </div>
-                <div>
-                    <h2 class="section-title">Evolución de la matrícula por años</h2>
-                    <p class="section-subtitle">Análisis histórico del crecimiento estudiantil institucional</p>
-                </div>
-            </div>
-            
-            <div class="enrollment-slider-container">
-                <div class="enrollment-slider-wrapper" id="enrollmentSliderWrapper">
-                    <div class="enrollment-slide">
-                        <div class="year-badge">2024</div>
-                        <h3>Matrícula 2024</h3>
-                        <div class="enrollment-chart-container">
-                            <canvas id="enrollmentChart2024"></canvas>
-                        </div>
-                        <div class="trend-indicator">
-                            <div class="trend-item">
-                                <i class="fas fa-arrow-up trend-icon positive"></i>
-                                <span class="trend-text">+4.1% vs 2023</span>
-                            </div>
-                            <div class="trend-sparkline" id="sparkline2024"></div>
-                        </div>
+                <div class="trend-indicator">
+                    <div class="trend-item">
+                        <i class="fas fa-arrow-up trend-icon positive"></i>
+                        <span class="trend-text">Comparación vs 2022</span>
                     </div>
-
-                    <div class="enrollment-slide">
-                        <div class="year-badge">2023</div>
-                        <h3>Matrícula 2023</h3>
-                        <div class="enrollment-chart-container">
-                            <canvas id="enrollmentChart2023"></canvas>
-                        </div>
-                        <div class="trend-indicator">
-                            <div class="trend-item">
-                                <i class="fas fa-arrow-up trend-icon positive"></i>
-                                <span class="trend-text">+3.6% vs 2022</span>
-                            </div>
-                            <div class="trend-sparkline" id="sparkline2023"></div>
-                        </div>
-                    </div>
-
-                    <div class="enrollment-slide">
-                        <div class="year-badge">2022</div>
-                        <h3>Matrícula 2022</h3>
-                        <div class="enrollment-chart-container">
-                            <canvas id="enrollmentChart2022"></canvas>
-                        </div>
-                        <div class="trend-indicator">
-                            <div class="trend-item">
-                                <i class="fas fa-chart-line trend-icon base"></i>
-                                <span class="trend-text">Año base</span>
-                            </div>
-                            <div class="trend-sparkline" id="sparkline2022"></div>
-                        </div>
-                    </div>
+                    <div class="trend-sparkline" id="sparkline2023"></div>
                 </div>
             </div>
 
-            <div class="slider-controls">
-                <button class="slider-btn" id="prevBtn" onclick="changeSlide(-1)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <div class="slider-indicators">
-                    <div class="slider-dot active" onclick="currentSlide(1)"></div>
-                    <div class="slider-dot" onclick="currentSlide(2)"></div>
-                    <div class="slider-dot" onclick="currentSlide(3)"></div>
+            <!-- Slide 2022 -->
+            <div class="enrollment-slide">
+                <div class="year-badge">2022</div>
+                <h3>Matrícula 2022</h3>
+                <div class="enrollment-chart-container">
+                    <canvas id="enrollmentChart2022"></canvas>
                 </div>
-                
-                <button class="slider-btn" id="nextBtn" onclick="changeSlide(1)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <div class="trend-indicator">
+                    <div class="trend-item">
+                        <i class="fas fa-chart-line trend-icon base"></i>
+                        <span class="trend-text">Año base</span>
+                    </div>
+                    <div class="trend-sparkline" id="sparkline2022"></div>
+                </div>
             </div>
-        </section>
+        </div>
+    </div>
+
+    <div class="slider-controls">
+        <button class="slider-btn" id="prevBtn" onclick="changeSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="slider-indicators">
+            <div class="slider-dot active" onclick="currentSlide(1)"></div>
+            <div class="slider-dot" onclick="currentSlide(2)"></div>
+        </div>
+        
+        <button class="slider-btn" id="nextBtn" onclick="changeSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
 
         <div class="dashboard-modal" id="dashboardModal">
             <div class="dashboard-modal-content">
