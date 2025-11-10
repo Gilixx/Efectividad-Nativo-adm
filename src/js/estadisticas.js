@@ -155,7 +155,7 @@ function updateEnrollmentChart(semester, level) {
     const data = dataSet[level];
     const labels = Object.keys(data);
 
-    let semesterText = semester === '1' ? '1er Semestre 2025' : '2do Semestre 2024';
+    let semesterText = semester === '1' ? '1er Semestre 2024' : '2do Semestre 2024';
     let titleText = `Total de estudiantes por facultad - ${semesterText}`;
     if (level !== 'all') {
         titleText += ` (${level})`;
