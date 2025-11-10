@@ -57,104 +57,6 @@
             </div>
         </section>
 
-        <section class="content-section">
-            <h2 class="section-title">Visualizador de estadísticas</h2>
-            
-            <div class="stats-tabs">
-                <div class="tabs-nav">
-                    <button class="tab-button active" data-tab="enrollment">Matrícula</button>
-                    <button class="tab-button" data-tab="demographic">Demografía</button>
-                    <button class="tab-button" data-tab="countries">Países</button>
-                </div>
-                
-                <div class="tab-content">
-                                <div class="tab-pane active" id="enrollment-tab">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3>Total de estudiantes por facultad</h3>
-                            <div class="chart-filters">
-                                <select id="enrollment-semester-filter"> <option value="1">1er semestre</option>
-                                    <option value="2">2do semestre</option>
-                                </select>
-                                <select id="enrollment-level-filter">
-                                    <option value="all">Todos los niveles</option>
-                                    <option value="PREGRADO">Pregrado</option>
-                                    <option value="POSGRADO">Posgrado</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="chart-wrapper">
-                            <canvas id="enrollmentChart"></canvas>
-                        </div>
-                        <div class="chart-legend">
-                            <p>Total de estudiantes distribuidos por facultad</p>
-                        </div>
-                    </div>
-                </div>
-                    
-                    <div class="tab-pane" id="demographic-tab">
-                        <div class="chart-container">
-                            <div class="chart-header">
-                                <h3>Distribución demográfica de estudiantes</h3>
-                                <div class="chart-filters">
-                                    <select id="demographic-semester-filter">
-                                        <option value="1">1er Semestre</option>
-                                        <option value="2">2do Semestre</option>
-                                    </select>
-                                    <select id="demographic-type-filter">
-                                        <option value="gender">Género</option>
-                                        <option value="religion">Religión</option>
-                                        <option value="residence">Residencia</option>
-                                    </select>
-                                    <select id="demographic-level-filter">
-                                        <option value="all">Todos los niveles</option>
-                                        <option value="PREGRADO">Pregrado</option>
-                                        <option value="POSGRADO">Posgrado</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="chart-wrapper">
-                                <canvas id="demographicChart"></canvas>
-                            </div>
-                            <div class="chart-legend">
-                                <p>Distribución demográfica de la población estudiantil</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-pane" id="countries-tab">
-                        <div class="chart-container">
-                            <div class="chart-header">
-                                <h3>Estudiantes por país de origen</h3>
-                                <div class="chart-filters">
-                                    <select id="countries-semester-filter">
-                                        <option value="1">1er Semestre</option>
-                                        <option value="2">2do Semestre</option>
-                                    </select>
-                                    <select id="countries-view-filter">
-                                        <option value="top10">Top 10 países</option>
-                                        <option value="top20">Top 20 países</option>
-                                        <option value="all">Todos los países</option>
-                                    </select>
-                                    <select id="countries-level-filter">
-                                        <option value="all">Todos los niveles</option>
-                                        <option value="PREGRADO">Pregrado</option>
-                                        <option value="POSGRADO">Posgrado</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="chart-wrapper">
-                                <canvas id="countriesChart"></canvas>
-                            </div>
-                            <div class="chart-legend">
-                                <p>Distribución de estudiantes por país de origen</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section class="dashboard-section">
             <h2 class="section-title">Indicadores y Panel Estadístico</h2>
             <p class="section-subtitle">Los indicadores en la institucion son elementos concretos y especificos, cuantitativo o cuantitativo que permiten conocer el desempeño de un objetivo </p>
@@ -246,20 +148,20 @@
                             
                             <div class="dashboard-stats">
                                 <div class="mini-stat">
-                                    <span class="mini-stat-value">12</span>
+                                    <span class="mini-stat-value">10</span>
                                     <div class="mini-stat-label">Facultades</div>
                                 </div>
                                 <div class="mini-stat">
-                                    <span class="mini-stat-value">156</span>
-                                    <div class="mini-stat-label">Programas</div>
+                                    <span class="mini-stat-value">50+</span>
+                                    <div class="mini-stat-label">Programas Académicos</div>
                                 </div>
                                 <div class="mini-stat">
-                                    <span class="mini-stat-value">98%</span>
-                                    <div class="mini-stat-label">Empleabilidad</div>
+                                    <span class="mini-stat-value">2100+</span>
+                                    <div class="mini-stat-label">Tesis</div>
                                 </div>
                                 <div class="mini-stat">
-                                    <span class="mini-stat-value">250+</span>
-                                    <div class="mini-stat-label">Docentes</div>
+                                    <span class="mini-stat-value">12</span>
+                                    <div class="mini-stat-label">Divisiones</div>
                                 </div>
                             </div>
 
@@ -267,6 +169,104 @@
                                 Ver Dashboard Completo
                                 <i class="fas fa-arrow-right"></i>
                             </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <section class="content-section">
+            <h2 class="section-title">Visualizador de estadísticas</h2>
+            
+            <div class="stats-tabs">
+                <div class="tabs-nav">
+                    <button class="tab-button active" data-tab="enrollment">Matrícula</button>
+                    <button class="tab-button" data-tab="demographic">Demografía</button>
+                    <button class="tab-button" data-tab="countries">Países</button>
+                </div>
+                
+                <div class="tab-content">
+                                <div class="tab-pane active" id="enrollment-tab">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Total de estudiantes por facultad</h3>
+                            <div class="chart-filters">
+                                <select id="enrollment-semester-filter"> <option value="1">1er semestre</option>
+                                    <option value="2">2do semestre</option>
+                                </select>
+                                <select id="enrollment-level-filter">
+                                    <option value="all">Todos los niveles</option>
+                                    <option value="PREGRADO">Pregrado</option>
+                                    <option value="POSGRADO">Posgrado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="enrollmentChart"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <p>Total de estudiantes distribuidos por facultad</p>
+                        </div>
+                    </div>
+                </div>
+                    
+                    <div class="tab-pane" id="demographic-tab">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3>Distribución demográfica de estudiantes</h3>
+                                <div class="chart-filters">
+                                    <select id="demographic-semester-filter">
+                                        <option value="1">1er Semestre</option>
+                                        <option value="2">2do Semestre</option>
+                                    </select>
+                                    <select id="demographic-type-filter">
+                                        <option value="gender">Género</option>
+                                        <option value="religion">Religión</option>
+                                        <option value="residence">Residencia</option>
+                                    </select>
+                                    <select id="demographic-level-filter">
+                                        <option value="all">Todos los niveles</option>
+                                        <option value="PREGRADO">Pregrado</option>
+                                        <option value="POSGRADO">Posgrado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="demographicChart"></canvas>
+                            </div>
+                            <div class="chart-legend">
+                                <p>Distribución demográfica de la población estudiantil</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="countries-tab">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3>Estudiantes por país de origen</h3>
+                                <div class="chart-filters">
+                                    <select id="countries-semester-filter">
+                                        <option value="1">1er Semestre</option>
+                                        <option value="2">2do Semestre</option>
+                                    </select>
+                                    <select id="countries-view-filter">
+                                        <option value="top10">Top 10 países</option>
+                                        <option value="top20">Top 20 países</option>
+                                        <option value="all">Todos los países</option>
+                                    </select>
+                                    <select id="countries-level-filter">
+                                        <option value="all">Todos los niveles</option>
+                                        <option value="PREGRADO">Pregrado</option>
+                                        <option value="POSGRADO">Posgrado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="countriesChart"></canvas>
+                            </div>
+                            <div class="chart-legend">
+                                <p>Distribución de estudiantes por país de origen</p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -32,8 +32,8 @@ const EnrollmentSlider = {
     // Datos del slider
     data: {
         enrollment: {
-            2023: [42, 47, 9, 32, 49, 169, 16, 21, 31],
-            2022: [40, 45, 8, 30, 45, 160, 15, 20, 28] // Datos temporales - actualizar cuando estén disponibles
+            2023: [184, 177, 36, 355, 220, 938, 110, 763, 118],
+            2022: [188, 171, 34, 195, 208, 919, 138, 731, 114] 
         },
         sparkline: {
             2023: [35, 38, 40, 42, 44, 47, 49],
