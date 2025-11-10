@@ -108,7 +108,7 @@ function initEnrollmentChart() {
                 ...defaultChartOptions.plugins,
                 title: {
                     ...defaultChartOptions.plugins.title,
-                    text: 'Total de estudiantes por facultad - 1er semestre 2024' // Título inicial
+                    text: 'Total de estudiantes por facultad - 1er semestre 2025' // Título inicial
                 },
                 tooltip: {
                     callbacks: {
