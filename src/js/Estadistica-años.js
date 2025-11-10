@@ -24,27 +24,19 @@ const EnrollmentSlider = {
             'rgba(255, 206, 86, 1)',
             'rgba(75, 192, 192, 1)'
         ],
-        programs: [
-            'ESART', 'ESCEST', 'ESMUS', 'FACED', 'FACEJ', 'FACSA', 'FAPSI', 'FATEO', 'FITEC'
-        ]
+        programs: [] // Se carga desde JSON
     },
 
-    // Datos del slider
+    // Datos del slider - Se cargan desde JSON
     data: {
-        enrollment: {
-            2023: [184, 177, 36, 355, 220, 938, 110, 763, 118],
-            2022: [188, 171, 34, 195, 208, 919, 138, 731, 114] 
-        },
-        sparkline: {
-            2023: [35, 38, 40, 42, 44, 47, 49],
-            2022: [32, 35, 37, 39, 41, 43, 45]
-        }
+        enrollment: {},
+        sparkline: {}
     },
 
     // Estado del slider
     state: {
         currentSlideIndex: 0,
-        totalSlides: 2, // Cambiado de 3 a 2
+        totalSlides: 2, // 2023 y 2022
         charts: {}
     },
 
@@ -52,6 +44,17 @@ const EnrollmentSlider = {
     init: function() {
         // Solo inicializar si los elementos del slider existen
         if (!document.getElementById('enrollmentSliderWrapper')) {
+            return;
+        }
+
+        // Cargar datos desde el JSON global
+        if (window.historicoData) {
+            this.config.programs = window.historicoData.programs;
+            this.data.enrollment = window.historicoData.enrollment;
+            this.data.sparkline = window.historicoData.sparkline;
+            console.log('✅ Datos históricos cargados desde JSON');
+        } else {
+            console.error('❌ No se encontraron datos históricos. Asegúrate de que data.json se haya cargado correctamente.');
             return;
         }
 
@@ -63,7 +66,7 @@ const EnrollmentSlider = {
 
     // Crear gráficas principales
     createCharts: function() {
-        const years = [2023, 2022]; // Eliminado 2024
+        const years = [2023, 2022];
         
         years.forEach(year => {
             const canvasId = `enrollmentChart${year}`;
@@ -144,7 +147,7 @@ const EnrollmentSlider = {
 
     // Crear todas las sparklines
     createSparklines: function() {
-        const years = [2023, 2022]; // Eliminado 2024
+        const years = [2023, 2022];
         years.forEach(year => {
             this.createSparkline(`sparkline${year}`, this.data.sparkline[year]);
         });
@@ -271,15 +274,8 @@ function currentSlide(slideNumber) {
     EnrollmentSlider.goToSlide(slideNumber);
 }
 
-// Inicialización cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    // Verificar si Chart.js está disponible
-    if (typeof Chart !== 'undefined') {
-        EnrollmentSlider.init();
-    } else {
-        console.warn('Chart.js no está disponible. El slider de matrícula no se inicializará.');
-    }
-});
+// NO auto-inicializar aquí - el controller lo hará después de cargar datos
+// La función init() será llamada por el controller cuando los datos estén listos
 
 // Exportar para uso en otros scripts si es necesario
 if (typeof module !== 'undefined' && module.exports) {

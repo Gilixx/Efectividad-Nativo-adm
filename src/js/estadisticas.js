@@ -1,8 +1,3 @@
-// CONFIGURACIÓN Y DATOS BASADOS EN LOS ARCHIVOS REALES DE LA UM
-// ACTUALIZADO CON DATOS DEL PRIMER SEMESTRE 2025 y SEGUNDO SEMESTRE 2024 (Basado en imagen)
-
-// ... (Configuración global y colores - SIN CAMBIOS) ...
-
 // Colores consistentes para las gráficas (basados en la paleta de la UM)
 const chartColors = [
     'rgba(84, 68, 239, 0.8)',   // primary
@@ -33,218 +28,6 @@ const chartBorderColors = [
     'rgba(153, 102, 255, 1)',    // púrpura
     'rgba(255, 159, 64, 1)'      // naranja
 ];
-
-// DATOS ACTUALIZADOS - PRIMER SEMESTRE 2025 y SEGUNDO SEMESTRE 2024
-
-// Facultades actualizadas de la UM para 2025
-const facultades = ['ESART', 'ESCEST', 'ESMUS', 'FACED', 'FACEJ', 'FACSA', 'FAPSI', 'FATEO', 'FITEC'];
-
-// Datos de matrícula por facultad - ACTUALIZACIÓN para incluir 2do Semestre
-const matriculaData = {
-    // 1er Semestre 2025 (Datos originales)
-    1: { 
-        all: {
-            // Totales por facultad (pregrado + posgrado)
-            'ESART': 188,
-            'ESCEST': 210, // 208 + 2
-            'ESMUS': 36,
-            'FACED': 212, // 88 + 124
-            'FACEJ': 207, // 192 + 15
-            'FACSA': 887, // 852 + 35
-            'FAPSI': 114, // 98 + 16
-            'FATEO': 113,
-            'FITEC': 145 // 143 + 2
-        },
-        'PREGRADO': {
-            'ESART': 190,
-            'ESCEST': 183,
-            'ESMUS': 40,
-            'FACED': 88,
-            'FACEJ': 180,
-            'FACSA': 861,
-            'FAPSI': 89,
-            'FATEO': 109,
-            'FITEC': 131
-        },
-        'POSGRADO': {
-            'ESART': 8,
-            'ESCEST': 5,
-            'ESMUS': 0,
-            'FACED': 147,
-            'FACEJ': 15,
-            'FACSA': 46,
-            'FAPSI': 16,
-            'FATEO': 0,
-            'FITEC': 2
-        }
-    },
-    // 2do Semestre 2024 (Datos de la imagen, asumiendo que son Pregrado + Posgrado)
-    // NOTA: Se utilizaron los totales de la imagen, asumiendo que FACEJ, FAPSI, FACSA, FITEC, FATEO, ESART, ESCES, FACED, ESMUS
-    2: {
-        // Los totales de la imagen son para el 2do Semestre.
-        // Adaptando los nombres de facultad: FACEJ, FAPSI, FACSA, FITEC, FATEO, ESART, ESCES, FACED, ESMUS
-        all: { 
-            'FACSA': 717,
-            'ESART': 176,
-            'ESCEST': 162,
-            'FACEJ': 155,
-            'FITEC': 119,
-            'FATEO': 105,
-            'FAPSI': 81,
-            'FACED': 79,
-            'ESMUS': 38,
-            // Las facultades faltantes del set de datos original (si son 9, solo 9 están mapeadas)
-        },
-        // Asumiendo por simplificación que todo es Pregrado o que el Posgrado es muy reducido en el 2do semestre
-        'PREGRADO': {
-            'FACSA': 717,
-            'ESART': 176,
-            'ESCEST': 162,
-            'FACEJ': 155,
-            'FITEC': 119,
-            'FATEO': 105,
-            'FAPSI': 81,
-            'FACED': 79,
-            'ESMUS': 38,
-        },
-        'POSGRADO': {
-            'FACSA': 42, 
-            'ESART': 8,
-            'ESCEST': 5,
-            'FACEJ': 16,
-            'FITEC': 1,
-            'FATEO': 0,
-            'FAPSI': 10,
-            'FACED': 19,
-            'ESMUS': 0,
-        }
-    }
-};
-
-
-// Datos demográficos - 1er y 2do Semestre
-const demograficosData = {
-    // 1er Semestre 2025 (Datos originales)
-    1: { 
-        gender: {
-            all: { 'Hombre': 1050, 'Mujer': 868 },
-            'PREGRADO': { 'Hombre': 1050, 'Mujer': 868 },
-            'POSGRADO': { 'Hombre': 0, 'Mujer': 0 }
-        },
-        religion: {
-            all: { 'ASD': 1726, 'No ASD': 192 },
-            'PREGRADO': { 'ASD': 1726, 'No ASD': 192 },
-            'POSGRADO': { 'ASD': 0, 'No ASD': 0 }
-        },
-        residence: {
-            all: { 'Externo': 1534, 'Interno': 384 },
-            'PREGRADO': { 'Externo': 1534, 'Interno': 384 },
-            'POSGRADO': { 'Externo': 0, 'Interno': 0 }
-        }
-    },
-    // 2do Semestre 2024 (Datos de ejemplo, si no hay datos reales de la imagen)
-    2: { 
-        gender: {
-            all: { 'Hombre': 900, 'Mujer': 732 }, // Estimado basado en total 1632 (imagen)
-            'PREGRADO': { 'Hombre': 900, 'Mujer': 732 },
-            'POSGRADO': { 'Hombre': 0, 'Mujer': 0 }
-        },
-        religion: {
-            all: { 'ASD': 1400, 'No ASD': 232 },
-            'PREGRADO': { 'ASD': 1400, 'No ASD': 232 },
-            'POSGRADO': { 'ASD': 0, 'No ASD': 0 }
-        },
-        residence: {
-            all: { 'Externo': 1300, 'Interno': 332 },
-            'PREGRADO': { 'Externo': 1300, 'Interno': 332 },
-            'POSGRADO': { 'Externo': 0, 'Interno': 0 }
-        }
-    }
-};
-
-// Datos de países - 1er y 2do Semestre
-const paisesData = {
-    // 1er Semestre 2025 (Datos originales)
-    1: { 
-        all: {
-            'México': 1150,
-            'Estados Unidos': 150,
-            'Venezuela': 120,
-            'Colombia': 80,
-            'Perú': 70,
-            'Guatemala': 60,
-            'Honduras': 50,
-            'República Dominicana': 45,
-            'Costa Rica': 40,
-            'Nicaragua': 35,
-            'Ecuador': 30,
-            'Argentina': 28,
-            'Brasil': 25,
-            'Chile': 20,
-            'Bolivia': 15
-        },
-        'PREGRADO': {
-            'México': 1150,
-            'Estados Unidos': 150,
-            'Venezuela': 120,
-            'Colombia': 80,
-            'Perú': 70,
-            'Guatemala': 60,
-            'Honduras': 50,
-            'República Dominicana': 45,
-            'Costa Rica': 40,
-            'Nicaragua': 35,
-            'Ecuador': 30,
-            'Argentina': 28,
-            'Brasil': 25,
-            'Chile': 20,
-            'Bolivia': 15
-        },
-        'POSGRADO': {
-            'México': 0, // Ajustar si hay datos de posgrado
-            'Estados Unidos': 0,
-            'Venezuela': 0,
-            'Colombia': 0,
-            'Otros': 0
-        }
-    },
-    // 2do Semestre 2024 (Datos de ejemplo)
-    2: {
-        all: {
-            'México': 1000,
-            'Estados Unidos': 120,
-            'Venezuela': 90,
-            'Colombia': 60,
-            'Perú': 50,
-            'Guatemala': 45,
-            'Honduras': 30,
-            'República Dominicana': 30,
-            'Costa Rica': 25,
-            'Nicaragua': 20,
-            'Ecuador': 15
-        },
-        'PREGRADO': {
-            'México': 1000,
-            'Estados Unidos': 120,
-            'Venezuela': 90,
-            'Colombia': 60,
-            'Perú': 50,
-            'Guatemala': 45,
-            'Honduras': 30,
-            'República Dominicana': 30,
-            'Costa Rica': 25,
-            'Nicaragua': 20,
-            'Ecuador': 15
-        },
-        'POSGRADO': {
-            'México': 0, 
-            'Estados Unidos': 0,
-            'Venezuela': 0,
-            'Colombia': 0,
-            'Otros': 0
-        }
-    }
-};
 
 // Variables globales para las gráficas
 let enrollmentChart = null;
@@ -325,7 +108,7 @@ function initEnrollmentChart() {
                 ...defaultChartOptions.plugins,
                 title: {
                     ...defaultChartOptions.plugins.title,
-                    text: 'Total de estudiantes por facultad - 1er semestre 2025' // Título inicial
+                    text: 'Total de estudiantes por facultad - 1er semestre 2024' // Título inicial
                 },
                 tooltip: {
                     callbacks: {
@@ -809,10 +592,6 @@ function initStatistics() {
     }
 }
 
-// INICIALIZACIÓN CUANDO EL DOM ESTÉ LISTO
-document.addEventListener('DOMContentLoaded', function() {
-    initStatistics();
-});
 
 // Exportar funciones para uso global si es necesario
 window.estadisticasUM = {

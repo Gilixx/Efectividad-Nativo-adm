@@ -1,0 +1,288 @@
+{
+    "success": 1,
+    "message": "Datos de estadísticas cargados correctamente",
+    "data": {
+        "matricula": {
+            "1": {
+                "all": {
+                    "ESART": 188,
+                    "ESCEST": 210,
+                    "ESMUS": 36,
+                    "FACED": 212,
+                    "FACEJ": 207,
+                    "FACSA": 887,
+                    "FAPSI": 114,
+                    "FATEO": 113,
+                    "FITEC": 145
+                },
+                "PREGRADO": {
+                    "ESART": 190,
+                    "ESCEST": 183,
+                    "ESMUS": 40,
+                    "FACED": 88,
+                    "FACEJ": 180,
+                    "FACSA": 861,
+                    "FAPSI": 89,
+                    "FATEO": 109,
+                    "FITEC": 131
+                },
+                "POSGRADO": {
+                    "ESART": 8,
+                    "ESCEST": 5,
+                    "ESMUS": 0,
+                    "FACED": 147,
+                    "FACEJ": 15,
+                    "FACSA": 46,
+                    "FAPSI": 16,
+                    "FATEO": 0,
+                    "FITEC": 2
+                }
+            },
+            "2": {
+                "all": {
+                    "FACSA": 717,
+                    "ESART": 176,
+                    "ESCEST": 162,
+                    "FACEJ": 155,
+                    "FITEC": 119,
+                    "FATEO": 105,
+                    "FAPSI": 81,
+                    "FACED": 79,
+                    "ESMUS": 38
+                },
+                "PREGRADO": {
+                    "FACSA": 717,
+                    "ESART": 176,
+                    "ESCEST": 162,
+                    "FACEJ": 155,
+                    "FITEC": 119,
+                    "FATEO": 105,
+                    "FAPSI": 81,
+                    "FACED": 79,
+                    "ESMUS": 38
+                },
+                "POSGRADO": {
+                    "FACSA": 42,
+                    "ESART": 8,
+                    "ESCEST": 5,
+                    "FACEJ": 16,
+                    "FITEC": 1,
+                    "FATEO": 0,
+                    "FAPSI": 10,
+                    "FACED": 19,
+                    "ESMUS": 0
+                }
+            }
+        },
+        "demograficos": {
+            "1": {
+                "gender": {
+                    "all": {
+                        "Hombre": 1050,
+                        "Mujer": 868
+                    },
+                    "PREGRADO": {
+                        "Hombre": 1050,
+                        "Mujer": 868
+                    },
+                    "POSGRADO": {
+                        "Hombre": 0,
+                        "Mujer": 0
+                    }
+                },
+                "religion": {
+                    "all": {
+                        "ASD": 1726,
+                        "No ASD": 192
+                    },
+                    "PREGRADO": {
+                        "ASD": 1726,
+                        "No ASD": 192
+                    },
+                    "POSGRADO": {
+                        "ASD": 0,
+                        "No ASD": 0
+                    }
+                },
+                "residence": {
+                    "all": {
+                        "Externo": 1534,
+                        "Interno": 384
+                    },
+                    "PREGRADO": {
+                        "Externo": 1534,
+                        "Interno": 384
+                    },
+                    "POSGRADO": {
+                        "Externo": 0,
+                        "Interno": 0
+                    }
+                }
+            },
+            "2": {
+                "gender": {
+                    "all": {
+                        "Hombre": 900,
+                        "Mujer": 732
+                    },
+                    "PREGRADO": {
+                        "Hombre": 900,
+                        "Mujer": 732
+                    },
+                    "POSGRADO": {
+                        "Hombre": 0,
+                        "Mujer": 0
+                    }
+                },
+                "religion": {
+                    "all": {
+                        "ASD": 1400,
+                        "No ASD": 232
+                    },
+                    "PREGRADO": {
+                        "ASD": 1400,
+                        "No ASD": 232
+                    },
+                    "POSGRADO": {
+                        "ASD": 0,
+                        "No ASD": 0
+                    }
+                },
+                "residence": {
+                    "all": {
+                        "Externo": 1300,
+                        "Interno": 332
+                    },
+                    "PREGRADO": {
+                        "Externo": 1300,
+                        "Interno": 332
+                    },
+                    "POSGRADO": {
+                        "Externo": 0,
+                        "Interno": 0
+                    }
+                }
+            }
+        },
+        "paises": {
+            "1": {
+                "all": {
+                    "México": 1150,
+                    "Estados Unidos": 150,
+                    "Venezuela": 120,
+                    "Colombia": 80,
+                    "Perú": 70,
+                    "Guatemala": 60,
+                    "Honduras": 50,
+                    "República Dominicana": 45,
+                    "Costa Rica": 40,
+                    "Nicaragua": 35,
+                    "Ecuador": 30,
+                    "Argentina": 28,
+                    "Brasil": 25,
+                    "Chile": 20,
+                    "Bolivia": 15
+                },
+                "PREGRADO": {
+                    "México": 1150,
+                    "Estados Unidos": 150,
+                    "Venezuela": 120,
+                    "Colombia": 80,
+                    "Perú": 70,
+                    "Guatemala": 60,
+                    "Honduras": 50,
+                    "República Dominicana": 45,
+                    "Costa Rica": 40,
+                    "Nicaragua": 35,
+                    "Ecuador": 30,
+                    "Argentina": 28,
+                    "Brasil": 25,
+                    "Chile": 20,
+                    "Bolivia": 15
+                },
+                "POSGRADO": {
+                    "México": 0,
+                    "Estados Unidos": 0,
+                    "Venezuela": 0,
+                    "Colombia": 0,
+                    "Otros": 0
+                }
+            },
+            "2": {
+                "all": {
+                    "México": 1000,
+                    "Estados Unidos": 120,
+                    "Venezuela": 90,
+                    "Colombia": 60,
+                    "Perú": 50,
+                    "Guatemala": 45,
+                    "Honduras": 30,
+                    "República Dominicana": 30,
+                    "Costa Rica": 25,
+                    "Nicaragua": 20,
+                    "Ecuador": 15,
+                    "Argentina": 12,
+                    "Brasil": 10,
+                    "Chile": 8,
+                    "Bolivia": 7
+                },
+                "PREGRADO": {
+                    "México": 1000,
+                    "Estados Unidos": 120,
+                    "Venezuela": 90,
+                    "Colombia": 60,
+                    "Perú": 50,
+                    "Guatemala": 45,
+                    "Honduras": 30,
+                    "República Dominicana": 30,
+                    "Costa Rica": 25,
+                    "Nicaragua": 20,
+                    "Ecuador": 15,
+                    "Argentina": 12,
+                    "Brasil": 10,
+                    "Chile": 8,
+                    "Bolivia": 7
+                },
+                "POSGRADO": {
+                    "México": 0,
+                    "Estados Unidos": 0,
+                    "Venezuela": 0,
+                    "Colombia": 0,
+                    "Otros": 0
+                }
+            }
+        },
+        "facultades": [
+            "ESART",
+            "ESCEST",
+            "ESMUS",
+            "FACED",
+            "FACEJ",
+            "FACSA",
+            "FAPSI",
+            "FATEO",
+            "FITEC"
+        ],
+        "historico": {
+            "programs": [
+                "ESART",
+                "ESCEST", 
+                "ESMUS", 
+                "FACED", 
+                "FACEJ", 
+                "FACSA", 
+                "FAPSI", 
+                "FATEO", 
+                "FITEC"
+            ],
+            "enrollment": {
+                "2023": [184, 177, 36, 355, 220, 938, 110, 763, 118],
+                "2022": [188, 171, 34, 195, 208, 919, 138, 731, 114]
+            },
+            "sparkline": {
+                "2023": [184, 177, 36, 355, 220, 938, 110, 763, 118],
+                "2022": [188, 171, 34, 195, 208, 919, 138, 731, 114]
+            }
+        }
+    }
+}
