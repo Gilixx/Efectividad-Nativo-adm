@@ -995,35 +995,6 @@ header.hidden {
     gap: 5px;
 }
 
-.stat-trend {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
-.stat-trend.positive {
-    background: rgba(40, 167, 69, 0.1);
-    color: #28a745;
-}
-
-.stat-trend.neutral {
-    background: rgba(84, 68, 239, 0.1);
-    color: var(--primary-color);
-}
-
-.stat-trend.negative {
-    background: rgba(220, 53, 69, 0.1);
-    color: #dc3545;
-}
-
-.stat-trend i {
-    font-size: 0.7rem;
-}
-
 /* Columna del Dashboard */
 .dashboard-column {
     display: flex;

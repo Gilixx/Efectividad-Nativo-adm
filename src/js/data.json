@@ -265,7 +265,7 @@
         ],
         "historico": {
             "programs": [
-                "ESART",
+                 "ESART",
                 "ESCEST", 
                 "ESMUS", 
                 "FACED", 
@@ -274,15 +274,51 @@
                 "FAPSI", 
                 "FATEO", 
                 "FITEC"
-            ],
+             ],
             "enrollment": {
                 "2023": [184, 177, 36, 355, 220, 938, 110, 763, 118],
                 "2022": [188, 171, 34, 195, 208, 919, 138, 731, 114]
             },
-            "sparkline": {
+             "sparkline": {
                 "2023": [184, 177, 36, 355, 220, 938, 110, 763, 118],
                 "2022": [188, 171, 34, 195, 208, 919, 138, 731, 114]
             }
+        },
+        "indicadores": {
+            "nuevoIngreso": {
+                "titulo": "Porcentaje de estudiantes de nuevo ingreso de pregrado y posgrado matrícula corporativa",
+                "valor": "24%",
+                "comparacion": "vs año anterior",
+                "icono": "fa-user-graduate",
+                "tipo": "positive"
+            },
+            "servicioComunitario": {
+                "titulo": "Número de beneficiarios en el programa de servicio comunitario por parte de estudiantes",
+                "valor": "7,382",
+                "comparacion": "más beneficiarios",
+                "icono": "fa-chalkboard-teacher",
+                "tipo": "positive"
+            },
+            "saludEspiritual": {
+                "titulo": "Promedio de salud espiritual de los estudiantes",
+                "valor": "4.13",
+                "comparacion": "escala de 5.0",
+                "icono": "fa-percentage",
+                "tipo": "positive"
+            },
+            "misiones": {
+                "titulo": "Número de participantes en cursos de misiones (para apoyar la Ventana 10/40)",
+                "valor": "292",
+                "comparacion": "nuevos misioneros",
+                "icono": "fa-globe-americas",
+                "tipo": "positive"
+            }
+        },
+        "dashboardStats": {
+            "facultades": "10",
+            "programas": "50+",
+            "tesis": "2100+",
+            "divisiones": "12"
         }
     }
 }

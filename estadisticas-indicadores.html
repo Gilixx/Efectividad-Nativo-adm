@@ -57,123 +57,40 @@
             </div>
         </section>
 
-        <section class="dashboard-section">
-            <h2 class="section-title">Indicadores y Panel Estadístico</h2>
-            <p class="section-subtitle">Los indicadores en la institucion son elementos concretos y especificos, cuantitativo o cuantitativo que permiten conocer el desempeño de un objetivo </p>
-            <div class="dashboard-layout">
-                <div class="indicators-column">
-                         <div class="stat-indicator">
-                <div class="stat-header">
-                    <div class="stat-icon">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3>Porcentaje de estudiantes de nuevo ingreso de pregrado y posgrado matrícula corporativa</h3>
-                        <div class="stat-value">24%</div>
-                    </div>
-                </div>
-                <div class="stat-detail">
-                    <span class="stat-trend positive">
-                        <i class="fas fa-arrow-up"></i> +4.2%
-                    </span>
-                    <span>vs año anterior</span>
-                </div>
-            </div>
+       <section class="dashboard-section">
+    <h2 class="section-title">Indicadores y Panel Estadístico</h2>
+    <p class="section-subtitle">Los indicadores en la institucion son elementos concretos y especificos, cuantitativo o cuantitativo que permiten conocer el desempeño de un objetivo</p>
+    <div class="dashboard-layout">
+        <!-- Los indicadores se cargarán dinámicamente desde data.json -->
+        <div class="indicators-column">
+            <!-- Contenido generado dinámicamente por controller.js -->
+        </div>
 
-            <div class="stat-indicator">
-                <div class="stat-header">
-                    <div class="stat-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3>Número de beneficiarios en el programa de servicio comunitario por parte de estudiantes</h3>
-                        <div class="stat-value">7,382</div>
-                    </div>
-                </div>
-                <div class="stat-detail">
-                    <span class="stat-trend positive">
-                        <i class="fas fa-arrow-up"></i> +15%
+        <div class="dashboard-column">
+            <div class="dashboard-preview" onclick="openDashboardModal()">
+                <div class="dashboard-content">
+                    <span class="dashboard-badge">
+                        <i class="fas fa-chart-line"></i> Dashboard Completo
                     </span>
-                    <span>más beneficiarios</span>
-                </div>
-            </div>
+                    <h3 class="dashboard-title">Analytics en Tiempo Real</h3>
+                    <p class="dashboard-description">
+                        Explora datos detallados, tendencias históricas y proyecciones futuras de nuestra institución con nuestro dashboard interactivo completo.
+                    </p>
+                    
+                    <!-- Las estadísticas se cargarán dinámicamente desde data.json -->
+                    <div class="dashboard-stats">
+                        <!-- Contenido generado dinámicamente por controller.js -->
+                    </div>
 
-            <div class="stat-indicator">
-                <div class="stat-header">
-                    <div class="stat-icon">
-                        <i class="fas fa-percentage"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3>Promedio de salud espiritual de los estudiantes</h3>
-                        <div class="stat-value">4.13</div>
-                    </div>
-                </div>
-                <div class="stat-detail">
-                    <span class="stat-trend positive">
-                        <i class="fas fa-arrow-up"></i> +0.2
-                    </span>
-                    <span>escala de 5.0</span>
-                </div>
-            </div>
-
-            <div class="stat-indicator">
-                <div class="stat-header">
-                    <div class="stat-icon">
-                        <i class="fas fa-globe-americas"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3>Número de participantes en cursos de misiones (para apoyar la Ventana 10/40)</h3>
-                        <div class="stat-value">292</div>
-                    </div>
-                </div>
-                <div class="stat-detail">
-                    <span class="stat-trend positive">
-                        <i class="fas fa-arrow-up"></i> +42
-                    </span>
-                    <span>nuevos misioneros</span>
+                    <a href="#" class="dashboard-cta" onclick="event.preventDefault();">
+                        Ver Dashboard Completo
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
-
-                <div class="dashboard-column">
-                    <div class="dashboard-preview" onclick="openDashboardModal()">
-                        <div class="dashboard-content">
-                            <span class="dashboard-badge">
-                                <i class="fas fa-chart-line"></i> Dashboard Completo
-                            </span>
-                            <h3 class="dashboard-title">Analytics en Tiempo Real</h3>
-                            <p class="dashboard-description">
-                                Explora datos detallados, tendencias históricas y proyecciones futuras de nuestra institución con nuestro dashboard interactivo completo.
-                            </p>
-                            
-                            <div class="dashboard-stats">
-                                <div class="mini-stat">
-                                    <span class="mini-stat-value">10</span>
-                                    <div class="mini-stat-label">Facultades</div>
-                                </div>
-                                <div class="mini-stat">
-                                    <span class="mini-stat-value">50+</span>
-                                    <div class="mini-stat-label">Programas Académicos</div>
-                                </div>
-                                <div class="mini-stat">
-                                    <span class="mini-stat-value">2100+</span>
-                                    <div class="mini-stat-label">Tesis</div>
-                                </div>
-                                <div class="mini-stat">
-                                    <span class="mini-stat-value">12</span>
-                                    <div class="mini-stat-label">Divisiones</div>
-                                </div>
-                            </div>
-
-                            <a href="#" class="dashboard-cta" onclick="event.preventDefault();">
-                                Ver Dashboard Completo
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    </div>
+</section>
 
          <section class="content-section">
             <h2 class="section-title">Visualizador de estadísticas</h2>

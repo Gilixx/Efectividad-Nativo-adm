@@ -10,7 +10,7 @@ async function loadStatisticsData() {
         console.log('🔄 Cargando datos desde JSON...');
         
         // Cargar el archivo JSON desde src/js/data.json
-        const response = await fetch('https://cdn.um.click/sources/sitios/config/90a42820-be4a-11f0-b8c6-f5e14307a5b9');
+        const response = await fetch('src/js/data.json');
         
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
@@ -29,6 +29,8 @@ async function loadStatisticsData() {
         paisesData = jsonData.data.paises;
         facultades = jsonData.data.facultades;
         window.historicoData = jsonData.data.historico; // ← LÍNEA IMPORTANTE PARA MATRÍCULA HISTÓRICA
+        window.indicadoresData = jsonData.data.indicadores; // ← NUEVA: Para indicadores
+        window.dashboardStatsData = jsonData.data.dashboardStats; // ← NUEVA: Para stats del dashboard
         
         console.log('✅ Datos cargados correctamente desde JSON');
         console.log('📊 Matrícula:', matriculaData);
@@ -36,6 +38,8 @@ async function loadStatisticsData() {
         console.log('🌍 Países:', paisesData);
         console.log('🏛️ Facultades:', facultades);
         console.log('📈 Histórico:', window.historicoData);
+        console.log('📋 Indicadores:', window.indicadoresData);
+        console.log('📊 Dashboard Stats:', window.dashboardStatsData);
         
         // Inicializar estadísticas después de cargar los datos
         if (typeof initStatistics === 'function') {
@@ -52,6 +56,10 @@ async function loadStatisticsData() {
             }
         }
         
+        // Renderizar indicadores dinámicamente
+        renderIndicadores();
+        renderDashboardStats();
+        
     } catch (error) {
         console.error('❌ Error al cargar datos desde JSON:', error);
         alert('Error al cargar las estadísticas. Por favor, verifica que el archivo src/js/data.json existe y es válido.');
@@ -63,4 +71,87 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadStatisticsData);
 } else {
     loadStatisticsData();
+}
+
+/**
+ * Renderiza los indicadores dinámicamente desde el JSON
+ */
+function renderIndicadores() {
+    if (!window.indicadoresData) {
+        console.warn('⚠️ No hay datos de indicadores para renderizar');
+        return;
+    }
+
+    const indicadoresContainer = document.querySelector('.indicators-column');
+    if (!indicadoresContainer) {
+        console.warn('⚠️ No se encontró el contenedor de indicadores');
+        return;
+    }
+
+    // Limpiar contenedor
+    indicadoresContainer.innerHTML = '';
+
+    // Renderizar cada indicador
+    Object.values(window.indicadoresData).forEach(indicador => {
+        const indicadorHTML = `
+            <div class="stat-indicator">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas ${indicador.icono}"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>${indicador.titulo}</h3>
+                        <div class="stat-value">${indicador.valor}</div>
+                    </div>
+                </div>
+                <div class="stat-detail">
+                    <span class="stat-trend ${indicador.tipo}">
+                    </span>
+                </div>
+            </div>
+        `;
+        indicadoresContainer.innerHTML += indicadorHTML;
+    });
+
+    console.log('✅ Indicadores renderizados correctamente');
+}
+
+/**
+ * Renderiza las estadísticas del dashboard dinámicamente desde el JSON
+ */
+function renderDashboardStats() {
+    if (!window.dashboardStatsData) {
+        console.warn('⚠️ No hay datos de dashboard stats para renderizar');
+        return;
+    }
+
+    const statsContainer = document.querySelector('.dashboard-stats');
+    if (!statsContainer) {
+        console.warn('⚠️ No se encontró el contenedor de dashboard stats');
+        return;
+    }
+
+    // Limpiar contenedor
+    statsContainer.innerHTML = '';
+
+    // Mapeo de keys a labels
+    const labels = {
+        'facultades': 'Facultades',
+        'programas': 'Programas Académicos',
+        'tesis': 'Tesis',
+        'divisiones': 'Divisiones'
+    };
+
+    // Renderizar cada stat
+    Object.entries(window.dashboardStatsData).forEach(([key, value]) => {
+        const statHTML = `
+            <div class="mini-stat">
+                <span class="mini-stat-value">${value}</span>
+                <div class="mini-stat-label">${labels[key]}</div>
+            </div>
+        `;
+        statsContainer.innerHTML += statHTML;
+    });
+
+    console.log('✅ Dashboard stats renderizados correctamente');
 }
