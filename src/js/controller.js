@@ -10,7 +10,7 @@ async function loadStatisticsData() {
         console.log('🔄 Cargando datos desde JSON...');
         
         // Cargar el archivo JSON desde src/js/data.json
-        const response = await fetch('src/js/data.json');
+        const response = await fetch('https://cdn.um.click/sources/sitios/config/90a42820-be4a-11f0-b8c6-f5e14307a5b9');
         
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
