@@ -265,29 +265,33 @@
         ],
         "historico": {
             "programs": [
-                 "ESART",
-                "ESCEST", 
-                "ESMUS", 
-                "FACED", 
-                "FACEJ", 
-                "FACSA", 
-                "FAPSI", 
-                "FATEO", 
-                "FITEC"
-             ],
+                "Administración",
+                "Enfermería",
+                "Medicina",
+                "Psicología",
+                "Ingeniería",
+                "Educación",
+                "Teología",
+                "Contaduría",
+                "Comunicación",
+                "Nutrición"
+            ],
             "enrollment": {
-                "2023": [184, 177, 36, 355, 220, 938, 110, 763, 118],
-                "2022": [188, 171, 34, 195, 208, 919, 138, 731, 114]
+                "2024": [125, 98, 85, 112, 78, 63, 52, 72, 58, 67],
+                "2023": [120, 95, 80, 110, 75, 60, 50, 70, 55, 65],
+                "2022": [115, 90, 75, 105, 70, 55, 45, 65, 50, 60]
             },
-             "sparkline": {
-                "2023": [184, 177, 36, 355, 220, 938, 110, 763, 118],
-                "2022": [188, 171, 34, 195, 208, 919, 138, 731, 114]
+            "sparkline": {
+                "2024": [70, 75, 82, 88, 95, 105, 125],
+                "2023": [65, 70, 78, 85, 92, 102, 120],
+                "2022": [60, 65, 72, 78, 85, 95, 115]
             }
         },
         "indicadores": {
             "nuevoIngreso": {
                 "titulo": "Porcentaje de estudiantes de nuevo ingreso de pregrado y posgrado matrícula corporativa",
                 "valor": "24%",
+                "tendencia": "+4.2%",
                 "comparacion": "vs año anterior",
                 "icono": "fa-user-graduate",
                 "tipo": "positive"
@@ -295,6 +299,7 @@
             "servicioComunitario": {
                 "titulo": "Número de beneficiarios en el programa de servicio comunitario por parte de estudiantes",
                 "valor": "7,382",
+                "tendencia": "+15%",
                 "comparacion": "más beneficiarios",
                 "icono": "fa-chalkboard-teacher",
                 "tipo": "positive"
@@ -302,6 +307,7 @@
             "saludEspiritual": {
                 "titulo": "Promedio de salud espiritual de los estudiantes",
                 "valor": "4.13",
+                "tendencia": "+0.2",
                 "comparacion": "escala de 5.0",
                 "icono": "fa-percentage",
                 "tipo": "positive"
@@ -309,6 +315,7 @@
             "misiones": {
                 "titulo": "Número de participantes en cursos de misiones (para apoyar la Ventana 10/40)",
                 "valor": "292",
+                "tendencia": "+42",
                 "comparacion": "nuevos misioneros",
                 "icono": "fa-globe-americas",
                 "tipo": "positive"
@@ -319,6 +326,253 @@
             "programas": "50+",
             "tesis": "2100+",
             "divisiones": "12"
+        },
+        "acreditaciones": {
+            "recomendaciones": {
+                "año": "2025",
+                "titulo": "Informe de Recomendaciones",
+                "resumen": {
+                    "total": "363",
+                    "institucionales": "38",
+                    "programasAcademicos": "325",
+                    "cumplidas": "87",
+                    "cumlidasPorcentaje": "25%",
+                    "enProceso": "262",
+                    "enProcesoPorcentaje": "72%",
+                    "noCumplidas": "11",
+                    "noCumplidasPorcentaje": "5%"
+                },
+                "tabla": [
+                    {
+                        "agencia": "AAA",
+                        "total": "34",
+                        "cumplidas": "5",
+                        "enProceso": "29",
+                        "noCumplidas": "0"
+                    },
+                    {
+                        "agencia": "FIMPES",
+                        "total": "4",
+                        "cumplidas": "0",
+                        "enProceso": "4",
+                        "noCumplidas": "0"
+                    },
+                    {
+                        "agencia": "COMAEM",
+                        "total": "16",
+                        "cumplidas": "4",
+                        "enProceso": "12",
+                        "noCumplidas": "0"
+                    },
+                    {
+                        "agencia": "COMACE",
+                        "total": "48",
+                        "cumplidas": "5",
+                        "enProceso": "43",
+                        "noCumplidas": "0"
+                    },
+                    {
+                        "agencia": "ANPADEH",
+                        "total": "168",
+                        "cumplidas": "46",
+                        "enProceso": "120",
+                        "noCumplidas": "2"
+                    },
+                    {
+                        "agencia": "CNEIP",
+                        "total": "33",
+                        "cumplidas": "15",
+                        "enProceso": "16",
+                        "noCumplidas": "2"
+                    },
+                    {
+                        "agencia": "CACECA",
+                        "total": "60",
+                        "cumplidas": "12",
+                        "enProceso": "38",
+                        "noCumplidas": "10"
+                    }
+                ],
+                "totales": {
+                    "total": "363",
+                    "cumplidas": "82",
+                    "cumlidasPorcentaje": "23%",
+                    "enProceso": "262",
+                    "enProcesoPorcentaje": "72%",
+                    "noCumplidas": "19",
+                    "noCumplidasPorcentaje": "5%"
+                }
+            },
+            "programasAcademicos": [
+                {
+                    "nombre": "Medicina",
+                    "icono": "fa-stethoscope",
+                    "organismo": "COMAEM",
+                    "organismoUrl": "https://www.comaem.org.mx/",
+                    "vigencia": "2023-2028",
+                    "estatus": "Acreditada",
+                    "resumen": "Acreditado por COMAEM (2023-2028)",
+                    "descripcion": "Nuestro programa de Licenciatura en Médico Cirujano está acreditado por el Consejo Mexicano para la Acreditación de la Educación Médica, A.C. (COMAEM), garantizando los más altos estándares educativos en el campo médico.",
+                    "detalles": [
+                        {
+                            "etiqueta": "Vigencia",
+                            "valor": "2023-2028"
+                        },
+                        {
+                            "etiqueta": "Estatus",
+                            "valor": "Acreditada"
+                        },
+                        {
+                            "etiqueta": "Reconocimiento",
+                            "valor": "Nacional e internacional"
+                        },
+                        {
+                            "etiqueta": "Campos clínicos",
+                            "valor": "Hospitales certificados"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "Enfermería",
+                    "icono": "fa-user-nurse",
+                    "organismo": "COMACE",
+                    "organismoUrl": "https://www.comace.mx/",
+                    "vigencia": "2024-2029",
+                    "estatus": "Acreditada",
+                    "resumen": "Acreditado por COMACE (2024-2029)",
+                    "descripcion": "La Licenciatura en Enfermería cuenta con acreditación del Consejo Mexicano de Acreditación y Certificación de Enfermería, A.C. (COMACE), lo que avala la calidad en la formación de profesionales de la salud.",
+                    "detalles": [
+                        {
+                            "etiqueta": "Vigencia",
+                            "valor": "2024-2029"
+                        },
+                        {
+                            "etiqueta": "Proceso actual",
+                            "valor": "Acreditada"
+                        },
+                        {
+                            "etiqueta": "Campos clínicos",
+                            "valor": "Hospitales y centros de salud certificados"
+                        },
+                        {
+                            "etiqueta": "Enfoque",
+                            "valor": "Atención integral y humanizada del paciente"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "Nutrición",
+                    "icono": "fa-apple-alt",
+                    "organismo": "CONCAPREN",
+                    "organismoUrl": "https://www.concapren.org.mx/seccion.php?sec=2",
+                    "vigencia": "2018-2023",
+                    "estatus": "En proceso",
+                    "resumen": "En proceso (CONCAPREN 2018-2023)",
+                    "descripcion": "Nuestra Licenciatura en Nutrición está en proceso de reacreditación por el Consejo Nacional para la Calidad de los Programas Educativos en Nutriología, A.C. (CONCAPREN), que certifica la calidad educativa en esta disciplina.",
+                    "detalles": [
+                        {
+                            "etiqueta": "Acreditación previa",
+                            "valor": "2018-2023"
+                        },
+                        {
+                            "etiqueta": "Estatus actual",
+                            "valor": "En proceso de renovación"
+                        },
+                        {
+                            "etiqueta": "Centros de práctica",
+                            "valor": "Hospitales, clínicas y centros comunitarios"
+                        },
+                        {
+                            "etiqueta": "Enfoque",
+                            "valor": "Nutrición clínica, deportiva y comunitaria"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "Contaduría Pública",
+                    "icono": "fa-calculator",
+                    "organismo": "CACECA",
+                    "organismoUrl": "https://www.caceca.org/",
+                    "vigencia": "2025-2030",
+                    "estatus": "Acreditada",
+                    "resumen": "Acreditado por CACECA (2025-2030)",
+                    "descripcion": "La Licenciatura en Contaduría Pública está acreditada por el Consejo de Acreditación de la Enseñanza de la Contaduría Pública y Administración, A.C. (CACECA), garantizando la calidad en la formación de profesionales financieros.",
+                    "detalles": [
+                        {
+                            "etiqueta": "Vigencia",
+                            "valor": "2025-2030"
+                        },
+                        {
+                            "etiqueta": "Estatus",
+                            "valor": "Acreditada"
+                        },
+                        {
+                            "etiqueta": "Reconocimiento",
+                            "valor": "Nacional"
+                        },
+                        {
+                            "etiqueta": "Centros de práctica",
+                            "valor": "Firmas contables y empresas reconocidas"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "Psicología Clínica",
+                    "icono": "fa-brain",
+                    "organismo": "CNEIP",
+                    "organismoUrl": "https://www.cneip.org/",
+                    "vigencia": "2023-2028",
+                    "estatus": "Acreditada",
+                    "resumen": "Acreditado por CNEIP (2023-2028)",
+                    "descripcion": "La Licenciatura en Psicología Clínica está acreditada por el Consejo Nacional para la Enseñanza e Investigación en Psicología, A.C. (CNEIP), validando la excelencia académica en la formación de psicólogos.",
+                    "detalles": [
+                        {
+                            "etiqueta": "Vigencia",
+                            "valor": "2023-2028"
+                        },
+                        {
+                            "etiqueta": "Estatus",
+                            "valor": "Acreditada"
+                        },
+                        {
+                            "etiqueta": "Reconocimiento",
+                            "valor": "Nacional"
+                        },
+                        {
+                            "etiqueta": "Centros de práctica",
+                            "valor": "Clínicas, hospitales y centros de salud mental"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "Arquitectura",
+                    "icono": "fa-drafting-compass",
+                    "organismo": "ANPADEH",
+                    "organismoUrl": "https://anpadeh.org.mx/",
+                    "vigencia": "2023-2028",
+                    "estatus": "Acreditada",
+                    "resumen": "Acreditado por ANPADEH (2023-2028)",
+                    "descripcion": "La Licenciatura en Arquitectura cuenta con acreditación de la Acreditadora Nacional de Programas de Arquitectura y Disciplinas del Espacio Habitable A.C. (ANPADEH), certificando la calidad educativa en diseño y construcción.",
+                    "detalles": [
+                        {
+                            "etiqueta": "Vigencia",
+                            "valor": "2023-2028"
+                        },
+                        {
+                            "etiqueta": "Estatus",
+                            "valor": "Acreditada"
+                        },
+                        {
+                            "etiqueta": "Reconocimiento",
+                            "valor": "Nacional"
+                        },
+                        {
+                            "etiqueta": "Infraestructura",
+                            "valor": "Laboratorios de materiales y talleres de diseño"
+                        }
+                    ]
+                }
+            ]
         }
     }
 }

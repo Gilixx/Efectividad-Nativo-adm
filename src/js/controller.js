@@ -31,6 +31,7 @@ async function loadStatisticsData() {
         window.historicoData = jsonData.data.historico; // ← LÍNEA IMPORTANTE PARA MATRÍCULA HISTÓRICA
         window.indicadoresData = jsonData.data.indicadores; // ← NUEVA: Para indicadores
         window.dashboardStatsData = jsonData.data.dashboardStats; // ← NUEVA: Para stats del dashboard
+        window.acreditacionesData = jsonData.data.acreditaciones; // ← NUEVA: Para acreditaciones
         
         console.log('✅ Datos cargados correctamente desde JSON');
         console.log('📊 Matrícula:', matriculaData);
@@ -40,6 +41,7 @@ async function loadStatisticsData() {
         console.log('📈 Histórico:', window.historicoData);
         console.log('📋 Indicadores:', window.indicadoresData);
         console.log('📊 Dashboard Stats:', window.dashboardStatsData);
+        console.log('🎓 Acreditaciones:', window.acreditacionesData);
         
         // Inicializar estadísticas después de cargar los datos
         if (typeof initStatistics === 'function') {
@@ -59,6 +61,12 @@ async function loadStatisticsData() {
         // Renderizar indicadores dinámicamente
         renderIndicadores();
         renderDashboardStats();
+        
+        // Renderizar tabla de recomendaciones de acreditaciones (si existe en la página)
+        if (window.acreditacionesData) {
+            renderRecomendaciones();
+            renderProgramasAcademicos();
+        }
         
     } catch (error) {
         console.error('❌ Error al cargar datos desde JSON:', error);
@@ -106,7 +114,9 @@ function renderIndicadores() {
                 </div>
                 <div class="stat-detail">
                     <span class="stat-trend ${indicador.tipo}">
+                        <i class="fas fa-arrow-up"></i> ${indicador.tendencia}
                     </span>
+                    <span>${indicador.comparacion}</span>
                 </div>
             </div>
         `;
@@ -154,4 +164,132 @@ function renderDashboardStats() {
     });
 
     console.log('✅ Dashboard stats renderizados correctamente');
+}
+
+/**
+ * Renderiza la tabla de recomendaciones de acreditaciones dinámicamente desde el JSON
+ */
+function renderRecomendaciones() {
+    if (!window.acreditacionesData || !window.acreditacionesData.recomendaciones) {
+        console.warn('⚠️ No hay datos de recomendaciones para renderizar');
+        return;
+    }
+
+    const data = window.acreditacionesData.recomendaciones;
+    
+    // Actualizar título con año
+    const tituloElement = document.querySelector('.recommendations-section h2');
+    if (tituloElement) {
+        tituloElement.textContent = `${data.titulo} (${data.año})`;
+    }
+
+    // Actualizar párrafo de resumen con negritas
+    const parrafoElement = document.querySelector('.recommendations-section p');
+    if (parrafoElement) {
+        parrafoElement.innerHTML = `La institución y sus programas académicos han recibido un total de <strong>${data.resumen.total}</strong> recomendaciones de los diferentes organismos acreditadores, de los cuales <strong>${data.resumen.institucionales}</strong> son de acreditaciones institucionales y <strong>${data.resumen.programasAcademicos}</strong> son de programas académicos. Actualmente, se encuentran cumplidas <strong>${data.resumen.cumplidas} (${data.resumen.cumlidasPorcentaje})</strong> recomendaciones, en proceso <strong>${data.resumen.enProceso} (${data.resumen.enProcesoPorcentaje})</strong> y no cumplidas <strong>${data.resumen.noCumplidas} (${data.resumen.noCumplidasPorcentaje})</strong>. A continuación, se presenta un resumen y la distribución por áreas, de acuerdo a su última visita a la institución.`;
+    }
+
+    // Renderizar tabla
+    const tbody = document.querySelector('.recommendations-table tbody');
+    if (!tbody) {
+        console.warn('⚠️ No se encontró el tbody de la tabla de recomendaciones');
+        return;
+    }
+
+    // Limpiar tbody
+    tbody.innerHTML = '';
+
+    // Renderizar filas de agencias
+    data.tabla.forEach(agencia => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${agencia.agencia}</td>
+            <td>${agencia.total}</td>
+            <td>${agencia.cumplidas}</td>
+            <td>${agencia.enProceso}</td>
+            <td>${agencia.noCumplidas}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+
+    // Renderizar fila de totales
+    const trTotal = document.createElement('tr');
+    trTotal.className = 'total-row';
+    trTotal.innerHTML = `
+        <td>TOTAL</td>
+        <td>${data.totales.total}</td>
+        <td>${data.totales.cumplidas} (${data.totales.cumlidasPorcentaje})</td>
+        <td>${data.totales.enProceso} (${data.totales.enProcesoPorcentaje})</td>
+        <td>${data.totales.noCumplidas} (${data.totales.noCumplidasPorcentaje})</td>
+    `;
+    tbody.appendChild(trTotal);
+
+    console.log('✅ Tabla de recomendaciones renderizada correctamente');
+}
+
+/**
+ * Renderiza los programas académicos acreditados dinámicamente desde el JSON
+ */
+function renderProgramasAcademicos() {
+    if (!window.acreditacionesData || !window.acreditacionesData.programasAcademicos) {
+        console.warn('⚠️ No hay datos de programas académicos para renderizar');
+        return;
+    }
+
+    const programasSlider = document.querySelector('.programs-slider');
+    if (!programasSlider) {
+        console.warn('⚠️ No se encontró el contenedor de programas académicos');
+        return;
+    }
+
+    // Limpiar contenedor
+    programasSlider.innerHTML = '';
+
+    // Renderizar cada programa
+    window.acreditacionesData.programasAcademicos.forEach(programa => {
+        const programCard = document.createElement('div');
+        programCard.className = 'program-card';
+        
+        // Construir lista de detalles
+        const detallesHTML = programa.detalles.map(detalle => 
+            `<li><strong>${detalle.etiqueta}:</strong> ${detalle.valor}</li>`
+        ).join('');
+        
+        programCard.innerHTML = `
+            <div class="program-header">
+                <div class="program-icon">
+                    <i class="fas ${programa.icono}"></i>
+                </div>
+                <h3>${programa.nombre}</h3>
+            </div>
+            <p class="program-summary">${programa.resumen.replace(
+                programa.organismo, 
+                `<a href="${programa.organismoUrl}" target="_blank">${programa.organismo}</a>`
+            )}</p>
+            <div class="program-details">
+                <p>${programa.descripcion.replace(
+                    programa.organismo,
+                    `<a href="${programa.organismoUrl}" target="_blank">${programa.organismo}</a>`
+                )}</p>
+                <ul>
+                    ${detallesHTML}
+                </ul>
+            </div>
+            <button class="toggle-details">Ver más <i class="fas fa-chevron-down"></i></button>
+        `;
+        
+        programasSlider.appendChild(programCard);
+    });
+
+    // Reinicializar funcionalidad del slider después de renderizar
+    if (typeof initProgramsSlider === 'function') {
+        initProgramsSlider();
+    }
+    
+    // Reinicializar botones expandibles
+    if (typeof initExpandButtons === 'function') {
+        initExpandButtons();
+    }
+
+    console.log('✅ Programas académicos renderizados correctamente');
 }
