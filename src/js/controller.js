@@ -8,21 +8,21 @@ let facultades = [];
 async function loadStatisticsData() {
     try {
         console.log('🔄 Cargando datos desde JSON...');
-        
+
         // Cargar el archivo JSON desde src/js/data.json
         const response = await fetch('src/js/data.json');
-        
+
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
         }
-        
+
         const jsonData = await response.json();
-        
+
         // Verificar que los datos sean correctos
         if (jsonData.success !== 1) {
             throw new Error(jsonData.message || 'Error en la estructura del JSON');
         }
-        
+
         // Asignar datos del JSON a variables globales
         matriculaData = jsonData.data.matricula;
         demograficosData = jsonData.data.demograficos;
@@ -32,7 +32,8 @@ async function loadStatisticsData() {
         window.indicadoresData = jsonData.data.indicadores; // ← NUEVA: Para indicadores
         window.dashboardStatsData = jsonData.data.dashboardStats; // ← NUEVA: Para stats del dashboard
         window.acreditacionesData = jsonData.data.acreditaciones; // ← NUEVA: Para acreditaciones
-        
+        window.juntaGobiernoData = jsonData.data.juntaGobierno; // ← NUEVA: Para Junta de Gobierno
+
         console.log('✅ Datos cargados correctamente desde JSON');
         console.log('📊 Matrícula:', matriculaData);
         console.log('👥 Demográficos:', demograficosData);
@@ -42,12 +43,13 @@ async function loadStatisticsData() {
         console.log('📋 Indicadores:', window.indicadoresData);
         console.log('📊 Dashboard Stats:', window.dashboardStatsData);
         console.log('🎓 Acreditaciones:', window.acreditacionesData);
-        
+        console.log('👔 Junta de Gobierno:', window.juntaGobiernoData);
+
         // Inicializar estadísticas después de cargar los datos
         if (typeof initStatistics === 'function') {
             initStatistics();
         }
-        
+
         // Inicializar el slider histórico después de cargar los datos
         if (typeof EnrollmentSlider !== 'undefined' && EnrollmentSlider.init) {
             if (typeof Chart !== 'undefined') {
@@ -57,17 +59,23 @@ async function loadStatisticsData() {
                 console.warn('⚠️ Chart.js no está disponible para el slider');
             }
         }
-        
+
         // Renderizar indicadores dinámicamente
         renderIndicadores();
         renderDashboardStats();
-        
+
         // Renderizar tabla de recomendaciones de acreditaciones (si existe en la página)
         if (window.acreditacionesData) {
+            renderEstadisticasAcreditacion();
             renderRecomendaciones();
             renderProgramasAcademicos();
         }
-        
+
+        // Renderizar Junta de Gobierno (si existe en la página)
+        if (window.juntaGobiernoData) {
+            renderJuntaGobierno();
+        }
+
     } catch (error) {
         console.error('❌ Error al cargar datos desde JSON:', error);
         alert('Error al cargar las estadísticas. Por favor, verifica que el archivo src/js/data.json existe y es válido.');
@@ -167,6 +175,39 @@ function renderDashboardStats() {
 }
 
 /**
+ * Renderiza las estadísticas de acreditación dinámicamente desde el JSON
+ */
+function renderEstadisticasAcreditacion() {
+    if (!window.acreditacionesData || !window.acreditacionesData.estadisticas) {
+        console.warn('⚠️ No hay datos de estadísticas de acreditación para renderizar');
+        return;
+    }
+
+    const statsGrid = document.querySelector('.stats-grid');
+    if (!statsGrid) {
+        console.warn('⚠️ No se encontró el contenedor de estadísticas de acreditación');
+        return;
+    }
+
+    // Limpiar contenedor
+    statsGrid.innerHTML = '';
+
+    // Renderizar cada estadística
+    window.acreditacionesData.estadisticas.forEach(stat => {
+        const statCard = document.createElement('div');
+        statCard.className = 'stat-card';
+        statCard.innerHTML = `
+            <i class="fas ${stat.icono}"></i>
+            <h3>${stat.valor}</h3>
+            <p>${stat.descripcion}</p>
+        `;
+        statsGrid.appendChild(statCard);
+    });
+
+    console.log('✅ Estadísticas de acreditación renderizadas correctamente');
+}
+
+/**
  * Renderiza la tabla de recomendaciones de acreditaciones dinámicamente desde el JSON
  */
 function renderRecomendaciones() {
@@ -176,7 +217,7 @@ function renderRecomendaciones() {
     }
 
     const data = window.acreditacionesData.recomendaciones;
-    
+
     // Actualizar título con año
     const tituloElement = document.querySelector('.recommendations-section h2');
     if (tituloElement) {
@@ -249,12 +290,12 @@ function renderProgramasAcademicos() {
     window.acreditacionesData.programasAcademicos.forEach(programa => {
         const programCard = document.createElement('div');
         programCard.className = 'program-card';
-        
+
         // Construir lista de detalles
-        const detallesHTML = programa.detalles.map(detalle => 
+        const detallesHTML = programa.detalles.map(detalle =>
             `<li><strong>${detalle.etiqueta}:</strong> ${detalle.valor}</li>`
         ).join('');
-        
+
         programCard.innerHTML = `
             <div class="program-header">
                 <div class="program-icon">
@@ -263,21 +304,21 @@ function renderProgramasAcademicos() {
                 <h3>${programa.nombre}</h3>
             </div>
             <p class="program-summary">${programa.resumen.replace(
-                programa.organismo, 
-                `<a href="${programa.organismoUrl}" target="_blank">${programa.organismo}</a>`
-            )}</p>
+            programa.organismo,
+            `<a href="${programa.organismoUrl}" target="_blank">${programa.organismo}</a>`
+        )}</p>
             <div class="program-details">
                 <p>${programa.descripcion.replace(
-                    programa.organismo,
-                    `<a href="${programa.organismoUrl}" target="_blank">${programa.organismo}</a>`
-                )}</p>
+            programa.organismo,
+            `<a href="${programa.organismoUrl}" target="_blank">${programa.organismo}</a>`
+        )}</p>
                 <ul>
                     ${detallesHTML}
                 </ul>
             </div>
             <button class="toggle-details">Ver más <i class="fas fa-chevron-down"></i></button>
         `;
-        
+
         programasSlider.appendChild(programCard);
     });
 
@@ -285,11 +326,99 @@ function renderProgramasAcademicos() {
     if (typeof initProgramsSlider === 'function') {
         initProgramsSlider();
     }
-    
+
     // Reinicializar botones expandibles
     if (typeof initExpandButtons === 'function') {
         initExpandButtons();
     }
 
     console.log('✅ Programas académicos renderizados correctamente');
+}
+
+/**
+ * Renderiza la Junta de Gobierno dinámicamente desde el JSON
+ */
+function renderJuntaGobierno() {
+    if (!window.juntaGobiernoData) {
+        console.warn('⚠️ No hay datos de Junta de Gobierno para renderizar');
+        return;
+    }
+
+    // Actualizar texto de introducción
+    const introText = document.querySelector('.members-section .intro-text');
+    if (introText) {
+        introText.textContent = window.juntaGobiernoData.introduccion;
+    }
+
+    // Renderizar filtros
+    const filterContainer = document.querySelector('.filter-container');
+    if (filterContainer) {
+        filterContainer.innerHTML = '<button class="filter-btn active" data-filter="all">Todos</button>';
+
+        window.juntaGobiernoData.categorias.forEach(categoria => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.setAttribute('data-filter', categoria.id);
+            btn.textContent = categoria.filtro;
+            filterContainer.appendChild(btn);
+        });
+    }
+
+    // Renderizar miembros
+    const membersGrid = document.querySelector('.members-grid');
+    if (!membersGrid) {
+        console.warn('⚠️ No se encontró el contenedor de miembros');
+        return;
+    }
+
+    // Limpiar grid
+    membersGrid.innerHTML = '';
+
+    // Renderizar cada miembro
+    window.juntaGobiernoData.miembros.forEach(miembro => {
+        const memberCard = document.createElement('div');
+        memberCard.className = `member-card category-${miembro.categoria}`;
+        memberCard.innerHTML = `
+            <div class="member-role-tag">${miembro.etiqueta}</div>
+            <h3>${miembro.nombre}</h3>
+            <p>${miembro.cargo}</p>
+        `;
+        membersGrid.appendChild(memberCard);
+    });
+
+    // Inicializar funcionalidad de filtros
+    initMemberFilters();
+
+    console.log('✅ Junta de Gobierno renderizada correctamente');
+}
+
+/**
+ * Inicializa la funcionalidad de filtros de miembros de Junta de Gobierno
+ */
+function initMemberFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const memberCards = document.querySelectorAll('.member-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            // Remover clase active de todos los botones
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Agregar clase active al botón clickeado
+            this.classList.add('active');
+
+            const filter = this.getAttribute('data-filter');
+
+            memberCards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    if (card.classList.contains(`category-${filter}`)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
 }

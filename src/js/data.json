@@ -365,6 +365,28 @@
             "divisiones": "12"
         },
         "acreditaciones": {
+            "estadisticas": [
+                {
+                    "icono": "fa-university",
+                    "valor": "2",
+                    "descripcion": "Acreditaciones Institucionales"
+                },
+                {
+                    "icono": "fa-graduation-cap",
+                    "valor": "42%",
+                    "descripcion": "Matrícula en programas acreditados"
+                },
+                {
+                    "icono": "fa-globe-americas",
+                    "valor": "5",
+                    "descripcion": "Programas Académicos Acreditados"
+                },
+                {
+                    "icono": "fa-award",
+                    "valor": "35+",
+                    "descripcion": "Años de Excelencia Acreditada"
+                }
+            ],
             "recomendaciones": {
                 "año": "2025",
                 "titulo": "Informe de Recomendaciones",
@@ -608,6 +630,421 @@
                             "valor": "Laboratorios de materiales y talleres de diseño"
                         }
                     ]
+                }
+            ]
+        },
+        "juntaGobierno": {
+            "introduccion": "La Junta de Gobierno está compuesta por destacados académicos y profesionales que guían las decisiones estratégicas de la universidad, garantizando la excelencia institucional y el cumplimiento de nuestra misión educativa.",
+            "categorias": [
+                {
+                    "id": "presidencia",
+                    "nombre": "Presidencia",
+                    "filtro": "Presidencia"
+                },
+                {
+                    "id": "division",
+                    "nombre": "División Interamericana",
+                    "filtro": "División Interamericana"
+                },
+                {
+                    "id": "mexico",
+                    "nombre": "Uniones Mexicanas",
+                    "filtro": "Uniones Mexicanas"
+                },
+                {
+                    "id": "otras",
+                    "nombre": "Otras Uniones",
+                    "filtro": "Otras Uniones"
+                },
+                {
+                    "id": "laicos",
+                    "nombre": "Miembros Laicos",
+                    "filtro": "Miembros Laicos"
+                },
+                {
+                    "id": "invitados",
+                    "nombre": "Invitados",
+                    "filtro": "Invitados"
+                }
+            ],
+            "miembros": [
+                {
+                    "nombre": "Henry Elie",
+                    "cargo": "Presidente",
+                    "categoria": "presidencia",
+                    "etiqueta": "Presidencia"
+                },
+                {
+                    "nombre": "Castillo Ismael",
+                    "cargo": "Secretario",
+                    "categoria": "presidencia",
+                    "etiqueta": "Secretaría"
+                },
+                {
+                    "nombre": "Ivelisse Herrara",
+                    "cargo": "División Interamericana",
+                    "categoria": "division",
+                    "etiqueta": "División Interamericana"
+                },
+                {
+                    "nombre": "Tomás Torres",
+                    "cargo": "División Interamericana",
+                    "categoria": "division",
+                    "etiqueta": "División Interamericana"
+                },
+                {
+                    "nombre": "Faye Patterson",
+                    "cargo": "División Interamericana",
+                    "categoria": "division",
+                    "etiqueta": "División Interamericana"
+                },
+                {
+                    "nombre": "Efraín Velázquez",
+                    "cargo": "División Interamericana",
+                    "categoria": "division",
+                    "etiqueta": "División Interamericana"
+                },
+                {
+                    "nombre": "Frank Geneus",
+                    "cargo": "División Interamericana",
+                    "categoria": "division",
+                    "etiqueta": "División Interamericana"
+                },
+                {
+                    "nombre": "Al Powell",
+                    "cargo": "División Interamericana",
+                    "categoria": "division",
+                    "etiqueta": "División Interamericana"
+                },
+                {
+                    "nombre": "Josney Rodríguez",
+                    "cargo": "División Interamericana",
+                    "categoria": "division",
+                    "etiqueta": "División Interamericana"
+                },
+                {
+                    "nombre": "Leonard Johnson",
+                    "cargo": "División Interamericana",
+                    "categoria": "division",
+                    "etiqueta": "División Interamericana"
+                },
+                {
+                    "nombre": "Francisco Javier De Dios",
+                    "cargo": "Unión Mexicana Central",
+                    "categoria": "mexico",
+                    "etiqueta": "UMC"
+                },
+                {
+                    "nombre": "Jorge García",
+                    "cargo": "Unión Mexicana Central",
+                    "categoria": "mexico",
+                    "etiqueta": "UMC"
+                },
+                {
+                    "nombre": "Edmundo Gómez",
+                    "cargo": "Unión Mexicana Central",
+                    "categoria": "mexico",
+                    "etiqueta": "UMC"
+                },
+                {
+                    "nombre": "Abimael Vasquez",
+                    "cargo": "Unión Mexicana Central",
+                    "categoria": "mexico",
+                    "etiqueta": "UMC"
+                },
+                {
+                    "nombre": "Fernando Meza",
+                    "cargo": "Unión Mexicana de Chiapas",
+                    "categoria": "mexico",
+                    "etiqueta": "UMCH"
+                },
+                {
+                    "nombre": "Eloy Pérez",
+                    "cargo": "Unión Mexicana de Chiapas",
+                    "categoria": "mexico",
+                    "etiqueta": "UMCH"
+                },
+                {
+                    "nombre": "José Luis Bouchot",
+                    "cargo": "Unión Mexicana de Chiapas",
+                    "categoria": "mexico",
+                    "etiqueta": "UMCH"
+                },
+                {
+                    "nombre": "Ignacio Navarro",
+                    "cargo": "Unión Mexicana de Chiapas",
+                    "categoria": "mexico",
+                    "etiqueta": "UMCH"
+                },
+                {
+                    "nombre": "Abraham Sandoval",
+                    "cargo": "Unión Mexicana Interoceánica",
+                    "categoria": "mexico",
+                    "etiqueta": "UMI"
+                },
+                {
+                    "nombre": "Aarón Omaña",
+                    "cargo": "Unión Mexicana Interoceánica",
+                    "categoria": "mexico",
+                    "etiqueta": "UMI"
+                },
+                {
+                    "nombre": "Antonio Rosas",
+                    "cargo": "Unión Mexicana Interoceánica",
+                    "categoria": "mexico",
+                    "etiqueta": "UMI"
+                },
+                {
+                    "nombre": "Freddy Torres",
+                    "cargo": "Unión Mexicana Interoceánica",
+                    "categoria": "mexico",
+                    "etiqueta": "UMI"
+                },
+                {
+                    "nombre": "Félix Vidal",
+                    "cargo": "Unión Mexicana Interoceánica",
+                    "categoria": "mexico",
+                    "etiqueta": "UMI"
+                },
+                {
+                    "nombre": "Luis Arturo King",
+                    "cargo": "Unión Mexicana del Norte",
+                    "categoria": "mexico",
+                    "etiqueta": "UMN"
+                },
+                {
+                    "nombre": "Osvaldo Arrieta",
+                    "cargo": "Unión Mexicana del Norte",
+                    "categoria": "mexico",
+                    "etiqueta": "UMN"
+                },
+                {
+                    "nombre": "Carlos Flores",
+                    "cargo": "Unión Mexicana del Norte",
+                    "categoria": "mexico",
+                    "etiqueta": "UMN"
+                },
+                {
+                    "nombre": "Juan Jorge Acuña",
+                    "cargo": "Unión Mexicana del Norte",
+                    "categoria": "mexico",
+                    "etiqueta": "UMN"
+                },
+                {
+                    "nombre": "Gamaliel Torres",
+                    "cargo": "Unión Mexicana del Norte",
+                    "categoria": "mexico",
+                    "etiqueta": "UMN"
+                },
+                {
+                    "nombre": "Jaime D. Velázquez",
+                    "cargo": "Unión Mexicana del Sureste",
+                    "categoria": "mexico",
+                    "etiqueta": "UMS"
+                },
+                {
+                    "nombre": "Roberto Soto",
+                    "cargo": "Unión Mexicana del Sureste",
+                    "categoria": "mexico",
+                    "etiqueta": "UMS"
+                },
+                {
+                    "nombre": "José Luis Olmos",
+                    "cargo": "Unión Mexicana del Sureste",
+                    "categoria": "mexico",
+                    "etiqueta": "UMS"
+                },
+                {
+                    "nombre": "David Celis",
+                    "cargo": "Unión Mexicana del Sureste",
+                    "categoria": "mexico",
+                    "etiqueta": "UMS"
+                },
+                {
+                    "nombre": "Otoniel López",
+                    "cargo": "Unión Mexicana del Sureste",
+                    "categoria": "mexico",
+                    "etiqueta": "UMS"
+                },
+                {
+                    "nombre": "Edy-Michel Carpin",
+                    "cargo": "Unión de las Antillas y Guyana Francesas",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Dannis Slucher",
+                    "cargo": "Unión de Belice",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Peter Kerr",
+                    "cargo": "Unión Caribe Atlántico",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Kern Tobías",
+                    "cargo": "Unión del Caribe",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Ricardo Marín",
+                    "cargo": "Unión Centroamericana del Sur",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Edgar Redondo",
+                    "cargo": "Unión de Colombia del Norte",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Alvaro Niño",
+                    "cargo": "Unión Colombia del Sur",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Aldo J. Pérez",
+                    "cargo": "Unión de Cuba",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Shurman Kook",
+                    "cargo": "Unión Caribe Holandesa",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Teófilo Silvestre",
+                    "cargo": "Unión Dominicana",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Abel Pacheco",
+                    "cargo": "Unión de El Salvador",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Guenther García",
+                    "cargo": "Unión de Guatemala",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Pierre Caporal",
+                    "cargo": "Unión de Haití",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Adam Ramos",
+                    "cargo": "Unión de Honduras",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Everett Brown",
+                    "cargo": "Unión de Jamaica",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "José De Gracia",
+                    "cargo": "Unión Panameña",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Luis Rivera",
+                    "cargo": "Unión de Puerto Rico",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Luis Paredes",
+                    "cargo": "Unión Venezolana del Este",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Orlando Ramírez",
+                    "cargo": "Unión Venezolana del Oeste",
+                    "categoria": "otras",
+                    "etiqueta": "Otras Uniones"
+                },
+                {
+                    "nombre": "Felipe Coral",
+                    "cargo": "Miembros Laicos",
+                    "categoria": "laicos",
+                    "etiqueta": "Miembros Laicos"
+                },
+                {
+                    "nombre": "Jocabeth E. de Góngora",
+                    "cargo": "Miembros Laicos",
+                    "categoria": "laicos",
+                    "etiqueta": "Miembros Laicos"
+                },
+                {
+                    "nombre": "Arturo Palacios",
+                    "cargo": "Miembros Laicos",
+                    "categoria": "laicos",
+                    "etiqueta": "Miembros Laicos"
+                },
+                {
+                    "nombre": "Enoch Sarmiento",
+                    "cargo": "Miembros Laicos",
+                    "categoria": "laicos",
+                    "etiqueta": "Miembros Laicos"
+                },
+                {
+                    "nombre": "Pablo Hernández",
+                    "cargo": "Miembros Laicos",
+                    "categoria": "laicos",
+                    "etiqueta": "Miembros Laicos"
+                },
+                {
+                    "nombre": "Jesús Vega",
+                    "cargo": "Miembros Laicos",
+                    "categoria": "laicos",
+                    "etiqueta": "Miembros Laicos"
+                },
+                {
+                    "nombre": "Gracy Aguirre",
+                    "cargo": "Miembros Laicos",
+                    "categoria": "laicos",
+                    "etiqueta": "Miembros Laicos"
+                },
+                {
+                    "nombre": "Rolando Vega",
+                    "cargo": "Miembros Laicos",
+                    "categoria": "laicos",
+                    "etiqueta": "Miembros Laicos"
+                },
+                {
+                    "nombre": "Judith M. Ayala",
+                    "cargo": "Invitados",
+                    "categoria": "invitados",
+                    "etiqueta": "Invitados"
+                },
+                {
+                    "nombre": "Joel Sebastián",
+                    "cargo": "Invitados",
+                    "categoria": "invitados",
+                    "etiqueta": "Invitados"
+                },
+                {
+                    "nombre": "Orlando Vega",
+                    "cargo": "Invitados",
+                    "categoria": "invitados",
+                    "etiqueta": "Invitados"
                 }
             ]
         }
